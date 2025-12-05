@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 780">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .title { fill: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; font-size: 32px; font-weight: 700; }
+      .subtitle { fill: #9aa5ce; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; font-size: 18px; font-style: italic; }
+      .tagline { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; font-size: 14px; }
+      .code { font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size: 13px; white-space: pre; }
+      .code-bg { fill: #161b22; }
+      .line-num { fill: #484f58; font-family: 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size: 12px; }
+      
+      /* Semantic colors */
+      .kw { fill: #9d7cd8; }
+      .ns { fill: #4ec9b0; }
+      .iface { fill: #7dcfff; font-style: italic; }
+      .type { fill: #bb9af7; }
+      .struct { fill: #7aa2f7; }
+      .call { fill: #dcdcaa; }
+      .prop { fill: #9cdcfe; }
+      .param { fill: #9cdcfe; }
+      .field { fill: #9cdcfe; }
+      .const { fill: #9cdcfe; font-weight: bold; }
+      .ctrl { fill: #ff9e64; font-weight: bold; }
+      .exc { fill: #f7768e; }
+      .str { fill: #9ece6a; }
+      .num { fill: #e0af68; }
+      .op { fill: #c9d1d9; }
+      .brace { fill: #ffd700; }
+      .comment { fill: #565f89; font-style: italic; }
+      
+      /* Legend */
+      .legend-title { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; }
+      .legend-label { fill: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="bg" width="900" height="780"/>
+  
+  <!-- Header -->
+  <text class="title" x="30" y="40">Lexicon</text>
+  <text class="subtitle" x="30" y="65">A Semantic Syntax Theme System</text>
+  <text class="tagline" x="30" y="85">Twilight Theme Preview — C# in Visual Studio with Codist</text>
+  
+  <!-- Code block background -->
+  <rect class="code-bg" x="20" y="100" width="860" height="570" rx="8"/>
+  
+  <!-- Code content using &#160; for non-breaking spaces -->
+  <g class="code">
+    <!-- Line 1 -->
+    <text x="30" y="125" class="line-num">1</text>
+    <text x="55" y="125"><tspan class="kw">using</tspan><tspan class="ns">&#160;System</tspan><tspan class="op">;</tspan></text>
+    
+    <!-- Line 2 -->
+    <text x="30" y="145" class="line-num">2</text>
+    <text x="55" y="145"><tspan class="kw">using</tspan><tspan class="ns">&#160;System.Collections.Generic</tspan><tspan class="op">;</tspan></text>
+    
+    <!-- Line 3 -->
+    <text x="30" y="165" class="line-num">3</text>
+    <text x="55" y="165"><tspan class="kw">using</tspan><tspan class="ns">&#160;System.Threading.Tasks</tspan><tspan class="op">;</tspan></text>
+    
+    <!-- Line 4 - blank -->
+    <text x="30" y="185" class="line-num">4</text>
+    
+    <!-- Line 5 -->
+    <text x="30" y="205" class="line-num">5</text>
+    <text x="55" y="205"><tspan class="kw">namespace</tspan><tspan class="ns">&#160;Lexicon.Demo</tspan><tspan class="op">;</tspan></text>
+    
+    <!-- Line 6 - blank -->
+    <text x="30" y="225" class="line-num">6</text>
+    
+    <!-- Line 7 - comment -->
+    <text x="30" y="245" class="line-num">7</text>
+    <text x="55" y="245" class="comment">//&#160;Interface:&#160;cyan&#160;+&#160;italic&#160;(behavioral&#160;contract)</text>
+    
+    <!-- Line 8 -->
+    <text x="30" y="265" class="line-num">8</text>
+    <text x="55" y="265"><tspan class="kw">public&#160;interface</tspan><tspan class="iface">&#160;IDocumentProcessor</tspan></text>
+    
+    <!-- Line 9 -->
+    <text x="30" y="285" class="line-num">9</text>
+    <text x="55" y="285" class="brace">{</text>
+    
+    <!-- Line 10 - indented 4 spaces -->
+    <text x="24" y="305" class="line-num">10</text>
+    <text x="55" y="305"><tspan class="op">&#160;&#160;&#160;&#160;</tspan><tspan class="struct">int</tspan><tspan class="prop">&#160;ProcessedCount</tspan><tspan class="op">&#160;{&#160;</tspan><tspan class="kw">get</tspan><tspan class="op">;&#160;}</tspan></text>
+    
+    <!-- Line 11 - indented 4 spaces -->
+    <text x="24" y="325" class="line-num">11</text>
+    <text x="55" y="325"><tspan class="op">&#160;&#160;&#160;&#160;</tspan><tspan class="type">Task</tspan><tspan class="op">&lt;</tspan><tspan class="type">Result</tspan><tspan class="op">&gt;</tspan><tspan class="call">&#160;ProcessAsync</tspan><tspan class="op">(</tspan><tspan class="iface">IEnumerable</tspan><tspan class="op">&lt;</tspan><tspan class="type">Doc</tspan><tspan class="op">&gt;</tspan><tspan class="param">&#160;docs</tspan><tspan class="op">);</tspan></text>
+    
+    <!-- Line 12 -->
+    <text x="24" y="345" class="line-num">12</text>
+    <text x="55" y="345" class="brace">}</text>
+    
+    <!-- Line 13 - blank -->
+    <text x="24" y="365" class="line-num">13</text>
+    
+    <!-- Line 14 - comment -->
+    <text x="24" y="385" class="line-num">14</text>
+    <text x="55" y="385" class="comment">//&#160;Reference&#160;type:&#160;purple&#160;(heap-allocated,&#160;polymorphic)</text>
+    
+    <!-- Line 15 -->
+    <text x="24" y="405" class="line-num">15</text>
+    <text x="55" y="405"><tspan class="kw">public&#160;class</tspan><tspan class="type">&#160;DocumentProcessor</tspan><tspan class="op">&#160;:</tspan><tspan class="iface">&#160;IDocumentProcessor</tspan></text>
+    
+    <!-- Line 16 -->
+    <text x="24" y="425" class="line-num">16</text>
+    <text x="55" y="425" class="brace">{</text>
+    
+    <!-- Line 17 - comment indented 4 spaces -->
+    <text x="24" y="445" class="line-num">17</text>
+    <text x="55" y="445"><tspan class="op">&#160;&#160;&#160;&#160;</tspan><tspan class="comment">//&#160;Constant:&#160;light&#160;blue&#160;+&#160;bold&#160;(immutable)</tspan></text>
+    
+    <!-- Line 18 - indented 4 spaces -->
+    <text x="24" y="465" class="line-num">18</text>
+    <text x="55" y="465"><tspan class="op">&#160;&#160;&#160;&#160;</tspan><tspan class="kw">private&#160;const</tspan><tspan class="struct">&#160;int</tspan><tspan class="const">&#160;MaxRetries</tspan><tspan class="op">&#160;=&#160;</tspan><tspan class="num">3</tspan><tspan class="op">;</tspan></text>
+    
+    <!-- Line 19 - blank -->
+    <text x="24" y="485" class="line-num">19</text>
+    
+    <!-- Line 20 - comment indented 4 spaces -->
+    <text x="24" y="505" class="line-num">20</text>
+    <text x="55" y="505"><tspan class="op">&#160;&#160;&#160;&#160;</tspan><tspan class="comment">//&#160;Control&#160;flow:&#160;orange&#160;+&#160;bold&#160;(execution&#160;path)</tspan></text>
+    
+    <!-- Line 21 - indented 4 spaces -->
+    <text x="24" y="525" class="line-num">21</text>
+    <text x="55" y="525"><tspan class="op">&#160;&#160;&#160;&#160;</tspan><tspan class="ctrl">foreach</tspan><tspan class="op">&#160;(</tspan><tspan class="kw">var</tspan><tspan class="param">&#160;doc</tspan><tspan class="ctrl">&#160;in</tspan><tspan class="param">&#160;documents</tspan><tspan class="op">)</tspan></text>
+    
+    <!-- Line 22 - indented 4 spaces -->
+    <text x="24" y="545" class="line-num">22</text>
+    <text x="55" y="545"><tspan class="op">&#160;&#160;&#160;&#160;</tspan><tspan class="brace">{</tspan></text>
+    
+    <!-- Line 23 - indented 8 spaces -->
+    <text x="24" y="565" class="line-num">23</text>
+    <text x="55" y="565"><tspan class="op">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan class="exc">try</tspan><tspan class="op">&#160;{&#160;</tspan><tspan class="kw">await</tspan><tspan class="call">&#160;ProcessAsync</tspan><tspan class="op">(</tspan><tspan class="param">doc</tspan><tspan class="op">);&#160;}</tspan></text>
+    
+    <!-- Line 24 - indented 8 spaces -->
+    <text x="24" y="585" class="line-num">24</text>
+    <text x="55" y="585"><tspan class="op">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan class="exc">catch</tspan><tspan class="op">&#160;(</tspan><tspan class="type">Exception</tspan><tspan class="param">&#160;ex</tspan><tspan class="op">)</tspan><tspan class="exc">&#160;when</tspan><tspan class="op">&#160;(</tspan><tspan class="param">ex</tspan><tspan class="op">.</tspan><tspan class="prop">IsRetryable</tspan><tspan class="op">)</tspan></text>
+    
+    <!-- Line 25 - indented 8 spaces -->
+    <text x="24" y="605" class="line-num">25</text>
+    <text x="55" y="605"><tspan class="op">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{&#160;</tspan><tspan class="field">_logger</tspan><tspan class="op">.</tspan><tspan class="call">LogWarning</tspan><tspan class="op">(</tspan><tspan class="str">$"Retry:&#160;{ex.Message}"</tspan><tspan class="op">);&#160;}</tspan></text>
+    
+    <!-- Line 26 - indented 4 spaces -->
+    <text x="24" y="625" class="line-num">26</text>
+    <text x="55" y="625"><tspan class="op">&#160;&#160;&#160;&#160;</tspan><tspan class="brace">}</tspan></text>
+    
+    <!-- Line 27 -->
+    <text x="24" y="645" class="line-num">27</text>
+    <text x="55" y="645" class="brace">}</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(30, 695)">
+    <text class="legend-title" x="0" y="0">Semantic Categories:</text>
+    
+    <!-- Row 1 -->
+    <rect x="0" y="12" width="12" height="12" rx="2" fill="#bb9af7"/>
+    <text class="legend-label" x="18" y="22">Reference Types</text>
+    
+    <rect x="130" y="12" width="12" height="12" rx="2" fill="#7aa2f7"/>
+    <text class="legend-label" x="148" y="22">Value Types</text>
+    
+    <rect x="250" y="12" width="12" height="12" rx="2" fill="#7dcfff"/>
+    <text class="legend-label" x="268" y="22">Interfaces (italic)</text>
+    
+    <rect x="390" y="12" width="12" height="12" rx="2" fill="#dcdcaa"/>
+    <text class="legend-label" x="408" y="22">Callables</text>
+    
+    <rect x="490" y="12" width="12" height="12" rx="2" fill="#9cdcfe"/>
+    <text class="legend-label" x="508" y="22">Data</text>
+    
+    <rect x="560" y="12" width="12" height="12" rx="2" fill="#ff9e64"/>
+    <text class="legend-label" x="578" y="22">Control Flow (bold)</text>
+    
+    <!-- Row 2 -->
+    <rect x="0" y="38" width="12" height="12" rx="2" fill="#f7768e"/>
+    <text class="legend-label" x="18" y="48">Exceptions</text>
+    
+    <rect x="130" y="38" width="12" height="12" rx="2" fill="#9ece6a"/>
+    <text class="legend-label" x="148" y="48">String Literals</text>
+    
+    <rect x="250" y="38" width="12" height="12" rx="2" fill="#e0af68"/>
+    <text class="legend-label" x="268" y="48">Literal Values</text>
+    
+    <rect x="390" y="38" width="12" height="12" rx="2" fill="#4ec9b0"/>
+    <text class="legend-label" x="408" y="48">Namespaces</text>
+    
+    <rect x="490" y="38" width="12" height="12" rx="2" fill="#9d7cd8"/>
+    <text class="legend-label" x="508" y="48">Keywords</text>
+  </g>
+</svg>

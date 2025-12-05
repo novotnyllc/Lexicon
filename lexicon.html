@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexicon — Design Document</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #1f2335;
+            --text-primary: #c9d1d9;
+            --text-secondary: #9aa5ce;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
+            --accent-blue: #7aa2f7;
+            --accent-purple: #bb9af7;
+            --accent-cyan: #7dcfff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.75;
+            font-size: 17px;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -1.5px;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .byline {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #fff;
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 56px 0 20px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin: 36px 0 14px 0;
+        }
+
+        h4 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin: 28px 0 12px 0;
+        }
+
+        p { margin-bottom: 20px; }
+
+        a { color: var(--accent-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        code {
+            font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+            font-size: 0.9em;
+            background: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        pre {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px 24px;
+            overflow-x: auto;
+            font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+            font-size: 14px;
+            line-height: 1.65;
+            margin: 24px 0;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent-cyan);
+            padding-left: 20px;
+            margin: 28px 0;
+            font-style: italic;
+            color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--bg-secondary);
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) { background: rgba(22, 27, 34, 0.5); }
+
+        .toc {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+
+        .toc h3 {
+            margin: 0 0 16px 0;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin: 8px 0;
+        }
+
+        .toc .toc-l2 {
+            margin-left: 20px;
+        }
+
+        .highlight-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent-blue);
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .note-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid #9ece6a;
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid #ff9e64;
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .goals-box {
+            background: rgba(122, 162, 247, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Inline semantic colors */
+        .sem-reference { color: #bb9af7; }
+        .sem-value { color: #7aa2f7; }
+        .sem-interface { color: #7dcfff; font-style: italic; }
+        .sem-callable { color: #dcdcaa; }
+        .sem-data { color: #9cdcfe; }
+        .sem-data-const { color: #9cdcfe; font-weight: bold; }
+        .sem-control { color: #ff9e64; font-weight: bold; }
+        .sem-exception { color: #f7768e; }
+        .sem-string { color: #9ece6a; }
+        .sem-literal { color: #e0af68; }
+        .sem-enum-member { color: #e0af68; font-weight: bold; }
+        .sem-namespace { color: #4ec9b0; }
+        .sem-keyword { color: #9d7cd8; }
+
+        /* Syntax highlighting - Twilight theme */
+        .syn-keyword { color: #9d7cd8; }
+        .syn-control { color: #ff9e64; font-weight: bold; }
+        .syn-exception { color: #f7768e; }
+        .syn-type { color: #bb9af7; }
+        .syn-struct { color: #7aa2f7; }
+        .syn-interface { color: #7dcfff; font-style: italic; }
+        .syn-delegate { color: #c0a8e0; font-style: italic; }
+        .syn-callable { color: #dcdcaa; }
+        .syn-extension { color: #dcdcaa; font-style: italic; }
+        .syn-property { color: #9cdcfe; }
+        .syn-field { color: #9cdcfe; }
+        .syn-parameter { color: #9cdcfe; }
+        .syn-variable { color: #9cdcfe; }
+        .syn-constant { color: #9cdcfe; font-weight: bold; }
+        .syn-readonly { color: #9cdcfe; }
+        .syn-enum-member { color: #e0af68; font-weight: bold; }
+        .syn-literal { color: #9ece6a; }
+        .syn-string { color: #9ece6a; }
+        .syn-number { color: #e0af68; }
+        .syn-comment { color: #565f89; font-style: italic; }
+        .syn-comment-heading { color: #8b949e; font-weight: bold; font-style: normal; }
+        .syn-attribute { color: #6a9a8e; font-size: 0.9em; }
+        .syn-namespace { color: #4ec9b0; }
+        .syn-static { font-weight: bold; }
+        .syn-virtual { font-style: italic; }
+        .syn-captured { background: rgba(255, 166, 87, 0.18); padding: 0 3px; border-radius: 2px; }
+        .syn-obsolete { text-decoration: line-through; opacity: 0.65; }
+        .syn-dimmed { opacity: 0.5; }
+        .syn-operator { color: #79c0ff; }
+        .syn-brace { color: #ffd700; }
+        .syn-xml-doc { color: #608b4e; }
+
+        /* Decoration examples */
+        .dec-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 14px 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .dec-example {
+            font-family: 'Cascadia Code', monospace;
+            font-size: 15px;
+            min-width: 140px;
+        }
+
+        .dec-label { flex: 1; font-size: 0.95rem; }
+
+        .footnote {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 12px;
+        }
+
+        /* Theme cards */
+        .theme-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 28px 0;
+        }
+
+        .theme-card h4 {
+            margin-top: 0;
+            margin-bottom: 6px;
+            color: #fff;
+            font-size: 1.3rem;
+        }
+
+        .theme-tagline {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .theme-narrative {
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .theme-palette {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .theme-palette .swatch {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+        }
+
+        .theme-card table {
+            font-size: 0.85rem;
+        }
+
+        .theme-card th {
+            padding: 8px 10px;
+        }
+
+        .theme-card td {
+            padding: 6px 10px;
+        }
+
+        .color-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mini-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        /* Cheat sheet */
+        .cheat-sheet {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 14px;
+            margin: 24px 0;
+        }
+
+        .cheat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .cheat-card .emoji {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .cheat-card .category {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .cheat-card small {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .cheat-card em {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.75rem;
+        }
+
+        /* References */
+        .references {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .reference {
+            margin: 14px 0;
+            padding-left: 28px;
+            text-indent: -28px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .ref-num {
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        sup { font-size: 0.7em; color: var(--accent-cyan); }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: #fff;
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        /* Precedence table */
+        .precedence-table td:first-child {
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .precedence-high { color: #f7768e; }
+        .precedence-mid { color: #ff9e64; }
+        .precedence-low { color: #9ece6a; }
+
+        /* Task analysis table */
+        .task-table td:first-child {
+            font-weight: 600;
+            color: var(--accent-cyan);
+        }
+
+        /* Contrast table */
+        .contrast-pass { color: #9ece6a; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lexicon</h1>
+        <p class="subtitle">A Semantic Syntax Theme System</p>
+        <p class="tagline">A color vocabulary for code.</p>
+        <p class="byline">For C# in Visual Studio 2026 with the Codist extension</p>
+
+        <p class="lead">You already know the difference between a <span class="sem-reference">class</span> and a <span class="sem-value">struct</span>. Between an <span class="sem-control">if</span> statement and a <span class="sem-callable">method call</span>. Between a <span class="sem-data-const">constant</span> and a <span class="sem-data">variable</span>. Lexicon makes your editor know it too. Every color carries meaning. <span class="sem-reference">Purple</span> is always a reference type. <span class="sem-value">Blue</span> is always a value type. <span class="sem-control">Orange</span> is always a decision point. Once you learn the vocabulary, any C# codebase using Lexicon becomes easier to read—not because the code changed, but because you can <em>see</em> its structure at a glance.</p>
+
+        <div class="highlight-box">
+            <strong>Lexicon at a glance</strong>
+            <ul>
+                <li>Semantic syntax theme system for C# in Visual Studio 2026 with the Codist extension.</li>
+                <li>11 semantic categories: types, data, control flow, exceptions, literals, and more.</li>
+                <li>Designed to support code review, debugging, and onboarding to unfamiliar C# codebases.</li>
+                <li>10 coordinated dark themes sharing the same semantic vocabulary.</li>
+                <li>Recommended starting point: the Lexicon Twilight theme, with Beacon available as a high-contrast option.</li>
+            </ul>
+        </div>
+
+        <h3 id="twilight-preview">Twilight Preview</h3>
+
+        <p>This small slice of C# code is shown with the Lexicon Twilight theme. It demonstrates how reference types, value types, interfaces, and callables appear in practice before the rest of the document explains the system in detail.</p>
+
+<pre><code><span class="syn-keyword">using</span> <span class="syn-namespace">System</span>;
+<span class="syn-keyword">using</span> <span class="syn-namespace">System.Collections.Generic</span>;
+<span class="syn-keyword">using</span> <span class="syn-namespace">System.Linq</span>;
+<span class="syn-keyword">using</span> <span class="syn-namespace">System.Threading.Tasks</span>;
+
+<span class="syn-keyword">namespace</span> <span class="syn-namespace">Lexicon.Demo</span>;
+
+<span class="syn-comment">// Interface: cyan + italic (behavioral contract)</span>
+<span class="syn-keyword">public</span> <span class="syn-keyword">interface</span> <span class="syn-interface">IDocumentProcessor</span>
+<span class="syn-brace">{</span>
+    <span class="syn-comment">// Property: light blue (encapsulated access)</span>
+    <span class="syn-struct">int</span> <span class="syn-property">ProcessedCount</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-brace">}</span>
+    
+    <span class="syn-comment">// Callable: yellow (executable behavior)</span>
+    <span class="syn-type">Task</span><span class="syn-operator">&lt;</span><span class="syn-type">ProcessingResult</span><span class="syn-operator">&gt;</span> <span class="syn-callable">ProcessAsync</span>(<span class="syn-interface">IEnumerable</span><span class="syn-operator">&lt;</span><span class="syn-type">Document</span><span class="syn-operator">&gt;</span> <span class="syn-parameter">documents</span>);
+<span class="syn-brace">}</span></code></pre>
+
+        <p>See the full sample in <a href="#example">Complete Example</a> and the palette in <a href="#theme-twilight">Lexicon Twilight</a> below.</p>
+
+        <nav class="toc">
+            <h3>Contents</h3>
+            <ul>
+                <li><a href="#problems-goals">1. Problems and Goals</a></li>
+                <li><a href="#scope">2. Scope and Audience</a></li>
+                <li><a href="#philosophy">3. Design Philosophy</a></li>
+                <li><a href="#themes">4. Theme Collection</a></li>
+                <li><a href="#research">5. Research Foundations</a></li>
+                <li><a href="#semantic-map">6. The Semantic Map</a></li>
+                <li class="toc-l2"><a href="#category-rationale">6.1 Category Rationale</a></li>
+                <li><a href="#decorations">7. Decorations and Visual Hierarchy</a></li>
+                <li class="toc-l2"><a href="#precedence">7.1 Decoration Precedence</a></li>
+                <li><a href="#implementation">8. Implementation</a></li>
+                <li><a href="#quick-reference">9. Quick Reference</a></li>
+                <li><a href="#example">10. Complete Example</a></li>
+                <li><a href="#accessibility">11. Accessibility Considerations</a></li>
+                <li class="toc-l2"><a href="#contrast">11.1 WCAG Contrast Ratios</a></li>
+                <li class="toc-l2"><a href="#cvd">11.2 Color Vision Deficiency</a></li>
+                <li class="toc-l2"><a href="#italic-readability">11.3 Italic Readability</a></li>
+                <li class="toc-l2"><a href="#hs">11.4 High Saturation</a></li>
+                <li><a href="#limitations">12. Limitations and Validation Status</a></li>
+                <li><a href="#future">13. Future Directions</a></li>
+                <li><a href="#references">References</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================ -->
+        <h2 id="problems-goals">1. Problems and Goals</h2>
+
+        <p>Lexicon addresses specific pain points that developers encounter when reading and reviewing code. Traditional syntax highlighting colors code by grammatical category: keywords in one color, strings in another, comments in gray. While this provides basic visual structure, it fails to surface semantic distinctions that matter for comprehension and debugging.</p>
+
+        <h3>Problems with Traditional Syntax Highlighting</h3>
+
+        <p><strong>Semantic blindness.</strong> A traditional theme might color <code class="sem-value">DateTime</code> and <code class="sem-reference">Exception</code> identically because both are type names. But <code class="sem-value">DateTime</code> is a value type (stack-allocated, copy semantics) while <code class="sem-reference">Exception</code> is a reference type (heap-allocated, polymorphic). This distinction affects memory management, equality behavior, and API design—information worth surfacing visually, especially when debugging mutation or aliasing bugs.</p>
+
+        <p><strong>Control flow invisibility.</strong> When tracing execution paths, developers need to identify decision points (<code class="sem-control">if</code>, <code class="sem-control">switch</code>) and iteration (<code class="sem-control">for</code>, <code class="sem-control">while</code>). Traditional themes color these the same as <code class="sem-keyword">class</code> and <code class="sem-keyword">public</code>—all "keywords." This forces cognitive search for the specific keywords that affect execution flow.</p>
+
+        <p><strong>Exception boundary opacity.</strong> Exception handling constructs (<code class="sem-exception">try</code>, <code class="sem-exception">catch</code>, <code class="sem-exception">throw</code>) define critical error boundaries. Traditional highlighting provides no visual distinction between these and other keywords, making it harder to quickly assess error handling coverage during code review.</p>
+
+        <p><strong>Closure hazards hidden.</strong> Variables captured by lambdas or local functions have different lifetime and mutation semantics than ordinary locals. This is a common source of bugs (the classic loop-variable-capture issue), yet traditional highlighting provides no visual indication that a variable is captured.</p>
+
+        <h3>Design Goals</h3>
+
+        <div class="goals-box">
+            <p><strong>Lexicon aims to:</strong></p>
+            <p>1. <strong>Accelerate comprehension</strong> during code review by making type semantics (reference vs. value), control flow structure, and exception boundaries visually apparent without requiring token-by-token reading.</p>
+            <p>2. <strong>Reduce cognitive search</strong> during debugging by highlighting the constructs most relevant to execution tracing: control flow decisions, exception boundaries, and captured variables.</p>
+            <p>3. <strong>Support onboarding</strong> to unfamiliar codebases by providing consistent visual scaffolding that helps developers identify structural patterns before they understand the specific logic.</p>
+            <p>4. <strong>Prevent common errors</strong> by making closure captures and deprecated APIs visually distinct, prompting careful attention where it's warranted.</p>
+        </div>
+
+        <!-- ============================================ -->
+        <h2 id="scope">2. Scope and Audience</h2>
+
+        <h3>Current Implementation</h3>
+
+        <p>Lexicon is currently implemented for <strong>C# development in Visual Studio 2026</strong> using the <strong>Codist extension</strong>. The system depends on Codist's extended semantic classification capabilities, which go beyond Visual Studio's built-in Roslyn classifications. Without Codist, Lexicon's full semantic vocabulary cannot be rendered.</p>
+
+        <p>The scope is deliberately focused: one language, one IDE, one extension. The design aspiration is that the semantic vocabulary could eventually extend to other languages and editors, but this would require adaptation work. For now, Lexicon is where C# lives.</p>
+
+        <h3>Target Users</h3>
+
+        <p>Lexicon is designed for developers who already understand C# syntax and semantics. It surfaces semantic distinctions rather than teaching language fundamentals. Three primary user populations and their tasks inform the design:</p>
+
+        <table class="task-table">
+            <thead>
+                <tr>
+                    <th>User Population</th>
+                    <th>Primary Tasks</th>
+                    <th>Lexicon Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Senior developers and architects</strong></td>
+                    <td>Code review, architecture assessment, API design review</td>
+                    <td>Rapid pattern recognition: quickly identify <span class="sem-reference">type relationships</span>, <span class="sem-control">control flow complexity</span>, and <span class="sem-interface">abstraction boundaries</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Developers during debugging</strong></td>
+                    <td>Investigating bugs, tracing execution paths, understanding exception handling</td>
+                    <td>Relevant information surfacing: <span class="sem-data">captured variables</span>, <span class="sem-value">value</span> vs <span class="sem-reference">reference</span> semantics, <span class="sem-exception">exception boundaries</span> visible at a glance</td>
+                </tr>
+                <tr>
+                    <td><strong>Developers onboarding to new codebases</strong></td>
+                    <td>Building mental models, understanding architectural patterns</td>
+                    <td>Structural scaffolding: consistent semantic coloring helps identify patterns even before understanding specific logic</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ============================================ -->
+        <h2 id="philosophy">3. Design Philosophy</h2>
+
+        <p>Traditional syntax highlighting answers the question "What grammatical category is this token?" Lexicon answers a different question: "What role does this code element play in program execution?"</p>
+
+        <p>When you see a block of code styled with Lexicon, you don't parse tokens—you see patterns of meaning. <span class="sem-reference">Purple clusters</span> indicate reference types. <span class="sem-interface">Cyan italic</span> marks abstraction boundaries. <span class="sem-control">Orange bold</span> signals execution flow decisions.</p>
+
+        <div class="highlight-box">
+            <strong>Core Principle:</strong> Every color choice answers the question "What does this code element <em>do</em>?" rather than "What grammatical category is this?"
+        </div>
+
+        <h3>Semantic vs. Grammatical Highlighting</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Approach</th>
+                    <th>Classification Basis</th>
+                    <th>Example Distinctions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Traditional (grammatical)</strong></td>
+                    <td>Token type from parser</td>
+                    <td>keyword, identifier, string, number, comment</td>
+                </tr>
+                <tr>
+                    <td><strong>Visual Studio semantic</strong></td>
+                    <td>Roslyn semantic model</td>
+                    <td>class name, struct name, interface name, method name, property name</td>
+                </tr>
+                <tr>
+                    <td><strong>Lexicon semantic</strong></td>
+                    <td>Developer mental model + Codist</td>
+                    <td>reference type, value type, interface (italic), callable, data, data+bold (const/readonly), control flow (bold), exception, captured variable (background), obsolete (strikethrough)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The key difference is not just <em>what</em> is distinguished, but <em>why</em>. Lexicon's categories are chosen to support specific developer tasks—debugging, code review, onboarding—not to mirror compiler internals.</p>
+
+        <!-- ============================================ -->
+        <h2 id="themes">4. Theme Collection</h2>
+
+        <p>All Lexicon themes share the same semantic mappings and decorations. What varies is the palette—the specific colors assigned to each category—and the emotional feel. Themes are different aesthetic schemes over the same vocabulary. Choose based on your environment, your vision, or simply what feels right.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Theme</th>
+                    <th>Saturation / Intensity</th>
+                    <th>Accessibility Focus</th>
+                    <th>Vibe</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#theme-twilight">Twilight</a></td>
+                    <td>Medium</td>
+                    <td>Balanced contrast, general use</td>
+                    <td>Evening sky, "magic hour" coding</td>
+                </tr>
+                <tr>
+                    <td><a href="#theme-glacier">Glacier</a></td>
+                    <td>Low–medium</td>
+                    <td>Gentler contrast, cooler palette</td>
+                    <td>Arctic calm, reduced visual intensity</td>
+                </tr>
+                <tr>
+                    <td><a href="#theme-ember">Ember</a></td>
+                    <td>Medium–high</td>
+                    <td>Warm bias, focused contrast</td>
+                    <td>Late-night warmth and creative energy</td>
+                </tr>
+                <tr>
+                    <td><a href="#theme-canopy">Canopy</a></td>
+                    <td>Medium</td>
+                    <td>Green-centric, rich hue variety</td>
+                    <td>Forest canopy, organic feel</td>
+                </tr>
+                <tr>
+                    <td><a href="#theme-neon">Neon</a></td>
+                    <td>High</td>
+                    <td>Maximal category separation</td>
+                    <td>Electric city, high-energy sessions</td>
+                </tr>
+                <tr>
+                    <td><a href="#theme-solstice">Solstice</a></td>
+                    <td>Medium</td>
+                    <td>Solarized-inspired balance</td>
+                    <td>Calibrated, analytical, precise</td>
+                </tr>
+                <tr>
+                    <td><a href="#theme-whisper">Whisper</a></td>
+                    <td>Low</td>
+                    <td>Reduced visual demand</td>
+                    <td>Soft, library-quiet coding</td>
+                </tr>
+                <tr>
+                    <td><a href="#theme-nocturne">Nocturne</a></td>
+                    <td>High</td>
+                    <td>Strong contrast on true dark</td>
+                    <td>Jewel tones on deep night</td>
+                </tr>
+                <tr>
+                    <td><a href="#theme-patina">Patina</a></td>
+                    <td>Low–medium</td>
+                    <td>Warm, sepia-toned comfort</td>
+                    <td>Aged copper, archival feel</td>
+                </tr>
+                <tr>
+                    <td><a href="#theme-beacon">Beacon</a></td>
+                    <td>Very high</td>
+                    <td>Accessibility-first, maximum separation</td>
+                    <td>Signal over style, functional clarity</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- TWILIGHT -->
+        <div class="theme-card">
+            <h4 id="theme-twilight">Lexicon Twilight</h4>
+            <p class="theme-tagline">The space between day and night, when colors are most alive.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #bb9af7;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #7aa2f7;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #7dcfff;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #dcdcaa;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #9cdcfe;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #ff9e64;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #f7768e;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #9ece6a;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #e0af68;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #4ec9b0;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #9d7cd8;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Twilight is the flagship theme—the reference implementation that this document demonstrates. Named for that liminal hour when the sun has set but darkness hasn't arrived, when the sky holds impossible colors: deep blues, soft purples, warm golds against the fading light. There's a reason photographers call it the "magic hour."</p>
+
+            <p>The palette balances cool and warm. <span class="sem-reference">Purple types</span> against <span class="sem-callable">yellow methods</span>. <span class="sem-interface">Cyan structure</span> against <span class="sem-control">orange decisions</span>. The dark background (#0d1117) provides depth without harshness—like looking at the sky just after sunset. This is a theme for long sessions: high enough contrast to read easily, soft enough to work in for hours. The trade-off is that some category pairs (purple/blue) require attention to distinguish; users who need maximum distinctness should consider Beacon or Neon.</p>
+
+            <p>The complete code sample in <a href="#example">Complete Example</a> uses this Twilight palette.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #bb9af7;"></span>Soft Purple</span></td><td>#bb9af7</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #7aa2f7;"></span>Sky Blue</span></td><td>#7aa2f7</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #7dcfff;"></span>Cyan</span></td><td>#7dcfff</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #dcdcaa;"></span>Pale Yellow</span></td><td>#dcdcaa</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #9cdcfe;"></span>Light Blue</span></td><td>#9cdcfe</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #ff9e64;"></span>Orange</span></td><td>#ff9e64</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #f7768e;"></span>Coral</span></td><td>#f7768e</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #9ece6a;"></span>Green</span></td><td>#9ece6a</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #e0af68;"></span>Amber</span></td><td>#e0af68</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #4ec9b0;"></span>Teal</span></td><td>#4ec9b0</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #9d7cd8;"></span>Violet</span></td><td>#9d7cd8</td></tr>
+            </table>
+        </div>
+
+        <!-- GLACIER -->
+        <div class="theme-card">
+            <h4 id="theme-glacier">Lexicon Glacier</h4>
+            <p class="theme-tagline">Cool, crystalline, calm. Ice fields under a pale sky.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #b4a7d6;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #7eb8da;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #6dd3d6;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #d4c896;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #a8d4e6;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #e6a07c;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #e07c7c;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #7ec8a3;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #d4b896;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #5eb8b0;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #a090c8;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Glacier draws from arctic landscapes: the blue-white of ancient ice, the pale violet of polar twilight, the surprising warmth of coral sunset reflected on snow. This is a reduced-saturation palette that maintains category differentiation while minimizing visual intensity.</p>
+
+            <p>For developers who find vivid colors fatiguing, or who work in bright environments where high contrast becomes harsh, Glacier offers relief. The colors are all shifted cooler—even the "warm" accents like <span style="color: #e6a07c;">orange control flow</span> and <span style="color: #e07c7c;">coral exceptions</span> carry blue undertones. The semantic vocabulary remains intact; everything just feels calmer, more contemplative. The trade-off: in very dark environments, the low saturation may reduce category distinctness. Like the landscape that inspired it, Glacier is focused and a bit severe.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #b4a7d6;"></span>Pale Lavender</span></td><td>#b4a7d6</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #7eb8da;"></span>Ice Blue</span></td><td>#7eb8da</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #6dd3d6;"></span>Glacier Cyan</span></td><td>#6dd3d6</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d4c896;"></span>Pale Gold</span></td><td>#d4c896</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a8d4e6;"></span>Frost Blue</span></td><td>#a8d4e6</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #e6a07c;"></span>Arctic Sunset</span></td><td>#e6a07c</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #e07c7c;"></span>Polar Rose</span></td><td>#e07c7c</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #7ec8a3;"></span>Lichen Green</span></td><td>#7ec8a3</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d4b896;"></span>Sand</span></td><td>#d4b896</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #5eb8b0;"></span>Glacial Teal</span></td><td>#5eb8b0</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a090c8;"></span>Frost Violet</span></td><td>#a090c8</td></tr>
+            </table>
+        </div>
+
+        <!-- EMBER -->
+        <div class="theme-card">
+            <h4 id="theme-ember">Lexicon Ember</h4>
+            <p class="theme-tagline">Warm coals in darkness. Comfort and intensity.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #e8a4b8;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #d4a076;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #d08070;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #e6c87c;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #d4b896;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #e88050;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #d05050;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #a0b890;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #c8a060;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #b09878;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #c8a0a0;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Ember inverts the usual temperature balance. Where most dark themes lean cool, Ember runs warm—the palette of dying coals, of candlelight, of autumn leaves against dark earth. This is a theme that feels alive, that radiates warmth from the screen.</p>
+
+            <p><span style="color: #e8a4b8;">Reference types</span> become rose and coral. <span style="color: #d4b896;">Data</span> shifts to sand and copper. Even <span style="color: #d4a076;">value types</span> carry amber undertones. The <span style="color: #a0b890;">sage green</span> of string literals provides just enough cool contrast to keep the warmth from becoming oppressive. Ember is a theme for late nights and creative work, when the code is flowing and you want the environment to feel alive. The trade-off: the warm bias reduces blue-green distinctness, which may make some category pairs harder to separate at a glance.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #e8a4b8;"></span>Rose</span></td><td>#e8a4b8</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d4a076;"></span>Copper</span></td><td>#d4a076</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d08070;"></span>Terra Cotta</span></td><td>#d08070</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #e6c87c;"></span>Amber</span></td><td>#e6c87c</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d4b896;"></span>Sand</span></td><td>#d4b896</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #e88050;"></span>Flame</span></td><td>#e88050</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d05050;"></span>Ember Red</span></td><td>#d05050</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a0b890;"></span>Sage</span></td><td>#a0b890</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c8a060;"></span>Honey</span></td><td>#c8a060</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #b09878;"></span>Driftwood</span></td><td>#b09878</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c8a0a0;"></span>Dusty Rose</span></td><td>#c8a0a0</td></tr>
+            </table>
+        </div>
+
+        <!-- CANOPY -->
+        <div class="theme-card">
+            <h4 id="theme-canopy">Lexicon Canopy</h4>
+            <p class="theme-tagline">Dappled light through leaves. The forest floor at midday.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #c9a0dc;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #70a860;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #60b8a8;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #b8c878;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #8cb870;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #d89050;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #d06070;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #90d890;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #70a860;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #50a888;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #a890b8;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Canopy is built around green—the color we see more shades of than any other, the color of life and growth. Where other themes use green sparingly, Canopy lets it dominate. <span style="color: #8cb870;">Data</span> becomes moss. <span style="color: #70a860;">Value types</span> become fern. <span style="color: #90d890;">String literals</span> become spring leaves.</p>
+
+            <p>This isn't a gimmick. Green is the color human eyes are most sensitive to; we can distinguish more variations of green than any other hue. Canopy exploits this by using green for frequently-viewed categories. The result is a surprisingly readable palette that feels organic rather than synthetic. <span style="color: #c9a0dc;">Purple reference types</span> and <span style="color: #d89050;">orange control flow</span> provide the contrast points, standing out against the verdant baseline like flowers in a meadow. The trade-off: users with red-green color vision deficiency may find this theme particularly challenging.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c9a0dc;"></span>Orchid</span></td><td>#c9a0dc</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #70a860;"></span>Fern</span></td><td>#70a860</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #60b8a8;"></span>Eucalyptus</span></td><td>#60b8a8</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #b8c878;"></span>Chartreuse</span></td><td>#b8c878</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #8cb870;"></span>Moss</span></td><td>#8cb870</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d89050;"></span>Tiger Lily</span></td><td>#d89050</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d06070;"></span>Wild Rose</span></td><td>#d06070</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #90d890;"></span>Spring Green</span></td><td>#90d890</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #70a860;"></span>Fern</span></td><td>#70a860</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #50a888;"></span>Pine</span></td><td>#50a888</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a890b8;"></span>Wisteria</span></td><td>#a890b8</td></tr>
+            </table>
+        </div>
+
+        <!-- NEON -->
+        <div class="theme-card">
+            <h4 id="theme-neon">Lexicon Neon</h4>
+            <p class="theme-tagline">Electric signs on wet pavement. The city never sleeps.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #a855f7;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #22d3ee;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #2dd4bf;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #facc15;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #38bdf8;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #fb923c;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #f87171;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #a3e635;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #22d3ee;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #14b8a6;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #c084fc;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Neon is unapologetically vivid. High saturation, maximum luminance, the palette of a cyberpunk future or a Tokyo side street at midnight. Where Twilight and Glacier exercise restraint, Neon turns everything up to eleven.</p>
+
+            <p>This isn't for everyone, but for developers who find muted themes dull, who want their editor to crackle with energy, Neon delivers. The colors are carefully balanced—the full spectrum is represented, so even at high saturation, <span style="color: #a855f7;">purple reference types</span> are clearly distinct from <span style="color: #22d3ee;">cyan value types</span>, and <span style="color: #fb923c;">orange control flow</span> pops against <span style="color: #a3e635;">electric green strings</span>. The trade-off: high saturation may cause eye strain during extended sessions. Think of it as the difference between a jazz trio and a full orchestra. Both have their place.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a855f7;"></span>Electric Purple</span></td><td>#a855f7</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #22d3ee;"></span>Neon Cyan</span></td><td>#22d3ee</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #2dd4bf;"></span>Teal Glow</span></td><td>#2dd4bf</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #facc15;"></span>Laser Yellow</span></td><td>#facc15</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #38bdf8;"></span>Plasma Blue</span></td><td>#38bdf8</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #fb923c;"></span>Signal Orange</span></td><td>#fb923c</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #f87171;"></span>Alarm Red</span></td><td>#f87171</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a3e635;"></span>Electric Lime</span></td><td>#a3e635</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #22d3ee;"></span>Neon Cyan</span></td><td>#22d3ee</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #14b8a6;"></span>Radioactive Teal</span></td><td>#14b8a6</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c084fc;"></span>Ultraviolet</span></td><td>#c084fc</td></tr>
+            </table>
+        </div>
+
+        <!-- SOLSTICE -->
+        <div class="theme-card">
+            <h4 id="theme-solstice">Lexicon Solstice</h4>
+            <p class="theme-tagline">Precision optics. Calibrated for the human eye.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #6c71c4;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #268bd2;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #2aa198;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #b58900;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #839496;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #cb4b16;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #dc322f;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #859900;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #268bd2;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #2aa198;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #d33682;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Solstice adapts Ethan Schoonover's celebrated Solarized palette to Lexicon's semantic system. Solarized was engineered with scientific precision: CIELAB lightness values calculated to maintain consistent contrast across both light and dark modes, hues selected for maximum differentiation while remaining perceptually uniform.</p>
+
+            <p>Where Solarized treats all code uniformly, Solstice adds semantic meaning. <span style="color: #6c71c4;">Reference types</span> get violet. <span style="color: #b58900;">Callables</span> get yellow. <span style="color: #839496;">Data</span> gets the base gray. The careful calibration remains—every color still has the same perceptual lightness—but now the colors carry meaning. The trade-off: Solarized's uniform lightness can make some adjacent categories harder to distinguish without relying on hue. It's Solarized with a vocabulary.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #6c71c4;"></span>Violet</span></td><td>#6c71c4</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #268bd2;"></span>Blue</span></td><td>#268bd2</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #2aa198;"></span>Cyan</span></td><td>#2aa198</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #b58900;"></span>Yellow</span></td><td>#b58900</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #839496;"></span>Base 0</span></td><td>#839496</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #cb4b16;"></span>Orange</span></td><td>#cb4b16</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #dc322f;"></span>Red</span></td><td>#dc322f</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #859900;"></span>Green</span></td><td>#859900</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #268bd2;"></span>Blue</span></td><td>#268bd2</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #2aa198;"></span>Cyan</span></td><td>#2aa198</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d33682;"></span>Magenta</span></td><td>#d33682</td></tr>
+            </table>
+        </div>
+
+        <!-- WHISPER -->
+        <div class="theme-card">
+            <h4 id="theme-whisper">Lexicon Whisper</h4>
+            <p class="theme-tagline">Soft focus. Colors that don't shout.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #c9b8dc;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #a8d4d8;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #a0d8d0;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #dcd8b0;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #b0d0dc;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #dcbca8;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #dcb0b0;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #b0dcb8;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #a8d4d8;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #98c8c0;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #b8a8c8;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Whisper is for developers who want syntax highlighting to guide, not dominate. Every color is desaturated, softened, pulled back toward gray. The result is a palette that still differentiates—<span style="color: #c9b8dc;">purple</span> is still visually distinct from <span style="color: #dcd8b0;">yellow</span>—but doesn't demand attention.</p>
+
+            <p>This theme works well for mixed work: writing prose interspersed with code, reviewing documentation, or any context where the code isn't the sole focus. It's also effective in very dark environments where even moderate saturation can feel harsh. <span style="color: #dcbca8;">Control flow</span> becomes a gentle suggestion rather than a demand. <span style="color: #dcb0b0;">Exceptions</span> are noted, not alarmed about. The trade-off: the muted palette may reduce distinctness for users who benefit from high-contrast differentiation. Think of it as code in a library voice.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c9b8dc;"></span>Muted Lavender</span></td><td>#c9b8dc</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a8d4d8;"></span>Soft Aqua</span></td><td>#a8d4d8</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a0d8d0;"></span>Pale Teal</span></td><td>#a0d8d0</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #dcd8b0;"></span>Cream</span></td><td>#dcd8b0</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #b0d0dc;"></span>Pale Blue</span></td><td>#b0d0dc</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #dcbca8;"></span>Soft Peach</span></td><td>#dcbca8</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #dcb0b0;"></span>Blush</span></td><td>#dcb0b0</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #b0dcb8;"></span>Pale Mint</span></td><td>#b0dcb8</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a8d4d8;"></span>Soft Aqua</span></td><td>#a8d4d8</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #98c8c0;"></span>Sage</span></td><td>#98c8c0</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #b8a8c8;"></span>Haze</span></td><td>#b8a8c8</td></tr>
+            </table>
+        </div>
+
+        <!-- NOCTURNE -->
+        <div class="theme-card">
+            <h4 id="theme-nocturne">Lexicon Nocturne</h4>
+            <p class="theme-tagline">Deep night. Jewel tones against void.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #bd93f9;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #8be9fd;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #50fa7b;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #f1fa8c;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #9aedfe;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #ffb86c;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #ff5555;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #50fa7b;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #8be9fd;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #50fa7b;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #ff79c6;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Nocturne adapts the beloved Dracula palette to Lexicon's semantic system. Pure dark with jewel-tone accents—perfect for OLED displays where true blacks save battery and maximize contrast, and for developers who work best in maximum dark adaptation.</p>
+
+            <p>The colors pop against the void like stars against the night sky. <span style="color: #bd93f9;">Purple reference types</span> glow with amethyst intensity. <span style="color: #f1fa8c;">Yellow callables</span> catch the eye like distant lights. <span style="color: #ffb86c;">Orange control flow</span> marks decision points with warm certainty. The semantic vocabulary is fully preserved; what changes is the drama. The trade-off: the high contrast and vivid colors may cause fatigue during very long sessions. This is code that feels like an occasion.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #bd93f9;"></span>Amethyst</span></td><td>#bd93f9</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #8be9fd;"></span>Ice</span></td><td>#8be9fd</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #50fa7b;"></span>Emerald</span></td><td>#50fa7b</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #f1fa8c;"></span>Canary</span></td><td>#f1fa8c</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #9aedfe;"></span>Aquamarine</span></td><td>#9aedfe</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #ffb86c;"></span>Topaz</span></td><td>#ffb86c</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #ff5555;"></span>Ruby</span></td><td>#ff5555</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #50fa7b;"></span>Emerald</span></td><td>#50fa7b</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #8be9fd;"></span>Ice</span></td><td>#8be9fd</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #50fa7b;"></span>Emerald</span></td><td>#50fa7b</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #ff79c6;"></span>Pink Sapphire</span></td><td>#ff79c6</td></tr>
+            </table>
+        </div>
+
+        <!-- PATINA -->
+        <div class="theme-card">
+            <h4 id="theme-patina">Lexicon Patina</h4>
+            <p class="theme-tagline">Aged copper and old paper. Time-worn elegance.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #b89898;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #c0b090;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #a0b098;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #d4c8a0;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #c8c0a8;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #c89870;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #c07060;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #98a880;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #c0b090;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #90a090;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #a89898;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Patina draws from the colors of age: oxidized bronze, yellowed paper, faded ink, weathered wood. It's a warm, desaturated palette with an antique quality—code that looks like it was written in a library from another century.</p>
+
+            <p>The sepia-shifted colors reduce blue light, making Patina easier on the eyes during long evening sessions. The low saturation keeps the warmth from becoming overwhelming. <span style="color: #b89898;">Reference types</span> take on a dusty rose. <span style="color: #c89870;">Control flow</span> becomes warm copper. <span style="color: #98a880;">String literals</span> fade to sage. The trade-off: the muted, warm-shifted palette may reduce distinctness between some category pairs for users who need high contrast. It's sophisticated, understated, perhaps a bit melancholy. For developers who find modern vibrant themes too aggressive, Patina offers refuge.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #b89898;"></span>Dusty Rose</span></td><td>#b89898</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c0b090;"></span>Parchment</span></td><td>#c0b090</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a0b098;"></span>Verdigris</span></td><td>#a0b098</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #d4c8a0;"></span>Old Gold</span></td><td>#d4c8a0</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c8c0a8;"></span>Linen</span></td><td>#c8c0a8</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c89870;"></span>Copper</span></td><td>#c89870</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c07060;"></span>Rust</span></td><td>#c07060</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #98a880;"></span>Faded Sage</span></td><td>#98a880</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #c0b090;"></span>Parchment</span></td><td>#c0b090</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #90a090;"></span>Lichen</span></td><td>#90a090</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #a89898;"></span>Mauve</span></td><td>#a89898</td></tr>
+            </table>
+        </div>
+
+        <!-- BEACON -->
+        <div class="theme-card">
+            <h4 id="theme-beacon">Lexicon Beacon</h4>
+            <p class="theme-tagline">Maximum signal. Designed for accessibility.</p>
+
+            <div class="theme-palette">
+                <div class="swatch" style="background: #ff00ff;" aria-label="Reference Types color"></div>
+                <div class="swatch" style="background: #1e90ff;" aria-label="Value Types color"></div>
+                <div class="swatch" style="background: #00ff7f;" aria-label="Interfaces color"></div>
+                <div class="swatch" style="background: #ffff00;" aria-label="Callables color"></div>
+                <div class="swatch" style="background: #00ffff;" aria-label="Data color"></div>
+                <div class="swatch" style="background: #ffa500;" aria-label="Control Flow color"></div>
+                <div class="swatch" style="background: #ff4444;" aria-label="Exceptions color"></div>
+                <div class="swatch" style="background: #7fff00;" aria-label="String Literals color"></div>
+                <div class="swatch" style="background: #1e90ff;" aria-label="Literal Values color"></div>
+                <div class="swatch" style="background: #00ced1;" aria-label="Namespaces color"></div>
+                <div class="swatch" style="background: #da70d6;" aria-label="Keywords color"></div>
+            </div>
+
+            <p class="theme-narrative">Beacon is designed for maximum visibility. Every color is at high saturation and near-maximum brightness. The palette may look garish in screenshots, but serves a specific purpose: accessibility for users with low vision or in challenging display conditions.</p>
+
+            <p>The colors are chosen to be maximally distinguishable across common forms of color vision deficiency. <span style="color: #ff4444;">Red exceptions</span> and <span style="color: #7fff00;">green strings</span> are both present but separated by significant lightness differences. <span style="color: #00ffff;">Cyan</span> and <span style="color: #ffff00;">yellow</span> provide primary differentiation for deuteranopia and protanopia. Strong lightness separation ensures elements stand out even when hue perception is impaired. The trade-off: Beacon will cause visual fatigue for users without vision impairments; it is designed as an accessibility accommodation, not a general-purpose theme.</p>
+
+            <p>See <a href="#accessibility">Accessibility Considerations</a> for more detail on contrast and color vision assumptions behind this theme.</p>
+
+            <table>
+                <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #ff00ff;"></span>Magenta</span></td><td>#ff00ff</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini-swatch" style="background: #1e90ff;"></span>Dodger Blue</span></td><td>#1e90ff</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #00ff7f;"></span>Spring Green</span></td><td>#00ff7f</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini-swatch" style="background: #ffff00;"></span>Yellow</span></td><td>#ffff00</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini-swatch" style="background: #00ffff;"></span>Cyan</span></td><td>#00ffff</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini-swatch" style="background: #ffa500;"></span>Orange</span></td><td>#ffa500</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini-swatch" style="background: #ff4444;"></span>Red</span></td><td>#ff4444</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini-swatch" style="background: #7fff00;"></span>Chartreuse</span></td><td>#7fff00</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini-swatch" style="background: #1e90ff;"></span>Dodger Blue</span></td><td>#1e90ff</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini-swatch" style="background: #00ced1;"></span>Dark Turquoise</span></td><td>#00ced1</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini-swatch" style="background: #da70d6;"></span>Orchid</span></td><td>#da70d6</td></tr>
+            </table>
+        </div>
+
+        <!-- ============================================ -->
+        <h2 id="research">5. Research Foundations</h2>
+
+        <p>This section reviews research that informed Lexicon's design. These studies provide theoretical grounding and design principles for the semantic approach. See <a href="#limitations">Section 12</a> for validation status.</p>
+
+        <h3>Program Comprehension and Visual Cues</h3>
+
+        <p>In 1988, Ronald Baecker demonstrated that visual enhancements could improve program comprehension. His study found that improved layout—combining typography, indentation, and color—increased correct answers by 11% and improved readability by 25%.<sup>[1]</sup> These improvements came from combined visual enhancements, providing evidence that thoughtful visual design aids code reading.</p>
+
+        <p>A 2015 eye-tracking study by Advait Sarkar found that developers reading highlighted code exhibited lower cognitive load indicators than those reading plain text.<sup>[2]</sup> The benefit became weaker with increased programming experience, suggesting that highlighting may provide greatest benefit during onboarding to unfamiliar codebases—one of Lexicon's explicit design goals.</p>
+
+        <p>The most important finding for semantic highlighting comes from Gilmore and Green's work on "programming plans."<sup>[3]</sup> Their study found that <strong>visual cues only helped when they matched the task at hand</strong>. Participants found surface bugs faster with control-structure highlighting, but deep bugs faster with cognitive-plan coloring. This insight drives Lexicon's category selection: categories are chosen to align with tasks developers actually perform.</p>
+
+        <h3>Color Psychology</h3>
+
+        <p>Elliot and Maier's Color-in-Context Theory<sup>[4]</sup> establishes that color carries psychological meaning and influences cognitive processing, often without conscious awareness. Lexicon uses this as a design heuristic: warm colors (orange) for attention-demanding constructs like control flow, cool colors (blue, purple) for structural elements, desaturated red (coral) for exceptions to distinguish from IDE error markers.</p>
+
+        <blockquote>Color has meaning, and this has a direct and automatic influence on cognitive processes, including attention.<br>— Elliot & Maier, Color-in-Context Theory</blockquote>
+
+        <h3>Category Count</h3>
+
+        <p>George Miller's (1956) "seven plus or minus two" finding<sup>[5]</sup> concerns serial recall of arbitrary items in short-term memory—not visual categorization. Research on visual search suggests that practiced users can distinguish many more than seven categories when the categories are meaningful and consistent. Lexicon's eleven semantic categories cluster into related groups (types, data, flow) that map to distinctions developers already make. With use, the vocabulary becomes intuitive.</p>
+
+        <!-- ============================================ -->
+        <h2 id="semantic-map">6. The Semantic Map</h2>
+
+        <p>The semantic map defines eleven categories of code elements, each assigned a consistent color role across all theme variations. This mapping reflects how developers conceptualize code architecture during debugging and review tasks.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Semantic Role</th>
+                    <th>C# Examples</th>
+                    <th>Color Family</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Reference Types</strong></td>
+                    <td>Heap-allocated, polymorphic types</td>
+                    <td><span class="sem-reference">Classes</span>, <span class="sem-reference">records</span>, <span class="sem-reference">delegates</span>, <code class="sem-reference">string</code></td>
+                    <td><span class="sem-reference">Purple</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Value Types</strong></td>
+                    <td>Stack-allocated, copy-semantic types</td>
+                    <td><span class="sem-value">Structs</span>, <span class="sem-value">enums</span>, <code class="sem-value">int</code>, <code class="sem-value">DateTime</code></td>
+                    <td><span class="sem-value">Blue</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Interfaces</strong></td>
+                    <td>Behavioral contracts, abstraction boundaries</td>
+                    <td><code class="sem-interface">IDisposable</code>, <code class="sem-interface">IEnumerable&lt;T&gt;</code></td>
+                    <td><span class="sem-interface">Cyan + Italic</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Callables</strong></td>
+                    <td>Executable behavior</td>
+                    <td><span class="sem-callable">Methods</span>, <span class="sem-callable">constructors</span>, <span class="sem-callable">local functions</span></td>
+                    <td><span class="sem-callable">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Data</strong></td>
+                    <td>Named storage locations</td>
+                    <td><span class="sem-data">Fields</span>, <span class="sem-data">properties</span>, <span class="sem-data">parameters</span>, <span class="sem-data">locals</span>; <span class="sem-data-const">const</span> and <span class="sem-data">readonly</span> use bold</td>
+                    <td><span class="sem-data">Light Blue</span> (bold for immutable)</td>
+                </tr>
+                <tr>
+                    <td><strong>Control Flow</strong></td>
+                    <td>Execution path decisions and iteration</td>
+                    <td><code class="sem-control">if</code>, <code class="sem-control">else</code>, <code class="sem-control">switch</code>, <code class="sem-control">for</code>, <code class="sem-control">foreach</code>, <code class="sem-control">while</code></td>
+                    <td><span class="sem-control">Orange + Bold</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Exceptions</strong></td>
+                    <td>Error handling boundaries</td>
+                    <td><code class="sem-exception">try</code>, <code class="sem-exception">catch</code>, <code class="sem-exception">throw</code>, <code class="sem-exception">finally</code>, <code class="sem-exception">when</code>*</td>
+                    <td><span class="sem-exception">Coral</span></td>
+                </tr>
+                <tr>
+                    <td><strong>String Literals</strong></td>
+                    <td>Text data, often user-facing content</td>
+                    <td><code class="sem-string">"text"</code>, <code class="sem-string">$"interpolated"</code>, <code class="sem-string">@"verbatim"</code></td>
+                    <td><span class="sem-string">Green</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Literal Values</strong></td>
+                    <td>Primitive literal values and enum members</td>
+                    <td><code class="sem-literal">42</code>, <code class="sem-literal">3.14</code>, <code class="sem-literal">true</code>, <code class="sem-literal">false</code>, <code class="sem-literal">null</code>, <span class="sem-enum-member">enum members</span></td>
+                    <td><span class="sem-literal">Amber</span> (bold for enum members)</td>
+                </tr>
+                <tr>
+                    <td><strong>Namespaces</strong></td>
+                    <td>Organizational scope</td>
+                    <td><span class="sem-namespace">Namespace identifiers</span></td>
+                    <td><span class="sem-namespace">Teal</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Keywords</strong></td>
+                    <td>Language reserved words (non-control-flow)</td>
+                    <td><code class="sem-keyword">class</code>, <code class="sem-keyword">public</code>, <code class="sem-keyword">async</code>, <code class="sem-keyword">var</code></td>
+                    <td><span class="sem-keyword">Soft Purple</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p class="footnote">* The <code>when</code> keyword is only styled as an exception keyword when it appears in a catch clause filter (e.g., <code>catch (Exception ex) when (...)</code>). In pattern matching contexts such as switch expressions, <code>when</code> is styled as a regular keyword since it serves control flow rather than exception handling.</p>
+
+        <h3 id="category-rationale">6.1 Category Rationale</h3>
+
+        <p>Following Gilmore and Green's finding that visual cues help only when matched to task, each category was selected based on specific developer tasks where the distinction provides value.</p>
+
+        <h4>Reference Types vs. Value Types</h4>
+
+        <p>The distinction between <span class="sem-reference">reference types</span> (purple) and <span class="sem-value">value types</span> (blue) is fundamental to C# programming and directly affects debugging. When a <span class="sem-reference">List&lt;Order&gt;</span> is passed to a method, modifications affect the original—the caller and callee share the same object. When a <span class="sem-value">DateTime</span> is passed, the method receives a copy. Mutation bugs, aliasing issues, and null reference exceptions all trace back to this distinction. Making it visible accelerates root cause analysis.</p>
+
+        <p><strong>Task alignment:</strong> Debugging mutation/aliasing bugs, understanding equality semantics, API design review.</p>
+
+        <h4>Interfaces</h4>
+
+        <p><span class="sem-interface">Interfaces</span> (cyan italic) mark abstraction boundaries—behavioral contracts that define how components interact. The italic styling reinforces that interfaces represent indirection: what you see in the code (the interface type) might not be what runs (the concrete implementation). During code review, cyan italic clusters indicate areas where behavior varies at runtime.</p>
+
+        <p><strong>Task alignment:</strong> Architecture review, dependency analysis, understanding testability and mock boundaries.</p>
+
+        <h4>Callables</h4>
+
+        <p><span class="sem-callable">Callables</span> (yellow) represent executable behavior—methods, constructors, local functions. Yellow is used because callables are action points: locations where execution transfers, where side effects occur, where work happens. In a sea of data and types, yellow marks the verbs.</p>
+
+        <p><strong>Task alignment:</strong> Understanding execution flow, identifying side effects, performance analysis.</p>
+
+        <h4>Data</h4>
+
+        <p><span class="sem-data">Data</span> (light blue) encompasses all named storage: fields, properties, parameters, and locals. These are unified because from a reading perspective, they all represent "a place where a value lives." The naming convention (<code class="sem-data">_field</code> vs <code class="sem-data">local</code>) already distinguishes scope; color distinguishes the semantic category "storage" from "type" and "action."</p>
+
+        <p><span class="sem-data-const">Const fields</span> and <span class="sem-data">readonly fields</span> share the Data color but use <strong>bold</strong> styling to signal immutability. This keeps them visually connected to other data (they're still storage locations) while clearly marking that their values cannot change. During debugging, bold data members are safe harbors—they're not the source of unexpected state changes.</p>
+
+        <p><strong>Task alignment:</strong> Understanding data flow, tracking state changes, identifying unused variables, magic number auditing.</p>
+
+        <h4>Control Flow</h4>
+
+        <p><span class="sem-control">Control flow</span> (orange, bold) unifies all execution-path keywords: conditionals (<code class="sem-control">if</code>, <code class="sem-control">switch</code>), loops (<code class="sem-control">for</code>, <code class="sem-control">while</code>, <code class="sem-control">foreach</code>), and jumps (<code class="sem-control">break</code>, <code class="sem-control">continue</code>, <code class="sem-control">return</code>). Traditional highlighting scatters these among generic "keywords." Lexicon makes decision points visible at a glance.</p>
+
+        <p><strong>Task alignment:</strong> Tracing execution paths, understanding branching complexity, debugging state-dependent behavior.</p>
+
+        <h4>Exceptions</h4>
+
+        <p><span class="sem-exception">Exception handling</span> (coral) marks error boundaries: <code class="sem-exception">try</code>, <code class="sem-exception">catch</code>, <code class="sem-exception">throw</code>, <code class="sem-exception">finally</code>, and the <code class="sem-exception">when</code> filter in catch clauses. Note that <code>when</code> in pattern matching contexts (switch expressions) remains a regular keyword, as it serves control flow rather than exception handling. Coral is used rather than bright red to distinguish from IDE error squiggles—exception handling is intentional error management, not an error. During code review, coral blocks show where errors are expected and handled.</p>
+
+        <p><strong>Task alignment:</strong> Reviewing error handling coverage, understanding failure modes, ensuring cleanup code runs.</p>
+
+        <h4>String Literals vs. Literal Values</h4>
+
+        <p><span class="sem-string">String literals</span> (green) and <span class="sem-literal">literal values</span> (amber) are separated because they require different developer attention. Strings often need localization review, format verification, or resource management consideration. Literal values—numbers, boolean literals, null, and enum members—often need magic-constant auditing or constant extraction. Keeping them visually distinct supports targeted review tasks.</p>
+
+        <p>The <span class="sem-literal">Literal Values</span> category includes <code class="sem-literal">true</code>, <code class="sem-literal">false</code>, <code class="sem-literal">null</code>, and <span class="sem-enum-member">enum members</span> because these share the semantic character of numeric literals: they are raw, literal values written directly in code rather than computed or referenced from storage. Enum members like <code class="sem-enum-member">ProcessingStatus.Success</code> are conceptually the same as writing a numeric constant—they're named literal values. The bold styling on enum members signals their fixed nature while the amber color groups them with other literals.</p>
+
+        <p><strong>Task alignment:</strong> Localization review (strings), magic-constant audit (literal values), identifying hardcoded values.</p>
+
+        <h4>Namespaces and Keywords</h4>
+
+        <p><span class="sem-namespace">Namespaces</span> (teal) provide organizational context. <span class="sem-keyword">Keywords</span> (soft purple) cover language reserved words that don't fit other categories—structural keywords like <code class="sem-keyword">class</code>, <code class="sem-keyword">public</code>, and <code class="sem-keyword">async</code>. These form the grammatical backbone of the code without demanding special attention.</p>
+
+        <div class="note-box">
+            <strong>Palette Construction Rule:</strong> All Lexicon themes must maintain perceptual distinctness between string literals and literal values. These categories serve different review tasks and must not share colors.
+        </div>
+
+        <p>For a compact reminder of these eleven categories, see <a href="#quick-reference">Quick Reference</a> below.</p>
+
+        <!-- ============================================ -->
+        <h2 id="decorations">7. Decorations and Visual Hierarchy</h2>
+
+        <p>Visual hierarchy research is clear: every element competes for attention. When everything is bold, nothing is bold. Codist offers dozens of styling options, but Lexicon uses only six, each passing a simple test: <em>does this tell me something color alone cannot?</em></p>
+
+        <div class="dec-row">
+            <span class="dec-example" style="color: #dcdcaa; font-style: italic;">ProcessAsync</span>
+            <span class="dec-label"><strong>Italic</strong> — Indirection. <span class="sem-interface">Interfaces</span>, virtual/override methods, extension methods. What you see might not be what runs.</span>
+        </div>
+
+        <div class="dec-row">
+            <span class="dec-example" style="color: #9cdcfe; font-weight: bold;">MaxRetries</span>
+            <span class="dec-label"><strong>Bold</strong> — Immutability. <span class="sem-data-const">Const fields</span>, <span class="sem-enum-member">enum members</span>. Value is fixed.</span>
+        </div>
+
+        <div class="dec-row">
+            <span class="dec-example" style="color: #9cdcfe; background: rgba(255,166,87,0.18); padding: 0 4px; border-radius: 2px;">threshold</span>
+            <span class="dec-label"><strong>Background Tint</strong> — Captured by closure. <span class="sem-data">Variables</span> captured by lambdas. Closure warning.</span>
+        </div>
+
+        <div class="dec-row">
+            <span class="dec-example" style="color: #dcdcaa; text-decoration: line-through; opacity: 0.65;">OldMethod</span>
+            <span class="dec-label"><strong>Strikethrough</strong> — Deprecated. Members marked with <code>[Obsolete]</code>. Don't use this.</span>
+        </div>
+
+        <div class="dec-row">
+            <span class="dec-example" style="opacity: 0.5;">unused code</span>
+            <span class="dec-label"><strong>Dimmed</strong> — Unnecessary/unused. Redundant code, unused usings. Fade what doesn't matter.</span>
+        </div>
+
+        <div class="dec-row">
+            <span class="dec-example" style="color: #6a9a8e; font-size: 0.9em;">[Serializable]</span>
+            <span class="dec-label"><strong>Smaller</strong> — Metadata. Attributes that don't affect logic. Metadata recedes.</span>
+        </div>
+
+        <h3 id="precedence">7.1 Decoration Precedence</h3>
+
+        <p>When multiple decorations could apply to a single token, Lexicon follows a defined precedence hierarchy:</p>
+
+        <table class="precedence-table">
+            <thead>
+                <tr>
+                    <th>Priority</th>
+                    <th>Decoration</th>
+                    <th>Semantic</th>
+                    <th>Rationale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="precedence-high">1 (Highest)</td>
+                    <td>Strikethrough + Dimmed</td>
+                    <td>Obsolete/Deprecated</td>
+                    <td>Deprecation is a critical warning that overrides all other styling</td>
+                </tr>
+                <tr>
+                    <td class="precedence-high">2</td>
+                    <td>Background Tint</td>
+                    <td>Captured Variable</td>
+                    <td>Closure capture is a common bug source; must remain visible</td>
+                </tr>
+                <tr>
+                    <td class="precedence-mid">3</td>
+                    <td>Bold</td>
+                    <td>Constant/Static</td>
+                    <td>Immutability is important but not an error condition</td>
+                </tr>
+                <tr>
+                    <td class="precedence-mid">4</td>
+                    <td>Italic</td>
+                    <td>Interface/Virtual/Extension</td>
+                    <td>Indirection matters but is less urgent than capture/deprecation</td>
+                </tr>
+                <tr>
+                    <td class="precedence-low">5</td>
+                    <td>Dimmed</td>
+                    <td>Unused</td>
+                    <td>Low priority; unused obsolete code shows strikethrough, not dimming</td>
+                </tr>
+                <tr>
+                    <td class="precedence-low">6 (Lowest)</td>
+                    <td>Smaller</td>
+                    <td>Attributes</td>
+                    <td>Metadata styling has lowest priority</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Combination rules:</strong> Background tint combines with bold and italic (a captured constant shows both bold and background tint). Strikethrough overrides dimming. When a token is both obsolete and captured, strikethrough takes precedence but the background tint is preserved if technically possible.</p>
+
+        <h3>Interpretation Notes</h3>
+
+        <p><strong>Bold = Immutability, not emphasis.</strong> In typical text, bold means "important." In Lexicon, bold means "fixed at compile time." This is a learned convention.</p>
+
+        <p><strong>Italic = Indirection, not emphasis.</strong> Italic marks elements where the actual behavior may differ from what the source code shows (interfaces, virtual methods, extension methods).</p>
+
+        <p><strong>Coral ≠ Error.</strong> Exception handling uses coral (desaturated red) deliberately to distinguish from IDE error markers (bright red). This avoids alarm fatigue in codebases with extensive exception handling.</p>
+
+        <!-- ============================================ -->
+        <h2 id="implementation">8. Implementation</h2>
+
+        <p>Lexicon is implemented for Visual Studio 2026 with the Codist extension. This section explains requirements and capabilities.</p>
+
+        <h3>Why Codist Is Required</h3>
+
+        <p>Visual Studio provides semantic tokens through its Roslyn-based classification system, but Lexicon requires capabilities that Codist adds:</p>
+
+        <ul>
+            <li><strong>Captured variable detection:</strong> Codist identifies variables captured by lambdas, enabling the closure warning background tint.</li>
+            <li><strong>Control flow keyword distinction:</strong> Codist separates <code class="sem-control">if</code>, <code class="sem-control">for</code>, <code class="sem-control">while</code> from other keywords.</li>
+            <li><strong>Font variations:</strong> Codist allows per-element font weight, style, and size, enabling bold constants, italic interfaces, and smaller attributes.</li>
+            <li><strong>Comment structure:</strong> Codist recognizes comment headings and task markers.</li>
+        </ul>
+
+        <h3>Classification Gaps</h3>
+
+        <p>Even with Codist, some desired classifications are not available:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Desired Classification</th>
+                    <th>Status</th>
+                    <th>Workaround</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Async methods</td>
+                    <td>Not available</td>
+                    <td>Naming convention (<code>*Async</code>)</td>
+                </tr>
+                <tr>
+                    <td>Pure vs. impure methods</td>
+                    <td>Not available</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>Nullable reference types</td>
+                    <td>Partial</td>
+                    <td>IDE warnings</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Installation</h3>
+
+        <p>1. Install the <a href="https://marketplace.visualstudio.com/items?itemName=wmj.Codist">Codist extension</a> from the Visual Studio Marketplace.</p>
+        <p>2. Open Codist settings (Tools → Codist → Options).</p>
+        <p>3. Import the desired Lexicon theme file (JSON).</p>
+
+        <h3>Getting Started with Lexicon</h3>
+
+        <p>To experience Lexicon effectively on first use, follow this simple path:</p>
+
+        <ul>
+            <li>Start with the Lexicon Twilight theme, which is the reference palette described throughout this document.</li>
+            <li>Open a familiar C# file and compare how types, data, and control-flow constructs stand out relative to your previous theme.</li>
+            <li>If you need additional contrast or specific accessibility accommodations, evaluate other themes in the collection, especially <a href="#theme-beacon">Beacon</a>.</li>
+        </ul>
+
+        <!-- ============================================ -->
+        <h2 id="quick-reference">9. Quick Reference</h2>
+
+        <p>A handy reminder for the eleven semantic categories:</p>
+
+        <div class="cheat-sheet">
+            <div class="cheat-card">
+                <div class="emoji">🟣</div>
+                <div class="category" style="color: #bb9af7;">Reference Types</div>
+                <small>Classes, records, delegates<em>Think: "Heap, aliased"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">🔵</div>
+                <div class="category" style="color: #7aa2f7;">Value Types</div>
+                <small>Structs, enums, primitives<em>Think: "Stack, copied"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">🩵</div>
+                <div class="category" style="color: #7dcfff; font-style: italic;">Interfaces</div>
+                <small>IDisposable, IEnumerable<em>Think: "Contract"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">🟡</div>
+                <div class="category" style="color: #dcdcaa;">Callables</div>
+                <small>Methods, constructors<em>Think: "Execute"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">💠</div>
+                <div class="category" style="color: #9cdcfe;">Data</div>
+                <small>Fields, props, params, locals; <strong>bold</strong> = const/readonly<em>Think: "Storage"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">🟠</div>
+                <div class="category" style="color: #ff9e64; font-weight: bold;">Control Flow</div>
+                <small>if, else, for, while, switch<em>Think: "Decision point"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">🔴</div>
+                <div class="category" style="color: #f7768e;">Exceptions</div>
+                <small>try, catch, throw, finally<em>Think: "Handle with care"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">🟢</div>
+                <div class="category" style="color: #9ece6a;">String Literals</div>
+                <small>"text", $"interpolated"<em>Think: "User-facing text"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">🟤</div>
+                <div class="category" style="color: #e0af68;">Literal Values</div>
+                <small>42, true, null, <strong>enum members</strong><em>Think: "Raw values"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">🩶</div>
+                <div class="category" style="color: #4ec9b0;">Namespaces</div>
+                <small>Namespace identifiers<em>Think: "Organization"</em></small>
+            </div>
+            <div class="cheat-card">
+                <div class="emoji">💜</div>
+                <div class="category" style="color: #9d7cd8;">Keywords</div>
+                <small>class, public, async, var<em>Think: "Language"</em></small>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <h2 id="example">10. Complete Example</h2>
+
+        <p>This code sample demonstrates the Lexicon Twilight theme with all major semantic categories and decorations:</p>
+
+<pre><code><span class="syn-keyword">using</span> <span class="syn-namespace">System</span>;
+<span class="syn-keyword">using</span> <span class="syn-namespace">System.Collections.Generic</span>;
+<span class="syn-keyword">using</span> <span class="syn-namespace">System.Linq</span>;
+<span class="syn-keyword">using</span> <span class="syn-namespace">System.Threading.Tasks</span>;
+
+<span class="syn-keyword">namespace</span> <span class="syn-namespace">Lexicon.Demo</span>;
+
+<span class="syn-comment">// Interface: cyan + italic (behavioral contract)</span>
+<span class="syn-keyword">public</span> <span class="syn-keyword">interface</span> <span class="syn-interface">IDocumentProcessor</span>
+<span class="syn-brace">{</span>
+    <span class="syn-comment">// Property: light blue (encapsulated access)</span>
+    <span class="syn-struct">int</span> <span class="syn-property">ProcessedCount</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-brace">}</span>
+    
+    <span class="syn-comment">// Callable: yellow (executable behavior)</span>
+    <span class="syn-type">Task</span><span class="syn-operator">&lt;</span><span class="syn-type">ProcessingResult</span><span class="syn-operator">&gt;</span> <span class="syn-callable">ProcessAsync</span>(<span class="syn-interface">IEnumerable</span><span class="syn-operator">&lt;</span><span class="syn-type">Document</span><span class="syn-operator">&gt;</span> <span class="syn-parameter">documents</span>);
+<span class="syn-brace">}</span>
+
+<span class="syn-comment">// Reference type: purple (heap-allocated, polymorphic)</span>
+<span class="syn-attribute">[ServiceLifetime(ServiceLifetime.Scoped)]</span>
+<span class="syn-keyword">public</span> <span class="syn-keyword">class</span> <span class="syn-type">DocumentProcessor</span> : <span class="syn-interface">IDocumentProcessor</span>, <span class="syn-interface">IDisposable</span>
+<span class="syn-brace">{</span>
+    <span class="syn-comment-heading">// # Constants (data + bold)</span>
+    <span class="syn-keyword">private</span> <span class="syn-keyword">const</span> <span class="syn-struct">int</span> <span class="syn-constant">MaxRetries</span> <span class="syn-operator">=</span> <span class="syn-number">3</span>;
+    <span class="syn-keyword">private</span> <span class="syn-keyword">const</span> <span class="syn-type">string</span> <span class="syn-constant">DefaultName</span> <span class="syn-operator">=</span> <span class="syn-string">"Untitled"</span>;
+    
+    <span class="syn-comment-heading">// # Fields</span>
+    <span class="syn-keyword">private</span> <span class="syn-keyword">readonly</span> <span class="syn-interface">ILogger</span> <span class="syn-readonly">_logger</span>;
+    <span class="syn-keyword">private</span> <span class="syn-struct">bool</span> <span class="syn-field">_isDisposed</span>;
+    
+    <span class="syn-comment">// Property: light blue</span>
+    <span class="syn-keyword">public</span> <span class="syn-struct">int</span> <span class="syn-property">ProcessedCount</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-keyword">private</span> <span class="syn-keyword">set</span>; <span class="syn-brace">}</span>
+    
+    <span class="syn-keyword">public</span> <span class="syn-callable">DocumentProcessor</span>(<span class="syn-interface">ILogger</span> <span class="syn-parameter">logger</span>)
+    <span class="syn-brace">{</span>
+        <span class="syn-field">_logger</span> <span class="syn-operator">=</span> <span class="syn-parameter">logger</span> <span class="syn-operator">??</span> <span class="syn-exception">throw</span> <span class="syn-keyword">new</span> <span class="syn-type">ArgumentNullException</span>(<span class="syn-keyword">nameof</span>(<span class="syn-parameter">logger</span>));
+    <span class="syn-brace">}</span>
+    
+    <span class="syn-keyword">public</span> <span class="syn-keyword">async</span> <span class="syn-type">Task</span><span class="syn-operator">&lt;</span><span class="syn-type">ProcessingResult</span><span class="syn-operator">&gt;</span> <span class="syn-callable">ProcessAsync</span>(<span class="syn-interface">IEnumerable</span><span class="syn-operator">&lt;</span><span class="syn-type">Document</span><span class="syn-operator">&gt;</span> <span class="syn-parameter">documents</span>)
+    <span class="syn-brace">{</span>
+        <span class="syn-keyword">var</span> <span class="syn-variable">results</span> <span class="syn-operator">=</span> <span class="syn-keyword">new</span> <span class="syn-type">List</span><span class="syn-operator">&lt;</span><span class="syn-type">DocumentResult</span><span class="syn-operator">&gt;</span>();
+        <span class="syn-keyword">var</span> <span class="syn-variable">retryCount</span> <span class="syn-operator">=</span> <span class="syn-number">0</span>;
+        
+        <span class="syn-comment">// Control flow: orange + bold (execution path decisions)</span>
+        <span class="syn-control">foreach</span> (<span class="syn-keyword">var</span> <span class="syn-variable">document</span> <span class="syn-control">in</span> <span class="syn-parameter">documents</span>)
+        <span class="syn-brace">{</span>
+            <span class="syn-exception">try</span>
+            <span class="syn-brace">{</span>
+                <span class="syn-comment">// Captured variable: background tint (closure warning)</span>
+                <span class="syn-keyword">var</span> <span class="syn-variable">result</span> <span class="syn-operator">=</span> <span class="syn-keyword">await</span> <span class="syn-callable">RetryAsync</span>(<span class="syn-keyword">async</span> () <span class="syn-operator">=&gt;</span>
+                <span class="syn-brace">{</span>
+                    <span class="syn-captured">retryCount</span>++;  <span class="syn-comment">// CAPTURED by lambda</span>
+                    <span class="syn-keyword">return</span> <span class="syn-keyword">await</span> <span class="syn-callable">ProcessSingleAsync</span>(<span class="syn-variable">document</span>);
+                <span class="syn-brace">}</span>, <span class="syn-constant">MaxRetries</span>);
+                
+                <span class="syn-variable">results</span>.<span class="syn-callable">Add</span>(<span class="syn-variable">result</span>);
+                <span class="syn-property">ProcessedCount</span>++;
+            <span class="syn-brace">}</span>
+            <span class="syn-exception">catch</span> (<span class="syn-type">ProcessingException</span> <span class="syn-variable">ex</span>) <span class="syn-exception">when</span> (<span class="syn-variable">ex</span>.<span class="syn-property">IsRetryable</span>)
+            <span class="syn-brace">{</span>
+                <span class="syn-field">_logger</span>.<span class="syn-callable">LogWarning</span>(<span class="syn-string">$"Retryable: </span>{<span class="syn-variable">ex</span>.<span class="syn-property">Message</span>}<span class="syn-string">"</span>);
+            <span class="syn-brace">}</span>
+            <span class="syn-exception">catch</span> (<span class="syn-type">Exception</span> <span class="syn-variable">ex</span>)
+            <span class="syn-brace">{</span>
+                <span class="syn-field">_logger</span>.<span class="syn-callable">LogError</span>(<span class="syn-variable">ex</span>, <span class="syn-string">"Processing failed"</span>);
+                <span class="syn-exception">throw</span>;
+            <span class="syn-brace">}</span>
+        <span class="syn-brace">}</span>
+        
+        <span class="syn-comment">// Switch expression with pattern matching</span>
+        <span class="syn-keyword">var</span> <span class="syn-variable">status</span> <span class="syn-operator">=</span> <span class="syn-variable">results</span>.<span class="syn-property">Count</span> <span class="syn-control">switch</span>
+        <span class="syn-brace">{</span>
+            <span class="syn-number">0</span> <span class="syn-operator">=&gt;</span> <span class="syn-struct">ProcessingStatus</span>.<span class="syn-enum-member">NoDocuments</span>,
+            _ <span class="syn-keyword">when</span> <span class="syn-variable">results</span>.<span class="syn-extension">All</span>(<span class="syn-parameter">r</span> <span class="syn-operator">=&gt;</span> <span class="syn-parameter">r</span>.<span class="syn-property">Success</span>) <span class="syn-operator">=&gt;</span> <span class="syn-struct">ProcessingStatus</span>.<span class="syn-enum-member">AllSucceeded</span>,
+            _ <span class="syn-operator">=&gt;</span> <span class="syn-struct">ProcessingStatus</span>.<span class="syn-enum-member">PartialSuccess</span>
+        <span class="syn-brace">}</span>;
+        
+        <span class="syn-keyword">return</span> <span class="syn-keyword">new</span> <span class="syn-type">ProcessingResult</span>(<span class="syn-variable">results</span>, <span class="syn-variable">status</span>);
+    <span class="syn-brace">}</span>
+    
+    <span class="syn-comment">// Obsolete method: strikethrough decoration</span>
+    <span class="syn-attribute">[Obsolete("Use ProcessAsync instead")]</span>
+    <span class="syn-keyword">public</span> <span class="syn-keyword">void</span> <span class="syn-callable syn-obsolete">Process</span>(<span class="syn-type">Document</span> <span class="syn-parameter">doc</span>) <span class="syn-operator">=&gt;</span> <span class="syn-exception">throw</span> <span class="syn-keyword">new</span> <span class="syn-type">NotSupportedException</span>();
+<span class="syn-brace">}</span>
+
+<span class="syn-comment">// Value type (struct): blue</span>
+<span class="syn-keyword">public</span> <span class="syn-keyword">readonly</span> <span class="syn-keyword">struct</span> <span class="syn-struct">ProcessingResult</span>
+<span class="syn-brace">{</span>
+    <span class="syn-keyword">public</span> <span class="syn-interface">IReadOnlyList</span><span class="syn-operator">&lt;</span><span class="syn-type">DocumentResult</span><span class="syn-operator">&gt;</span> <span class="syn-property">Results</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-brace">}</span>
+    <span class="syn-keyword">public</span> <span class="syn-struct">ProcessingStatus</span> <span class="syn-property">Status</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-brace">}</span>
+<span class="syn-brace">}</span>
+
+<span class="syn-comment">// Enum: blue (value type), members are literal values (amber + bold)</span>
+<span class="syn-keyword">public</span> <span class="syn-keyword">enum</span> <span class="syn-struct">ProcessingStatus</span>
+<span class="syn-brace">{</span>
+    <span class="syn-enum-member">NoDocuments</span>,
+    <span class="syn-enum-member">AllSucceeded</span>,
+    <span class="syn-enum-member">PartialSuccess</span>,
+    <span class="syn-enum-member">AllFailed</span>
+<span class="syn-brace">}</span></code></pre>
+
+        <!-- ============================================ -->
+        <h2 id="accessibility">11. Accessibility Considerations</h2>
+
+        <p>Lexicon addresses accessibility through a dedicated high-contrast theme (Beacon), careful contrast consideration in the flagship theme (Twilight), and documented limitations. This section presents calculated accessibility data and acknowledges testing gaps.</p>
+
+        <h3 id="contrast">11.1 WCAG Contrast Ratios</h3>
+
+        <p>The Web Content Accessibility Guidelines (WCAG) 2.1 specify minimum contrast ratios: Level AA requires 4.5:1 for normal text; Level AAA requires 7:1. The following table presents <strong>calculated</strong> contrast ratios for Lexicon Twilight against background <code>#0d1117</code>. These are computed values using the WCAG relative luminance formula; actual display contrast varies with monitor calibration, ambient lighting, and individual vision.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Hex</th>
+                    <th>Contrast Ratio</th>
+                    <th>WCAG Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="sem-reference">Reference Types</span></td>
+                    <td>#bb9af7</td>
+                    <td>8.1:1</td>
+                    <td class="contrast-pass">AAA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-value">Value Types</span></td>
+                    <td>#7aa2f7</td>
+                    <td>6.8:1</td>
+                    <td class="contrast-pass">AA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-interface">Interfaces</span></td>
+                    <td>#7dcfff</td>
+                    <td>9.3:1</td>
+                    <td class="contrast-pass">AAA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-callable">Callables</span></td>
+                    <td>#dcdcaa</td>
+                    <td>11.3:1</td>
+                    <td class="contrast-pass">AAA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-data">Data</span></td>
+                    <td>#9cdcfe</td>
+                    <td>10.1:1</td>
+                    <td class="contrast-pass">AAA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-control">Control Flow</span></td>
+                    <td>#ff9e64</td>
+                    <td>7.6:1</td>
+                    <td class="contrast-pass">AAA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-exception">Exceptions</span></td>
+                    <td>#f7768e</td>
+                    <td>7.0:1</td>
+                    <td class="contrast-pass">AAA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-string">String Literals</span></td>
+                    <td>#9ece6a</td>
+                    <td>8.2:1</td>
+                    <td class="contrast-pass">AAA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-literal">Literal Values</span></td>
+                    <td>#e0af68</td>
+                    <td>9.5:1</td>
+                    <td class="contrast-pass">AAA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-namespace">Namespaces</span></td>
+                    <td>#4ec9b0</td>
+                    <td>8.4:1</td>
+                    <td class="contrast-pass">AAA ✓</td>
+                </tr>
+                <tr>
+                    <td><span class="sem-keyword">Keywords</span></td>
+                    <td>#9d7cd8</td>
+                    <td>6.0:1</td>
+                    <td class="contrast-pass">AA ✓</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>All Twilight colors meet WCAG 2.1 Level AA requirements (4.5:1 minimum). Nine of eleven categories meet Level AAA (7:1). The two categories meeting only AA (<span class="sem-value">Value Types</span> at 6.8:1 and <span class="sem-keyword">Keywords</span> at 6.0:1) remain well above the minimum threshold.</p>
+
+        <h3 id="cvd">11.2 Color Vision Deficiency</h3>
+
+        <p>Approximately 8% of males and 0.5% of females have some form of color vision deficiency (CVD). Lexicon's palette presents potential challenges:</p>
+
+        <p><strong>Deuteranopia/Protanopia (red-green, most common):</strong> <span class="sem-control">Orange</span> (control flow) and <span class="sem-string">green</span> (string literals) may be difficult to distinguish. The design partially mitigates this by using bold weight on <span class="sem-control">control flow</span>, providing a non-color differentiation cue. However, simulation testing has not been performed.</p>
+
+        <p><strong>Tritanopia (blue-yellow):</strong> <span class="sem-reference">Purple</span> (reference types) and <span class="sem-value">blue</span> (value types) may be difficult to distinguish. This affects a core semantic distinction. Users with tritanopia should consider the <a href="#theme-beacon">Beacon theme</a>, which maximizes lightness separation between all hues.</p>
+
+        <div class="note-box">
+            <strong>Recommendation:</strong> Users with color vision deficiency should evaluate themes using CVD simulation tools (such as Color Oracle, Coblis, or browser DevTools simulators) before adoption.
+        </div>
+
+        <h3 id="italic-readability">11.3 Italic Readability</h3>
+
+        <p>Some developers, including those with dyslexia or certain visual processing differences, may find italic text harder to read. Interfaces and virtual methods use italic styling; this is a trade-off between semantic meaning and readability.</p>
+
+        <p>Users who find italics hard to read can adjust Lexicon themes by using a variant with italics removed or by overriding font style for interfaces and virtual methods in Codist's classification settings.</p>
+
+        <h3 id="hs">11.4 High Saturation</h3>
+
+        <p>The Neon and Beacon themes use high-saturation colors that may cause visual fatigue for some users. The Whisper, Glacier, and Patina themes offer lower-saturation alternatives.</p>
+
+        <!-- ============================================ -->
+        <h2 id="limitations">12. Limitations and Validation Status</h2>
+
+        <p>Lexicon's design is informed by research on program comprehension, syntax highlighting, and color psychology—but Lexicon itself has not been empirically validated. This section consolidates the key limitations and validation gaps.</p>
+
+        <h3>Research Status</h3>
+
+        <p><strong>Research-informed, not empirically validated.</strong> The studies cited in this document provide theoretical grounding and design principles; they do not validate that Lexicon's specific implementation produces the intended benefits.</p>
+
+        <p><strong>Design hypotheses, not measured outcomes.</strong> Any benefits for comprehension speed, error detection rate, or cognitive load reduction are design hypotheses based on the research literature. Formal user studies would be needed to measure whether Lexicon actually delivers these benefits in practice.</p>
+
+        <p><strong>Calculated accessibility values.</strong> The WCAG contrast ratios presented in Section 11 are calculated using standard formulas, not measured on actual hardware under controlled display conditions. Real-world contrast depends on monitor calibration, ambient lighting, and display technology.</p>
+
+        <p><strong>No formal user studies.</strong> No controlled experiments have been conducted on Lexicon specifically. The design is informed by prior research on syntax highlighting and program comprehension, but has not been independently validated.</p>
+
+        <h3>Known Limitations</h3>
+
+        <p><strong>Single language:</strong> Lexicon currently supports only C#. The semantic vocabulary is designed with C#'s type system in mind.</p>
+
+        <p><strong>Extension dependency:</strong> Codist is required for full functionality. Some semantic distinctions (captured variables, control flow separation) cannot be rendered without it.</p>
+
+        <p><strong>Color reliance:</strong> Lexicon relies heavily on color to convey meaning. Developers with certain forms of color vision deficiency may find some distinctions difficult to perceive, even with the Beacon theme.</p>
+
+        <!-- ============================================ -->
+        <h2 id="future">13. Future Directions</h2>
+
+        <h3>User Studies</h3>
+
+        <p>Controlled comparison of task performance between Lexicon and traditional highlighting would help validate (or refute) the design hypotheses. Useful metrics would include comprehension speed, bug detection rate, and subjective cognitive load ratings.</p>
+
+        <h3>Accessibility Validation</h3>
+
+        <p>Laboratory measurement of contrast ratios on calibrated displays, CVD simulation testing, and usability testing with accessibility-needs populations would strengthen the accessibility claims.</p>
+
+        <!-- ============================================ -->
+        <div class="references" id="references">
+            <h2>References</h2>
+
+            <div class="reference">
+                <span class="ref-num">[1]</span> Baecker, R. M. (1988). "Enhancing program readability and comprehensibility with tools for program visualization." <em>Proceedings of the 10th International Conference on Software Engineering (ICSE '88)</em>, pp. 356-366. IEEE Computer Society Press.
+            </div>
+
+            <div class="reference">
+                <span class="ref-num">[2]</span> Sarkar, A. (2015). "The impact of syntax colouring on program comprehension." <em>Proceedings of the 26th Annual Conference of the Psychology of Programming Interest Group (PPIG 2015)</em>, pp. 49-58.
+            </div>
+
+            <div class="reference">
+                <span class="ref-num">[3]</span> Gilmore, D. J., & Green, T. R. G. (1988). "Programming Plans and Programming Expertise." <em>The Quarterly Journal of Experimental Psychology Section A</em>, 40(3), pp. 423-442.
+            </div>
+
+            <div class="reference">
+                <span class="ref-num">[4]</span> Elliot, A. J., & Maier, M. A. (2012). "Color-in-Context Theory." <em>Advances in Experimental Social Psychology</em>, Vol. 45, pp. 61-125. Academic Press (Elsevier).
+            </div>
+
+            <div class="reference">
+                <span class="ref-num">[5]</span> Miller, G. A. (1956). "The magical number seven, plus or minus two: Some limits on our capacity for processing information." <em>Psychological Review</em>, 63(2), pp. 81-97.
+            </div>
+
+            <div class="reference">
+                <span class="ref-num">[6]</span> Web Content Accessibility Guidelines (WCAG) 2.1. (2018). W3C Recommendation. https://www.w3.org/TR/WCAG21/
+            </div>
+        </div>
+
+        <footer>
+            <strong>Lexicon</strong>
+            <p>A color vocabulary for code.</p>
+            <p>Design document v1.0</p>
+        </footer>
+    </div>
+</body>
+</html>
