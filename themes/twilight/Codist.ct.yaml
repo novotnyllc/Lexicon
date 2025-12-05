@@ -1,0 +1,9 @@
+# Lexicon Twilight - Custom Classification Rules
+# Place this file in your Codist config folder for global rules,
+# or in your project folder for project-specific rules.
+
+- file: '\.cs$'
+  items:
+    # Exception handling keywords - coral color
+    - match: '\b(try|catch|finally|throw|when)\b'
+      groupTags: ["Lexicon: Exception Keyword"]

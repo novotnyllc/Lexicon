@@ -1,0 +1,525 @@
+{
+  "Version": "8.1.1",
+  "Styles": [
+    {
+      "Key": "Keyword",
+      "ForegroundColor": "#9d7cd8"
+    },
+    {
+      "Key": "class name",
+      "ForegroundColor": "#bb9af7"
+    },
+    {
+      "Key": "struct name",
+      "ForegroundColor": "#7aa2f7"
+    },
+    {
+      "Key": "interface name",
+      "Italic": true,
+      "ForegroundColor": "#7dcfff"
+    },
+    {
+      "Key": "enum name",
+      "ForegroundColor": "#7aa2f7"
+    },
+    {
+      "Key": "enum member name",
+      "Bold": true,
+      "ForegroundColor": "#4fc1ff"
+    },
+    {
+      "Key": "delegate name",
+      "Italic": true,
+      "ForegroundColor": "#c0a8e0"
+    },
+    {
+      "Key": "type parameter name",
+      "ForegroundColor": "#bb9af7"
+    },
+    {
+      "Key": "namespace name",
+      "ForegroundColor": "#4ec9b0"
+    },
+    {
+      "Key": "Number",
+      "ForegroundColor": "#e0af68"
+    },
+    {
+      "Key": "String",
+      "ForegroundColor": "#9ece6a"
+    },
+    {
+      "Key": "string - escape character",
+      "Bold": true,
+      "ForegroundColor": "#73daca"
+    },
+    {
+      "Key": "preprocessor text",
+      "ForegroundColor": "#73daca"
+    },
+    {
+      "Key": "preprocessor keyword",
+      "ForegroundColor": "#9d7cd8"
+    },
+    {
+      "Key": "Comment",
+      "Italic": true,
+      "ForegroundColor": "#565f89"
+    },
+    {
+      "Key": "unnecessary code",
+      "Strikethrough": true,
+      "ForegroundColor": "#565f89"
+    },
+    {
+      "Key": "operator",
+      "ForegroundColor": "#89ddff"
+    },
+    {
+      "Key": "punctuation",
+      "ForegroundColor": "#c0caf5"
+    },
+    {
+      "Key": "constant name",
+      "Bold": true,
+      "ForegroundColor": "#4fc1ff"
+    },
+    {
+      "Key": "field name",
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "property name",
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "event name",
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "method name",
+      "ForegroundColor": "#dcdcaa"
+    },
+    {
+      "Key": "extension method name",
+      "Italic": true,
+      "ForegroundColor": "#dcdcaa"
+    },
+    {
+      "Key": "local name",
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "parameter name",
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "record class name",
+      "ForegroundColor": "#bb9af7"
+    },
+    {
+      "Key": "record struct name",
+      "ForegroundColor": "#7aa2f7"
+    },
+    {
+      "Key": "Lexicon: Exception Keyword",
+      "Bold": true,
+      "ForegroundColor": "#f7768e"
+    },
+    {
+      "Key": "Lexicon: Captured Variable",
+      "BackgroundColor": "#30ffa657"
+    },
+    {
+      "Key": "Codist: Emphasis",
+      "Bold": true,
+      "FontSize": 7.0
+    },
+    {
+      "Key": "Codist: Question",
+      "ForegroundColor": "#bb9af7"
+    },
+    {
+      "Key": "Codist: Exclamation",
+      "Bold": true,
+      "ForegroundColor": "#f7768e"
+    },
+    {
+      "Key": "Codist: Deletion",
+      "Strikethrough": true,
+      "ForegroundColor": "#565f89"
+    },
+    {
+      "Key": "Codist: Task - ToDo",
+      "ForegroundColor": "#c0caf5",
+      "BackgroundColor": "#80ff9e64"
+    },
+    {
+      "Key": "Codist: Task - Note",
+      "Bold": true,
+      "ForegroundColor": "#0d1117",
+      "BackgroundColor": "#7dcfff"
+    },
+    {
+      "Key": "Codist: Task - Hack",
+      "ForegroundColor": "#9ece6a",
+      "BackgroundColor": "#30004000"
+    },
+    {
+      "Key": "Codist: Task - Undone",
+      "ForegroundColor": "#c0caf5",
+      "BackgroundColor": "#80f7768e"
+    },
+    {
+      "Key": "Codist: Heading 1",
+      "Bold": true,
+      "FontSize": 12.0
+    },
+    {
+      "Key": "Codist: Heading 2",
+      "Bold": true,
+      "FontSize": 8.0
+    },
+    {
+      "Key": "Codist: Heading 3",
+      "Bold": true,
+      "FontSize": 4.0
+    },
+    {
+      "Key": "Codist: Heading 4",
+      "FontSize": -1.0,
+      "ForegroundColor": "#7aa2f7"
+    },
+    {
+      "Key": "Codist: Heading 5",
+      "FontSize": -2.0,
+      "ForegroundColor": "#7dcfff"
+    },
+    {
+      "Key": "Codist: Heading 6",
+      "FontSize": -3.0,
+      "ForegroundColor": "#4ec9b0"
+    },
+    {
+      "Key": "Codist: Task 1",
+      "Italic": false,
+      "FontSize": 10.0,
+      "ForegroundColor": "#f7768e"
+    },
+    {
+      "Key": "Codist: Task 2",
+      "Italic": false,
+      "FontSize": 7.0,
+      "ForegroundColor": "#ff9e64"
+    },
+    {
+      "Key": "Codist: Task 3",
+      "Bold": true,
+      "Italic": false,
+      "FontSize": 2.0,
+      "ForegroundColor": "#e0af68"
+    },
+    {
+      "Key": "CppLocalVariableSemanticTokenFormat",
+      "Italic": true,
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "CppLabelSemanticTokenFormat",
+      "Bold": true,
+      "ForegroundColor": "#c0caf5",
+      "BackgroundColor": "#ff9e64"
+    },
+    {
+      "Key": "CppUDLNumberSemanticTokenFormat",
+      "ForegroundColor": "#e0af68"
+    },
+    {
+      "Key": "CppFunctionSemanticTokenFormat",
+      "ForegroundColor": "#dcdcaa"
+    },
+    {
+      "Key": "CppEventSemanticTokenFormat",
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "CppParameterSemanticTokenFormat",
+      "Italic": true,
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "CppPropertySemanticTokenFormat",
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "CppGlobalVariableSemanticTokenFormat",
+      "Underline": true,
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "CppMemberFieldSemanticTokenFormat",
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "CppMemberFunctionSemanticTokenFormat",
+      "ForegroundColor": "#dcdcaa"
+    },
+    {
+      "Key": "CppStaticMemberFieldSemanticTokenFormat",
+      "Underline": true,
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "CppStaticMemberFunctionSemanticTokenFormat",
+      "Underline": true,
+      "ForegroundColor": "#dcdcaa"
+    },
+    {
+      "Key": "C#: Control flow keyword",
+      "Bold": true,
+      "ForegroundColor": "#ff9e64"
+    },
+    {
+      "Key": "C#: Abstraction keyword",
+      "ForegroundColor": "#9d7cd8"
+    },
+    {
+      "Key": "C#: Branching keyword",
+      "Bold": true,
+      "ForegroundColor": "#ff9e64"
+    },
+    {
+      "Key": "C#: Loop keyword",
+      "Bold": true,
+      "ForegroundColor": "#ff9e64"
+    },
+    {
+      "Key": "C#: Type cast keyword",
+      "ForegroundColor": "#9d7cd8"
+    },
+    {
+      "Key": "C#: Resource keyword",
+      "Bold": true,
+      "ForegroundColor": "#f7768e"
+    },
+    {
+      "Key": "C#: Declaration",
+      "FontSize": 5.0
+    },
+    {
+      "Key": "C#: Member declaration",
+      "FontSize": 3.0
+    },
+    {
+      "Key": "C#: Declaration brace",
+      "FontSize": 2.0,
+      "ForegroundColor": "#ffd700"
+    },
+    {
+      "Key": "C#: Static member",
+      "Bold": false,
+      "Underline": true
+    },
+    {
+      "Key": "C#: Override member",
+      "Italic": true,
+      "BackgroundColor": "#20004F15",
+      "BackgroundEffect": "ToBottom"
+    },
+    {
+      "Key": "C#: Virtual member",
+      "Italic": true,
+      "BackgroundColor": "#20000040",
+      "BackgroundEffect": "ToBottom"
+    },
+    {
+      "Key": "C#: Abstract member",
+      "Italic": true,
+      "BackgroundColor": "#200040a0",
+      "BackgroundEffect": "ToBottom"
+    },
+    {
+      "Key": "C#: Local declaration",
+      "Italic": false,
+      "BackgroundColor": "#207aa2f7"
+    },
+    {
+      "Key": "C#: Local variable",
+      "Italic": true,
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "C#: Label",
+      "Bold": true,
+      "ForegroundColor": "#c0caf5",
+      "BackgroundColor": "#ff9e64"
+    },
+    {
+      "Key": "C#: Attribute notation",
+      "Italic": true,
+      "FontSize": -2.0,
+      "ForegroundColor": "#6a9a8e"
+    },
+    {
+      "Key": "C#: Sealed class or member",
+      "BackgroundColor": "#20234d4d",
+      "BackgroundEffect": "ToBottom"
+    },
+    {
+      "Key": "C#: Event",
+      "ForegroundColor": "#9cdcfe",
+      "BackgroundColor": "#30004000",
+      "BackgroundEffect": "ToBottom"
+    },
+    {
+      "Key": "C#: Type parameter",
+      "ForegroundColor": "#bb9af7"
+    },
+    {
+      "Key": "C#: Constructor method",
+      "ForegroundColor": "#dcdcaa"
+    },
+    {
+      "Key": "C#: Destructor method",
+      "ForegroundColor": "#f7768e"
+    },
+    {
+      "Key": "C#: Field",
+      "Italic": true,
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "C#: Const field",
+      "Bold": true,
+      "ForegroundColor": "#4fc1ff"
+    },
+    {
+      "Key": "C#: Read-only field",
+      "Italic": false,
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "C#: Volatile field",
+      "ForegroundColor": "#9cdcfe",
+      "BackgroundColor": "#40f7768e",
+      "BackgroundEffect": "ToBottom"
+    },
+    {
+      "Key": "C#: Enum field",
+      "Bold": true,
+      "ForegroundColor": "#4fc1ff"
+    },
+    {
+      "Key": "C#: Property",
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "C#: Method",
+      "ForegroundColor": "#dcdcaa"
+    },
+    {
+      "Key": "C#: Extension method",
+      "Italic": true,
+      "ForegroundColor": "#dcdcaa"
+    },
+    {
+      "Key": "C#: Extern method",
+      "ForegroundColor": "#dcdcaa",
+      "BackgroundColor": "#40800000",
+      "BackgroundEffect": "ToBottom"
+    },
+    {
+      "Key": "C#: Parameter",
+      "Italic": true,
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "C#: Captured variable",
+      "BackgroundColor": "#30ffa657"
+    },
+    {
+      "Key": "C#: XML Doc",
+      "FontSize": -1.0,
+      "ForegroundColor": "#608b4e"
+    },
+    {
+      "Key": "C#: Obsolete symbol",
+      "Strikethrough": true,
+      "ForegroundColor": "#80565f89"
+    },
+    {
+      "Key": "C#: Metadata symbol",
+      "Bold": true
+    },
+    {
+      "Key": "C#: User symbol",
+      "Bold": false
+    },
+    {
+      "Key": "xml doc comment - text",
+      "Italic": true,
+      "ForegroundColor": "#608b4e"
+    },
+    {
+      "Key": "xml doc comment - name",
+      "ForegroundColor": "#4ec9b0"
+    },
+    {
+      "Key": "xml doc comment - attribute name",
+      "Italic": true,
+      "ForegroundColor": "#9cdcfe"
+    },
+    {
+      "Key": "xml doc comment - attribute value",
+      "ForegroundColor": "#9ece6a"
+    },
+    {
+      "Key": "xml doc comment - delimiter",
+      "ForegroundColor": "#565f89"
+    },
+    {
+      "Key": "xml doc comment - cdata section",
+      "ForegroundColor": "#9ece6a"
+    },
+    {
+      "Key": "xml doc comment - entity reference",
+      "ForegroundColor": "#7dcfff"
+    },
+    {
+      "Key": "Codist: Highlight 1",
+      "BackgroundColor": "#f7768e"
+    },
+    {
+      "Key": "Codist: Highlight 2",
+      "BackgroundColor": "#ff9e64"
+    },
+    {
+      "Key": "Codist: Highlight 3",
+      "BackgroundColor": "#e0af68"
+    },
+    {
+      "Key": "Codist: Highlight 4",
+      "BackgroundColor": "#9ece6a"
+    },
+    {
+      "Key": "Codist: Highlight 5",
+      "BackgroundColor": "#4ec9b0"
+    },
+    {
+      "Key": "Codist: Highlight 6",
+      "BackgroundColor": "#7dcfff"
+    },
+    {
+      "Key": "Codist: Highlight 7",
+      "BackgroundColor": "#7aa2f7"
+    },
+    {
+      "Key": "Codist: Highlight 8",
+      "BackgroundColor": "#bb9af7"
+    },
+    {
+      "Key": "Codist: Highlight 9",
+      "BackgroundColor": "#c0caf5"
+    }
+  ]
+}

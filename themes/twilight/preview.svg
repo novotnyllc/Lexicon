@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="2150" viewBox="0 0 900 2150">
+  <style>
+    .code { font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size: 13px; }
+    .line-num { fill: #565f89; }
+    .keyword { fill: #9d7cd8; }
+    .control { fill: #ff9e64; font-weight: bold; }
+    .exception { fill: #f7768e; font-weight: bold; }
+    .type { fill: #bb9af7; }
+    .struct { fill: #7aa2f7; }
+    .interface { fill: #7dcfff; font-style: italic; }
+    .enum-member { fill: #e0af68; font-weight: bold; }
+    .callable { fill: #dcdcaa; }
+    .extension { fill: #dcdcaa; font-style: italic; }
+    .param { fill: #9cdcfe; }
+    .field { fill: #9cdcfe; }
+    .readonly { fill: #9cdcfe; }
+    .property { fill: #9cdcfe; }
+    .variable { fill: #9cdcfe; }
+    .constant { fill: #9cdcfe; font-weight: bold; }
+    .captured { fill: #9cdcfe; }
+    .string { fill: #9ece6a; }
+    .number { fill: #e0af68; }
+    .comment { fill: #565f89; font-style: italic; }
+    .comment-heading { fill: #565f89; font-style: italic; font-weight: bold; }
+    .namespace { fill: #4ec9b0; }
+    .operator { fill: #89ddff; }
+    .punctuation { fill: #c0caf5; }
+    .brace { fill: #ffd700; }
+    .attribute { fill: #6a9a8e; font-style: italic; font-size: 12px; }
+    .obsolete { text-decoration: line-through; opacity: 0.65; }
+  </style>
+  
+  <rect width="900" height="2150" fill="#0d1117"/>
+  
+  <text x="20" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#c0caf5">Lexicon Twilight — Complete Example</text>
+  
+  <rect x="10" y="45" width="880" height="2080" rx="8" fill="#161b22"/>
+  
+  <g class="code" transform="translate(20, 70)">
+    <text y="0em"><tspan class="line-num">&#160;1</tspan>&#160;&#160;<tspan class="keyword">using</tspan> <tspan class="namespace">System</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="1.5em"><tspan class="line-num">&#160;2</tspan>&#160;&#160;<tspan class="keyword">using</tspan> <tspan class="namespace">System.Collections.Generic</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="3em"><tspan class="line-num">&#160;3</tspan>&#160;&#160;<tspan class="keyword">using</tspan> <tspan class="namespace">System.Linq</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="4.5em"><tspan class="line-num">&#160;4</tspan>&#160;&#160;<tspan class="keyword">using</tspan> <tspan class="namespace">System.Threading.Tasks</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="6em"><tspan class="line-num">&#160;5</tspan></text>
+    <text y="7.5em"><tspan class="line-num">&#160;6</tspan>&#160;&#160;<tspan class="keyword">namespace</tspan> <tspan class="namespace">Lexicon.Demo</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="9em"><tspan class="line-num">&#160;7</tspan></text>
+    <text y="10.5em"><tspan class="line-num">&#160;8</tspan>&#160;&#160;<tspan class="comment">// Interface: cyan + italic (behavioral contract)</tspan></text>
+    <text y="12em"><tspan class="line-num">&#160;9</tspan>&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="keyword">interface</tspan> <tspan class="interface">IDocumentProcessor</tspan></text>
+    <text y="13.5em"><tspan class="line-num">10</tspan>&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="15em"><tspan class="line-num">11</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="comment">// Property: light blue (encapsulated access)</tspan></text>
+    <text y="16.5em"><tspan class="line-num">12</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="struct">int</tspan> <tspan class="property">ProcessedCount</tspan> <tspan class="brace">{</tspan> <tspan class="keyword">get</tspan><tspan class="punctuation">;</tspan> <tspan class="brace">}</tspan></text>
+    <text y="18em"><tspan class="line-num">13</tspan></text>
+    <text y="19.5em"><tspan class="line-num">14</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="comment">// Callable: yellow (executable behavior)</tspan></text>
+    <text y="21em"><tspan class="line-num">15</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="type">Task</tspan><tspan class="operator">&lt;</tspan><tspan class="type">ProcessingResult</tspan><tspan class="operator">&gt;</tspan> <tspan class="callable">ProcessAsync</tspan><tspan class="punctuation">(</tspan><tspan class="interface">IEnumerable</tspan><tspan class="operator">&lt;</tspan><tspan class="type">Document</tspan><tspan class="operator">&gt;</tspan> <tspan class="param">documents</tspan><tspan class="punctuation">);</tspan></text>
+    <text y="22.5em"><tspan class="line-num">16</tspan>&#160;&#160;<tspan class="brace">}</tspan></text>
+    <text y="24em"><tspan class="line-num">17</tspan></text>
+    <text y="25.5em"><tspan class="line-num">18</tspan>&#160;&#160;<tspan class="comment">// Reference type: purple (heap-allocated, polymorphic)</tspan></text>
+    <text y="27em"><tspan class="line-num">19</tspan>&#160;&#160;<tspan class="attribute">[ServiceLifetime(ServiceLifetime.Scoped)]</tspan></text>
+    <text y="28.5em"><tspan class="line-num">20</tspan>&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="keyword">class</tspan> <tspan class="type">DocumentProcessor</tspan> <tspan class="punctuation">:</tspan> <tspan class="interface">IDocumentProcessor</tspan><tspan class="punctuation">,</tspan> <tspan class="interface">IDisposable</tspan></text>
+    <text y="30em"><tspan class="line-num">21</tspan>&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="31.5em"><tspan class="line-num">22</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="comment-heading">// # Constants (data + bold)</tspan></text>
+    <text y="33em"><tspan class="line-num">23</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">private</tspan> <tspan class="keyword">const</tspan> <tspan class="struct">int</tspan> <tspan class="constant">MaxRetries</tspan> <tspan class="operator">=</tspan> <tspan class="number">3</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="34.5em"><tspan class="line-num">24</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">private</tspan> <tspan class="keyword">const</tspan> <tspan class="type">string</tspan> <tspan class="constant">DefaultName</tspan> <tspan class="operator">=</tspan> <tspan class="string">"Untitled"</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="36em"><tspan class="line-num">25</tspan></text>
+    <text y="37.5em"><tspan class="line-num">26</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="comment-heading">// # Fields</tspan></text>
+    <text y="39em"><tspan class="line-num">27</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">private</tspan> <tspan class="keyword">readonly</tspan> <tspan class="interface">ILogger</tspan> <tspan class="readonly">_logger</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="40.5em"><tspan class="line-num">28</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">private</tspan> <tspan class="struct">bool</tspan> <tspan class="field">_isDisposed</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="42em"><tspan class="line-num">29</tspan></text>
+    <text y="43.5em"><tspan class="line-num">30</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="comment">// Property: light blue</tspan></text>
+    <text y="45em"><tspan class="line-num">31</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="struct">int</tspan> <tspan class="property">ProcessedCount</tspan> <tspan class="brace">{</tspan> <tspan class="keyword">get</tspan><tspan class="punctuation">;</tspan> <tspan class="keyword">private</tspan> <tspan class="keyword">set</tspan><tspan class="punctuation">;</tspan> <tspan class="brace">}</tspan></text>
+    <text y="46.5em"><tspan class="line-num">32</tspan></text>
+    <text y="48em"><tspan class="line-num">33</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="callable">DocumentProcessor</tspan><tspan class="punctuation">(</tspan><tspan class="interface">ILogger</tspan> <tspan class="param">logger</tspan><tspan class="punctuation">)</tspan></text>
+    <text y="49.5em"><tspan class="line-num">34</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="51em"><tspan class="line-num">35</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="field">_logger</tspan> <tspan class="operator">=</tspan> <tspan class="param">logger</tspan> <tspan class="operator">??</tspan> <tspan class="exception">throw</tspan> <tspan class="keyword">new</tspan> <tspan class="type">ArgumentNullException</tspan><tspan class="punctuation">(</tspan><tspan class="keyword">nameof</tspan><tspan class="punctuation">(</tspan><tspan class="param">logger</tspan><tspan class="punctuation">));</tspan></text>
+    <text y="52.5em"><tspan class="line-num">36</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">}</tspan></text>
+    <text y="54em"><tspan class="line-num">37</tspan></text>
+    <text y="55.5em"><tspan class="line-num">38</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="keyword">async</tspan> <tspan class="type">Task</tspan><tspan class="operator">&lt;</tspan><tspan class="type">ProcessingResult</tspan><tspan class="operator">&gt;</tspan> <tspan class="callable">ProcessAsync</tspan><tspan class="punctuation">(</tspan><tspan class="interface">IEnumerable</tspan><tspan class="operator">&lt;</tspan><tspan class="type">Document</tspan><tspan class="operator">&gt;</tspan> <tspan class="param">documents</tspan><tspan class="punctuation">)</tspan></text>
+    <text y="57em"><tspan class="line-num">39</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="58.5em"><tspan class="line-num">40</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">var</tspan> <tspan class="variable">results</tspan> <tspan class="operator">=</tspan> <tspan class="keyword">new</tspan> <tspan class="type">List</tspan><tspan class="operator">&lt;</tspan><tspan class="type">DocumentResult</tspan><tspan class="operator">&gt;</tspan><tspan class="punctuation">();</tspan></text>
+    <text y="60em"><tspan class="line-num">41</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">var</tspan> <tspan class="variable">retryCount</tspan> <tspan class="operator">=</tspan> <tspan class="number">0</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="61.5em"><tspan class="line-num">42</tspan></text>
+    <text y="63em"><tspan class="line-num">43</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="comment">// Control flow: orange + bold (execution path decisions)</tspan></text>
+    <text y="64.5em"><tspan class="line-num">44</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="control">foreach</tspan> <tspan class="punctuation">(</tspan><tspan class="keyword">var</tspan> <tspan class="variable">document</tspan> <tspan class="control">in</tspan> <tspan class="param">documents</tspan><tspan class="punctuation">)</tspan></text>
+    <text y="66em"><tspan class="line-num">45</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="67.5em"><tspan class="line-num">46</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="exception">try</tspan></text>
+    <text y="69em"><tspan class="line-num">47</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="70.5em"><tspan class="line-num">48</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="comment">// Captured variable: background tint (closure warning)</tspan></text>
+    <text y="72em"><tspan class="line-num">49</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">var</tspan> <tspan class="variable">result</tspan> <tspan class="operator">=</tspan> <tspan class="keyword">await</tspan> <tspan class="callable">RetryAsync</tspan><tspan class="punctuation">(</tspan><tspan class="keyword">async</tspan> <tspan class="punctuation">()</tspan> <tspan class="operator">=&gt;</tspan></text>
+    <text y="73.5em"><tspan class="line-num">50</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="75em"><tspan class="line-num">51</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="captured">retryCount</tspan><tspan class="operator">++</tspan><tspan class="punctuation">;</tspan>&#160;&#160;<tspan class="comment">// CAPTURED by lambda</tspan></text>
+    <text y="76.5em"><tspan class="line-num">52</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">return</tspan> <tspan class="keyword">await</tspan> <tspan class="callable">ProcessSingleAsync</tspan><tspan class="punctuation">(</tspan><tspan class="variable">document</tspan><tspan class="punctuation">);</tspan></text>
+    <text y="78em"><tspan class="line-num">53</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">}</tspan><tspan class="punctuation">,</tspan> <tspan class="constant">MaxRetries</tspan><tspan class="punctuation">);</tspan></text>
+    <text y="79.5em"><tspan class="line-num">54</tspan></text>
+    <text y="81em"><tspan class="line-num">55</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="variable">results</tspan><tspan class="punctuation">.</tspan><tspan class="callable">Add</tspan><tspan class="punctuation">(</tspan><tspan class="variable">result</tspan><tspan class="punctuation">);</tspan></text>
+    <text y="82.5em"><tspan class="line-num">56</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="property">ProcessedCount</tspan><tspan class="operator">++</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="84em"><tspan class="line-num">57</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">}</tspan></text>
+    <text y="85.5em"><tspan class="line-num">58</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="exception">catch</tspan> <tspan class="punctuation">(</tspan><tspan class="type">ProcessingException</tspan> <tspan class="variable">ex</tspan><tspan class="punctuation">)</tspan> <tspan class="exception">when</tspan> <tspan class="punctuation">(</tspan><tspan class="variable">ex</tspan><tspan class="punctuation">.</tspan><tspan class="property">IsRetryable</tspan><tspan class="punctuation">)</tspan></text>
+    <text y="87em"><tspan class="line-num">59</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="88.5em"><tspan class="line-num">60</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="field">_logger</tspan><tspan class="punctuation">.</tspan><tspan class="callable">LogWarning</tspan><tspan class="punctuation">(</tspan><tspan class="string">$"Retryable: {ex.Message}"</tspan><tspan class="punctuation">);</tspan></text>
+    <text y="90em"><tspan class="line-num">61</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">}</tspan></text>
+    <text y="91.5em"><tspan class="line-num">62</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="exception">catch</tspan> <tspan class="punctuation">(</tspan><tspan class="type">Exception</tspan> <tspan class="variable">ex</tspan><tspan class="punctuation">)</tspan></text>
+    <text y="93em"><tspan class="line-num">63</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="94.5em"><tspan class="line-num">64</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="field">_logger</tspan><tspan class="punctuation">.</tspan><tspan class="callable">LogError</tspan><tspan class="punctuation">(</tspan><tspan class="variable">ex</tspan><tspan class="punctuation">,</tspan> <tspan class="string">"Processing failed"</tspan><tspan class="punctuation">);</tspan></text>
+    <text y="96em"><tspan class="line-num">65</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="exception">throw</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="97.5em"><tspan class="line-num">66</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">}</tspan></text>
+    <text y="99em"><tspan class="line-num">67</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">}</tspan></text>
+    <text y="100.5em"><tspan class="line-num">68</tspan></text>
+    <text y="102em"><tspan class="line-num">69</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="comment">// Switch expression with pattern matching</tspan></text>
+    <text y="103.5em"><tspan class="line-num">70</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">var</tspan> <tspan class="variable">status</tspan> <tspan class="operator">=</tspan> <tspan class="variable">results</tspan><tspan class="punctuation">.</tspan><tspan class="property">Count</tspan> <tspan class="control">switch</tspan></text>
+    <text y="105em"><tspan class="line-num">71</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="106.5em"><tspan class="line-num">72</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="number">0</tspan> <tspan class="operator">=&gt;</tspan> <tspan class="struct">ProcessingStatus</tspan><tspan class="punctuation">.</tspan><tspan class="enum-member">NoDocuments</tspan><tspan class="punctuation">,</tspan></text>
+    <text y="108em"><tspan class="line-num">73</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">_</tspan> <tspan class="keyword">when</tspan> <tspan class="variable">results</tspan><tspan class="punctuation">.</tspan><tspan class="extension">All</tspan><tspan class="punctuation">(</tspan><tspan class="param">r</tspan> <tspan class="operator">=&gt;</tspan> <tspan class="param">r</tspan><tspan class="punctuation">.</tspan><tspan class="property">Success</tspan><tspan class="punctuation">)</tspan> <tspan class="operator">=&gt;</tspan> <tspan class="struct">ProcessingStatus</tspan><tspan class="punctuation">.</tspan><tspan class="enum-member">AllSucceeded</tspan><tspan class="punctuation">,</tspan></text>
+    <text y="109.5em"><tspan class="line-num">74</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">_</tspan> <tspan class="operator">=&gt;</tspan> <tspan class="struct">ProcessingStatus</tspan><tspan class="punctuation">.</tspan><tspan class="enum-member">PartialSuccess</tspan></text>
+    <text y="111em"><tspan class="line-num">75</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">}</tspan><tspan class="punctuation">;</tspan></text>
+    <text y="112.5em"><tspan class="line-num">76</tspan></text>
+    <text y="114em"><tspan class="line-num">77</tspan>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">return</tspan> <tspan class="keyword">new</tspan> <tspan class="type">ProcessingResult</tspan><tspan class="punctuation">(</tspan><tspan class="variable">results</tspan><tspan class="punctuation">,</tspan> <tspan class="variable">status</tspan><tspan class="punctuation">);</tspan></text>
+    <text y="115.5em"><tspan class="line-num">78</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="brace">}</tspan></text>
+    <text y="117em"><tspan class="line-num">79</tspan></text>
+    <text y="118.5em"><tspan class="line-num">80</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="comment">// Obsolete method: strikethrough decoration</tspan></text>
+    <text y="120em"><tspan class="line-num">81</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="attribute">[Obsolete("Use ProcessAsync instead")]</tspan></text>
+    <text y="121.5em"><tspan class="line-num">82</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="keyword">void</tspan> <tspan class="callable obsolete">Process</tspan><tspan class="punctuation">(</tspan><tspan class="type">Document</tspan> <tspan class="param">doc</tspan><tspan class="punctuation">)</tspan> <tspan class="operator">=&gt;</tspan> <tspan class="exception">throw</tspan> <tspan class="keyword">new</tspan> <tspan class="type">NotSupportedException</tspan><tspan class="punctuation">();</tspan></text>
+    <text y="123em"><tspan class="line-num">83</tspan>&#160;&#160;<tspan class="brace">}</tspan></text>
+    <text y="124.5em"><tspan class="line-num">84</tspan></text>
+    <text y="126em"><tspan class="line-num">85</tspan>&#160;&#160;<tspan class="comment">// Value type (struct): blue</tspan></text>
+    <text y="127.5em"><tspan class="line-num">86</tspan>&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="keyword">readonly</tspan> <tspan class="keyword">struct</tspan> <tspan class="struct">ProcessingResult</tspan></text>
+    <text y="129em"><tspan class="line-num">87</tspan>&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="130.5em"><tspan class="line-num">88</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="interface">IReadOnlyList</tspan><tspan class="operator">&lt;</tspan><tspan class="type">DocumentResult</tspan><tspan class="operator">&gt;</tspan> <tspan class="property">Results</tspan> <tspan class="brace">{</tspan> <tspan class="keyword">get</tspan><tspan class="punctuation">;</tspan> <tspan class="brace">}</tspan></text>
+    <text y="132em"><tspan class="line-num">89</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="struct">ProcessingStatus</tspan> <tspan class="property">Status</tspan> <tspan class="brace">{</tspan> <tspan class="keyword">get</tspan><tspan class="punctuation">;</tspan> <tspan class="brace">}</tspan></text>
+    <text y="133.5em"><tspan class="line-num">90</tspan>&#160;&#160;<tspan class="brace">}</tspan></text>
+    <text y="135em"><tspan class="line-num">91</tspan></text>
+    <text y="136.5em"><tspan class="line-num">92</tspan>&#160;&#160;<tspan class="comment">// Enum: blue (value type), members are literal values (amber + bold)</tspan></text>
+    <text y="138em"><tspan class="line-num">93</tspan>&#160;&#160;<tspan class="keyword">public</tspan> <tspan class="keyword">enum</tspan> <tspan class="struct">ProcessingStatus</tspan></text>
+    <text y="139.5em"><tspan class="line-num">94</tspan>&#160;&#160;<tspan class="brace">{</tspan></text>
+    <text y="141em"><tspan class="line-num">95</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="enum-member">NoDocuments</tspan><tspan class="punctuation">,</tspan></text>
+    <text y="142.5em"><tspan class="line-num">96</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="enum-member">AllSucceeded</tspan><tspan class="punctuation">,</tspan></text>
+    <text y="144em"><tspan class="line-num">97</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="enum-member">PartialSuccess</tspan><tspan class="punctuation">,</tspan></text>
+    <text y="145.5em"><tspan class="line-num">98</tspan>&#160;&#160;&#160;&#160;&#160;&#160;<tspan class="enum-member">AllFailed</tspan></text>
+    <text y="147em"><tspan class="line-num">99</tspan>&#160;&#160;<tspan class="brace">}</tspan></text>
+  </g>
+</svg>

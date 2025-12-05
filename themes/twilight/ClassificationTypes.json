@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "name": "Lexicon: Exception Keyword",
+      "foreground": "#f7768e",
+      "bold": true
+    },
+    {
+      "name": "Lexicon: Captured Variable",
+      "background": "#30ffa657"
+    }
+  ]
+}
