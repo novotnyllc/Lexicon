@@ -995,6 +995,68 @@
             color: #fff;
         }
 
+        /* === MOBILE: Scrollable dock with larger touch targets === */
+        @media (max-width: 768px) {
+            .theme-dock {
+                --dock-unit: 3px;           /* Larger for touch targets */
+                left: 0;
+                right: 0;
+                transform: none;
+                border-radius: 0;
+                bottom: 0;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                justify-content: safe center; /* Center until overflow, then scroll */
+            }
+
+            /* Hide scrollbar */
+            .theme-dock::-webkit-scrollbar {
+                display: none;
+            }
+
+            .theme-dock {
+                -ms-overflow-style: none;   /* IE/Edge */
+            }
+
+            @supports (scrollbar-width: none) {
+                .theme-dock {
+                    scrollbar-width: none;  /* Firefox */
+                }
+            }
+
+            .theme-dock label {
+                flex-shrink: 0;
+            }
+
+            /* Disable hover effects on touch */
+            .theme-dock label:hover {
+                width: var(--dock-card-width);
+                height: var(--dock-card-height);
+                padding: var(--dock-card-padding-top) 0 var(--dock-card-padding-bottom) 0;
+                font-size: var(--dock-card-font);
+                border-radius: var(--dock-radius);
+                transform: none;
+                margin-bottom: 0;
+                box-shadow: none;
+            }
+
+            .theme-dock label:hover::after {
+                height: var(--dock-bar-height);
+            }
+
+            /* Wrapper not needed on mobile without JS arrows */
+            .theme-dock-wrapper {
+                display: contents;
+            }
+        }
+
+        /* Desktop: wrapper does nothing */
+        @media (min-width: 769px) {
+            .theme-dock-wrapper {
+                display: contents;
+            }
+        }
+
         /* === HIDDEN RADIO INPUTS === */
         .theme-radio {
             position: fixed;
@@ -2614,18 +2676,20 @@
         </footer>
     </div>
 
-    <!-- Sticky theme switcher at bottom -->
-    <div class="theme-dock">
-        <label for="preview-twilight" data-name="Twilight">Twilight</label>
-        <label for="preview-glacier" data-name="Glacier">Glacier</label>
-        <label for="preview-ember" data-name="Ember">Ember</label>
-        <label for="preview-canopy" data-name="Canopy">Canopy</label>
-        <label for="preview-neon" data-name="Neon">Neon</label>
-        <label for="preview-solstice" data-name="Solstice">Solstice</label>
-        <label for="preview-whisper" data-name="Whisper">Whisper</label>
-        <label for="preview-nocturne" data-name="Nocturne">Nocturne</label>
-        <label for="preview-patina" data-name="Patina">Patina</label>
-        <label for="preview-beacon" data-name="Beacon">Beacon</label>
+    <!-- Sticky theme dock at bottom -->
+    <div class="theme-dock-wrapper">
+        <div class="theme-dock">
+            <label for="preview-twilight">Twilight</label>
+            <label for="preview-glacier">Glacier</label>
+            <label for="preview-ember">Ember</label>
+            <label for="preview-canopy">Canopy</label>
+            <label for="preview-neon">Neon</label>
+            <label for="preview-solstice">Solstice</label>
+            <label for="preview-whisper">Whisper</label>
+            <label for="preview-nocturne">Nocturne</label>
+            <label for="preview-patina">Patina</label>
+            <label for="preview-beacon">Beacon</label>
+        </div>
     </div>
 </body>
 </html>
