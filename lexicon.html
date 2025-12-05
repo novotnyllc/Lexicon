@@ -686,17 +686,17 @@
         .syn-xml-doc { color: var(--active-xml-doc); }
 
         /* Active theme swatches (palette display) */
-        .reference-types, .mini-reference-types { background: var(--active-reference-types); }
-        .value-types, .mini-value-types { background: var(--active-value-types); }
-        .interfaces, .mini-interfaces { background: var(--active-interfaces); }
-        .callables, .mini-callables { background: var(--active-callables); }
-        .data, .mini-data { background: var(--active-data); }
-        .control-flow, .mini-control-flow { background: var(--active-control-flow); }
-        .exceptions, .mini-exceptions { background: var(--active-exceptions); }
-        .strings, .mini-strings { background: var(--active-strings); }
-        .literals, .mini-literals { background: var(--active-literals); }
-        .namespaces, .mini-namespaces { background: var(--active-namespaces); }
-        .keywords, .mini-keywords { background: var(--active-keywords); }
+        .reference-types, .reference-types { background: var(--active-reference-types); }
+        .value-types, .value-types { background: var(--active-value-types); }
+        .interfaces, .interfaces { background: var(--active-interfaces); }
+        .callables, .callables { background: var(--active-callables); }
+        .data, .data { background: var(--active-data); }
+        .control-flow, .control-flow { background: var(--active-control-flow); }
+        .exceptions, .exceptions { background: var(--active-exceptions); }
+        .strings, .strings { background: var(--active-strings); }
+        .literals, .literals { background: var(--active-literals); }
+        .namespaces, .namespaces { background: var(--active-namespaces); }
+        .keywords, .keywords { background: var(--active-keywords); }
 
         /* Decoration examples (use active theme) */
         .dec-italic { color: var(--active-callables); font-style: italic; }
@@ -719,143 +719,220 @@
         .cheat-namespaces { color: var(--active-namespaces); }
         .cheat-keywords { color: var(--active-keywords); }
 
+        
         /* ==========================================================================
-           GLACIER THEME - Text colors for inline use
+           THEME CARD SCOPES
            ========================================================================== */
-        .glacier-reference-types { color: var(--gl-reference-types); }
-        .glacier-value-types { color: var(--gl-value-types); }
-        .glacier-interfaces { color: var(--gl-interfaces); }
-        .glacier-callables { color: var(--gl-callables); }
-        .glacier-data { color: var(--gl-data); }
-        .glacier-control-flow { color: var(--gl-control-flow); }
-        .glacier-exceptions { color: var(--gl-exceptions); }
-        .glacier-strings { color: var(--gl-strings); }
-        .glacier-literals { color: var(--gl-literals); }
-        .glacier-namespaces { color: var(--gl-namespaces); }
-        .glacier-keywords { color: var(--gl-keywords); }
-
-        /* ==========================================================================
-           EMBER THEME - Text colors for inline use
-           ========================================================================== */
-        .ember-reference-types { color: var(--em-reference-types); }
-        .ember-value-types { color: var(--em-value-types); }
-        .ember-interfaces { color: var(--em-interfaces); }
-        .ember-callables { color: var(--em-callables); }
-        .ember-data { color: var(--em-data); }
-        .ember-control-flow { color: var(--em-control-flow); }
-        .ember-exceptions { color: var(--em-exceptions); }
-        .ember-strings { color: var(--em-strings); }
-        .ember-literals { color: var(--em-literals); }
-        .ember-namespaces { color: var(--em-namespaces); }
-        .ember-keywords { color: var(--em-keywords); }
-
-        /* ==========================================================================
-           CANOPY THEME - Text colors for inline use
-           ========================================================================== */
-        .canopy-reference-types { color: var(--ca-reference-types); }
-        .canopy-value-types { color: var(--ca-value-types); }
-        .canopy-interfaces { color: var(--ca-interfaces); }
-        .canopy-callables { color: var(--ca-callables); }
-        .canopy-data { color: var(--ca-data); }
-        .canopy-control-flow { color: var(--ca-control-flow); }
-        .canopy-exceptions { color: var(--ca-exceptions); }
-        .canopy-strings { color: var(--ca-strings); }
-        .canopy-literals { color: var(--ca-literals); }
-        .canopy-namespaces { color: var(--ca-namespaces); }
-        .canopy-keywords { color: var(--ca-keywords); }
-
-        /* ==========================================================================
-           NEON THEME - Text colors for inline use
-           ========================================================================== */
-        .neon-reference-types { color: var(--ne-reference-types); }
-        .neon-value-types { color: var(--ne-value-types); }
-        .neon-interfaces { color: var(--ne-interfaces); }
-        .neon-callables { color: var(--ne-callables); }
-        .neon-data { color: var(--ne-data); }
-        .neon-control-flow { color: var(--ne-control-flow); }
-        .neon-exceptions { color: var(--ne-exceptions); }
-        .neon-strings { color: var(--ne-strings); }
-        .neon-literals { color: var(--ne-literals); }
-        .neon-namespaces { color: var(--ne-namespaces); }
-        .neon-keywords { color: var(--ne-keywords); }
-
-        /* ==========================================================================
-           SOLSTICE THEME - Text colors for inline use
-           ========================================================================== */
-        .solstice-reference-types { color: var(--so-reference-types); }
-        .solstice-value-types { color: var(--so-value-types); }
-        .solstice-interfaces { color: var(--so-interfaces); }
-        .solstice-callables { color: var(--so-callables); }
-        .solstice-data { color: var(--so-data); }
-        .solstice-control-flow { color: var(--so-control-flow); }
-        .solstice-exceptions { color: var(--so-exceptions); }
-        .solstice-strings { color: var(--so-strings); }
-        .solstice-literals { color: var(--so-literals); }
-        .solstice-namespaces { color: var(--so-namespaces); }
-        .solstice-keywords { color: var(--so-keywords); }
-
-        /* ==========================================================================
-           WHISPER THEME - Text colors for inline use
-           ========================================================================== */
-        .whisper-reference-types { color: var(--wh-reference-types); }
-        .whisper-value-types { color: var(--wh-value-types); }
-        .whisper-interfaces { color: var(--wh-interfaces); }
-        .whisper-callables { color: var(--wh-callables); }
-        .whisper-data { color: var(--wh-data); }
-        .whisper-control-flow { color: var(--wh-control-flow); }
-        .whisper-exceptions { color: var(--wh-exceptions); }
-        .whisper-strings { color: var(--wh-strings); }
-        .whisper-literals { color: var(--wh-literals); }
-        .whisper-namespaces { color: var(--wh-namespaces); }
-        .whisper-keywords { color: var(--wh-keywords); }
-
-        /* ==========================================================================
-           NOCTURNE THEME - Text colors for inline use
-           ========================================================================== */
-        .nocturne-reference-types { color: var(--no-reference-types); }
-        .nocturne-value-types { color: var(--no-value-types); }
-        .nocturne-interfaces { color: var(--no-interfaces); }
-        .nocturne-callables { color: var(--no-callables); }
-        .nocturne-data { color: var(--no-data); }
-        .nocturne-control-flow { color: var(--no-control-flow); }
-        .nocturne-exceptions { color: var(--no-exceptions); }
-        .nocturne-strings { color: var(--no-strings); }
-        .nocturne-literals { color: var(--no-literals); }
-        .nocturne-namespaces { color: var(--no-namespaces); }
-        .nocturne-keywords { color: var(--no-keywords); }
-
-        /* ==========================================================================
-           PATINA THEME - Text colors for inline use
-           ========================================================================== */
-        .patina-reference-types { color: var(--pa-reference-types); }
-        .patina-value-types { color: var(--pa-value-types); }
-        .patina-interfaces { color: var(--pa-interfaces); }
-        .patina-callables { color: var(--pa-callables); }
-        .patina-data { color: var(--pa-data); }
-        .patina-control-flow { color: var(--pa-control-flow); }
-        .patina-exceptions { color: var(--pa-exceptions); }
-        .patina-strings { color: var(--pa-strings); }
-        .patina-literals { color: var(--pa-literals); }
-        .patina-namespaces { color: var(--pa-namespaces); }
-        .patina-keywords { color: var(--pa-keywords); }
-
-        /* ==========================================================================
-           BEACON THEME (High Contrast) - Text colors for inline use
-           ========================================================================== */
-        .beacon-reference-types { color: var(--be-reference-types); }
-        .beacon-value-types { color: var(--be-value-types); }
-        .beacon-interfaces { color: var(--be-interfaces); }
-        .beacon-callables { color: var(--be-callables); }
-        .beacon-data { color: var(--be-data); }
-        .beacon-control-flow { color: var(--be-control-flow); }
-        .beacon-exceptions { color: var(--be-exceptions); }
-        .beacon-strings { color: var(--be-strings); }
-        .beacon-literals { color: var(--be-literals); }
-        .beacon-namespaces { color: var(--be-namespaces); }
-        .beacon-keywords { color: var(--be-keywords); }
-        .beacon-strings { color: var(--be-strings); }
-        .beacon-data { color: var(--be-data); }
-        .beacon-callables { color: var(--be-callables); }
+        .theme-scope-twilight {
+            --active-reference-types: var(--tw-reference-types);
+            --active-value-types: var(--tw-value-types);
+            --active-interfaces: var(--tw-interfaces);
+            --active-callables: var(--tw-callables);
+            --active-data: var(--tw-data);
+            --active-control-flow: var(--tw-control-flow);
+            --active-exceptions: var(--tw-exceptions);
+            --active-strings: var(--tw-strings);
+            --active-literals: var(--tw-literals);
+            --active-namespaces: var(--tw-namespaces);
+            --active-keywords: var(--tw-keywords);
+            --active-delegate: var(--tw-delegate);
+            --active-comment: var(--tw-comment);
+            --active-comment-heading: var(--tw-comment-heading);
+            --active-attribute: var(--tw-attribute);
+            --active-operator: var(--tw-operator);
+            --active-brace: var(--tw-brace);
+            --active-xml-doc: var(--tw-xml-doc);
+            --active-captured-bg: var(--tw-captured-bg);
+        }
+        .theme-scope-glacier {
+            --active-reference-types: var(--gl-reference-types);
+            --active-value-types: var(--gl-value-types);
+            --active-interfaces: var(--gl-interfaces);
+            --active-callables: var(--gl-callables);
+            --active-data: var(--gl-data);
+            --active-control-flow: var(--gl-control-flow);
+            --active-exceptions: var(--gl-exceptions);
+            --active-strings: var(--gl-strings);
+            --active-literals: var(--gl-literals);
+            --active-namespaces: var(--gl-namespaces);
+            --active-keywords: var(--gl-keywords);
+            --active-delegate: var(--gl-delegate);
+            --active-comment: var(--gl-comment);
+            --active-comment-heading: var(--gl-comment-heading);
+            --active-attribute: var(--gl-attribute);
+            --active-operator: var(--gl-operator);
+            --active-brace: var(--gl-brace);
+            --active-xml-doc: var(--gl-xml-doc);
+            --active-captured-bg: var(--gl-captured-bg);
+        }
+        .theme-scope-ember {
+            --active-reference-types: var(--em-reference-types);
+            --active-value-types: var(--em-value-types);
+            --active-interfaces: var(--em-interfaces);
+            --active-callables: var(--em-callables);
+            --active-data: var(--em-data);
+            --active-control-flow: var(--em-control-flow);
+            --active-exceptions: var(--em-exceptions);
+            --active-strings: var(--em-strings);
+            --active-literals: var(--em-literals);
+            --active-namespaces: var(--em-namespaces);
+            --active-keywords: var(--em-keywords);
+            --active-delegate: var(--em-delegate);
+            --active-comment: var(--em-comment);
+            --active-comment-heading: var(--em-comment-heading);
+            --active-attribute: var(--em-attribute);
+            --active-operator: var(--em-operator);
+            --active-brace: var(--em-brace);
+            --active-xml-doc: var(--em-xml-doc);
+            --active-captured-bg: var(--em-captured-bg);
+        }
+        .theme-scope-canopy {
+            --active-reference-types: var(--ca-reference-types);
+            --active-value-types: var(--ca-value-types);
+            --active-interfaces: var(--ca-interfaces);
+            --active-callables: var(--ca-callables);
+            --active-data: var(--ca-data);
+            --active-control-flow: var(--ca-control-flow);
+            --active-exceptions: var(--ca-exceptions);
+            --active-strings: var(--ca-strings);
+            --active-literals: var(--ca-literals);
+            --active-namespaces: var(--ca-namespaces);
+            --active-keywords: var(--ca-keywords);
+            --active-delegate: var(--ca-delegate);
+            --active-comment: var(--ca-comment);
+            --active-comment-heading: var(--ca-comment-heading);
+            --active-attribute: var(--ca-attribute);
+            --active-operator: var(--ca-operator);
+            --active-brace: var(--ca-brace);
+            --active-xml-doc: var(--ca-xml-doc);
+            --active-captured-bg: var(--ca-captured-bg);
+        }
+        .theme-scope-neon {
+            --active-reference-types: var(--ne-reference-types);
+            --active-value-types: var(--ne-value-types);
+            --active-interfaces: var(--ne-interfaces);
+            --active-callables: var(--ne-callables);
+            --active-data: var(--ne-data);
+            --active-control-flow: var(--ne-control-flow);
+            --active-exceptions: var(--ne-exceptions);
+            --active-strings: var(--ne-strings);
+            --active-literals: var(--ne-literals);
+            --active-namespaces: var(--ne-namespaces);
+            --active-keywords: var(--ne-keywords);
+            --active-delegate: var(--ne-delegate);
+            --active-comment: var(--ne-comment);
+            --active-comment-heading: var(--ne-comment-heading);
+            --active-attribute: var(--ne-attribute);
+            --active-operator: var(--ne-operator);
+            --active-brace: var(--ne-brace);
+            --active-xml-doc: var(--ne-xml-doc);
+            --active-captured-bg: var(--ne-captured-bg);
+        }
+        .theme-scope-solstice {
+            --active-reference-types: var(--so-reference-types);
+            --active-value-types: var(--so-value-types);
+            --active-interfaces: var(--so-interfaces);
+            --active-callables: var(--so-callables);
+            --active-data: var(--so-data);
+            --active-control-flow: var(--so-control-flow);
+            --active-exceptions: var(--so-exceptions);
+            --active-strings: var(--so-strings);
+            --active-literals: var(--so-literals);
+            --active-namespaces: var(--so-namespaces);
+            --active-keywords: var(--so-keywords);
+            --active-delegate: var(--so-delegate);
+            --active-comment: var(--so-comment);
+            --active-comment-heading: var(--so-comment-heading);
+            --active-attribute: var(--so-attribute);
+            --active-operator: var(--so-operator);
+            --active-brace: var(--so-brace);
+            --active-xml-doc: var(--so-xml-doc);
+            --active-captured-bg: var(--so-captured-bg);
+        }
+        .theme-scope-whisper {
+            --active-reference-types: var(--wh-reference-types);
+            --active-value-types: var(--wh-value-types);
+            --active-interfaces: var(--wh-interfaces);
+            --active-callables: var(--wh-callables);
+            --active-data: var(--wh-data);
+            --active-control-flow: var(--wh-control-flow);
+            --active-exceptions: var(--wh-exceptions);
+            --active-strings: var(--wh-strings);
+            --active-literals: var(--wh-literals);
+            --active-namespaces: var(--wh-namespaces);
+            --active-keywords: var(--wh-keywords);
+            --active-delegate: var(--wh-delegate);
+            --active-comment: var(--wh-comment);
+            --active-comment-heading: var(--wh-comment-heading);
+            --active-attribute: var(--wh-attribute);
+            --active-operator: var(--wh-operator);
+            --active-brace: var(--wh-brace);
+            --active-xml-doc: var(--wh-xml-doc);
+            --active-captured-bg: var(--wh-captured-bg);
+        }
+        .theme-scope-nocturne {
+            --active-reference-types: var(--no-reference-types);
+            --active-value-types: var(--no-value-types);
+            --active-interfaces: var(--no-interfaces);
+            --active-callables: var(--no-callables);
+            --active-data: var(--no-data);
+            --active-control-flow: var(--no-control-flow);
+            --active-exceptions: var(--no-exceptions);
+            --active-strings: var(--no-strings);
+            --active-literals: var(--no-literals);
+            --active-namespaces: var(--no-namespaces);
+            --active-keywords: var(--no-keywords);
+            --active-delegate: var(--no-delegate);
+            --active-comment: var(--no-comment);
+            --active-comment-heading: var(--no-comment-heading);
+            --active-attribute: var(--no-attribute);
+            --active-operator: var(--no-operator);
+            --active-brace: var(--no-brace);
+            --active-xml-doc: var(--no-xml-doc);
+            --active-captured-bg: var(--no-captured-bg);
+        }
+        .theme-scope-patina {
+            --active-reference-types: var(--pa-reference-types);
+            --active-value-types: var(--pa-value-types);
+            --active-interfaces: var(--pa-interfaces);
+            --active-callables: var(--pa-callables);
+            --active-data: var(--pa-data);
+            --active-control-flow: var(--pa-control-flow);
+            --active-exceptions: var(--pa-exceptions);
+            --active-strings: var(--pa-strings);
+            --active-literals: var(--pa-literals);
+            --active-namespaces: var(--pa-namespaces);
+            --active-keywords: var(--pa-keywords);
+            --active-delegate: var(--pa-delegate);
+            --active-comment: var(--pa-comment);
+            --active-comment-heading: var(--pa-comment-heading);
+            --active-attribute: var(--pa-attribute);
+            --active-operator: var(--pa-operator);
+            --active-brace: var(--pa-brace);
+            --active-xml-doc: var(--pa-xml-doc);
+            --active-captured-bg: var(--pa-captured-bg);
+        }
+        .theme-scope-beacon {
+            --active-reference-types: var(--be-reference-types);
+            --active-value-types: var(--be-value-types);
+            --active-interfaces: var(--be-interfaces);
+            --active-callables: var(--be-callables);
+            --active-data: var(--be-data);
+            --active-control-flow: var(--be-control-flow);
+            --active-exceptions: var(--be-exceptions);
+            --active-strings: var(--be-strings);
+            --active-literals: var(--be-literals);
+            --active-namespaces: var(--be-namespaces);
+            --active-keywords: var(--be-keywords);
+            --active-delegate: var(--be-delegate);
+            --active-comment: var(--be-comment);
+            --active-comment-heading: var(--be-comment-heading);
+            --active-attribute: var(--be-attribute);
+            --active-operator: var(--be-operator);
+            --active-brace: var(--be-brace);
+            --active-xml-doc: var(--be-xml-doc);
+            --active-captured-bg: var(--be-captured-bg);
+        }
 
         /* =====================================================
            THEME DOCK
@@ -1599,7 +1676,7 @@
         </table>
 
         <!-- TWILIGHT -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-twilight">
             <h4 id="theme-twilight">Lexicon Twilight</h4>
             <p class="theme-tagline">The space between day and night, when colors are most alive.</p>
 
@@ -1625,370 +1702,370 @@
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini mini-reference-types"></span>Soft Purple</span></td><td>#bb9af7</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini mini-value-types"></span>Sky Blue</span></td><td>#7aa2f7</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini mini-interfaces"></span>Cyan</span></td><td>#7dcfff</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini mini-callables"></span>Pale Yellow</span></td><td>#dcdcaa</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini mini-data"></span>Light Blue</span></td><td>#9cdcfe</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini mini-control-flow"></span>Orange</span></td><td>#ff9e64</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini mini-exceptions"></span>Coral</span></td><td>#f7768e</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini mini-strings"></span>Green</span></td><td>#9ece6a</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini mini-literals"></span>Amber</span></td><td>#e0af68</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini mini-namespaces"></span>Teal</span></td><td>#4ec9b0</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini mini-keywords"></span>Violet</span></td><td>#9d7cd8</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Soft Purple</span></td><td>#bb9af7</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Sky Blue</span></td><td>#7aa2f7</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Cyan</span></td><td>#7dcfff</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Pale Yellow</span></td><td>#dcdcaa</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Light Blue</span></td><td>#9cdcfe</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Orange</span></td><td>#ff9e64</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Coral</span></td><td>#f7768e</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Green</span></td><td>#9ece6a</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Amber</span></td><td>#e0af68</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Teal</span></td><td>#4ec9b0</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Violet</span></td><td>#9d7cd8</td></tr>
             </table>
         </div>
 
         <!-- GLACIER -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-glacier">
             <h4 id="theme-glacier">Lexicon Glacier</h4>
             <p class="theme-tagline">Cool, crystalline, calm. Ice fields under a pale sky.</p>
 
             <div class="theme-palette">
-                <div class="glacier-reference-types" aria-label="Reference Types color"></div>
-                <div class="glacier-value-types" aria-label="Value Types color"></div>
-                <div class="glacier-interfaces" aria-label="Interfaces color"></div>
-                <div class="glacier-callables" aria-label="Callables color"></div>
-                <div class="glacier-data" aria-label="Data color"></div>
-                <div class="glacier-control-flow" aria-label="Control Flow color"></div>
-                <div class="glacier-exceptions" aria-label="Exceptions color"></div>
-                <div class="glacier-strings" aria-label="String Literals color"></div>
-                <div class="glacier-literals" aria-label="Literal Values color"></div>
-                <div class="glacier-namespaces" aria-label="Namespaces color"></div>
-                <div class="glacier-keywords" aria-label="Keywords color"></div>
+                <div class="reference-types" aria-label="Reference Types color"></div>
+                <div class="value-types" aria-label="Value Types color"></div>
+                <div class="interfaces" aria-label="Interfaces color"></div>
+                <div class="callables" aria-label="Callables color"></div>
+                <div class="data" aria-label="Data color"></div>
+                <div class="control-flow" aria-label="Control Flow color"></div>
+                <div class="exceptions" aria-label="Exceptions color"></div>
+                <div class="strings" aria-label="String Literals color"></div>
+                <div class="literals" aria-label="Literal Values color"></div>
+                <div class="namespaces" aria-label="Namespaces color"></div>
+                <div class="keywords" aria-label="Keywords color"></div>
             </div>
 
             <p class="theme-narrative">Glacier draws from arctic landscapes: the blue-white of ancient ice, the pale violet of polar twilight, the surprising warmth of coral sunset reflected on snow. This is a reduced-saturation palette that maintains category differentiation while minimizing visual intensity.</p>
 
-            <p>For developers who find vivid colors fatiguing, or who work in bright environments where high contrast becomes harsh, Glacier offers relief. The colors are all shifted cooler—even the "warm" accents like <span class="glacier-control-flow">orange control flow</span> and <span class="glacier-exceptions">coral exceptions</span> carry blue undertones. The semantic vocabulary remains intact; everything just feels calmer, more contemplative. The trade-off: in very dark environments, the low saturation may reduce category distinctness. Like the landscape that inspired it, Glacier is focused and a bit severe.</p>
+            <p>For developers who find vivid colors fatiguing, or who work in bright environments where high contrast becomes harsh, Glacier offers relief. The colors are all shifted cooler—even the "warm" accents like <span class="sem-control">orange control flow</span> and <span class="sem-exception">coral exceptions</span> carry blue undertones. The semantic vocabulary remains intact; everything just feels calmer, more contemplative. The trade-off: in very dark environments, the low saturation may reduce category distinctness. Like the landscape that inspired it, Glacier is focused and a bit severe.</p>
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini glacier-reference-types"></span>Pale Lavender</span></td><td>#b4a7d6</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini glacier-value-types"></span>Ice Blue</span></td><td>#7eb8da</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini glacier-interfaces"></span>Glacier Cyan</span></td><td>#6dd3d6</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini glacier-callables"></span>Pale Gold</span></td><td>#d4c896</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini glacier-data"></span>Frost Blue</span></td><td>#a8d4e6</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini glacier-control-flow"></span>Arctic Sunset</span></td><td>#e6a07c</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini glacier-exceptions"></span>Polar Rose</span></td><td>#e07c7c</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini glacier-strings"></span>Lichen Green</span></td><td>#7ec8a3</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini glacier-literals"></span>Sand</span></td><td>#d4b896</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini glacier-namespaces"></span>Glacial Teal</span></td><td>#5eb8b0</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini glacier-keywords"></span>Frost Violet</span></td><td>#a090c8</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Pale Lavender</span></td><td>#b4a7d6</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Ice Blue</span></td><td>#7eb8da</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Glacier Cyan</span></td><td>#6dd3d6</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Pale Gold</span></td><td>#d4c896</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Frost Blue</span></td><td>#a8d4e6</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Arctic Sunset</span></td><td>#e6a07c</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Polar Rose</span></td><td>#e07c7c</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Lichen Green</span></td><td>#7ec8a3</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Sand</span></td><td>#d4b896</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Glacial Teal</span></td><td>#5eb8b0</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Frost Violet</span></td><td>#a090c8</td></tr>
             </table>
         </div>
 
         <!-- EMBER -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-ember">
             <h4 id="theme-ember">Lexicon Ember</h4>
             <p class="theme-tagline">Warm coals in darkness. Comfort and intensity.</p>
 
             <div class="theme-palette">
-                <div class="ember-reference-types" aria-label="Reference Types color"></div>
-                <div class="ember-value-types" aria-label="Value Types color"></div>
-                <div class="ember-interfaces" aria-label="Interfaces color"></div>
-                <div class="ember-callables" aria-label="Callables color"></div>
-                <div class="ember-data" aria-label="Data color"></div>
-                <div class="ember-control-flow" aria-label="Control Flow color"></div>
-                <div class="ember-exceptions" aria-label="Exceptions color"></div>
-                <div class="ember-strings" aria-label="String Literals color"></div>
-                <div class="ember-literals" aria-label="Literal Values color"></div>
-                <div class="ember-namespaces" aria-label="Namespaces color"></div>
-                <div class="ember-keywords" aria-label="Keywords color"></div>
+                <div class="reference-types" aria-label="Reference Types color"></div>
+                <div class="value-types" aria-label="Value Types color"></div>
+                <div class="interfaces" aria-label="Interfaces color"></div>
+                <div class="callables" aria-label="Callables color"></div>
+                <div class="data" aria-label="Data color"></div>
+                <div class="control-flow" aria-label="Control Flow color"></div>
+                <div class="exceptions" aria-label="Exceptions color"></div>
+                <div class="strings" aria-label="String Literals color"></div>
+                <div class="literals" aria-label="Literal Values color"></div>
+                <div class="namespaces" aria-label="Namespaces color"></div>
+                <div class="keywords" aria-label="Keywords color"></div>
             </div>
 
             <p class="theme-narrative">Ember inverts the usual temperature balance. Where most dark themes lean cool, Ember runs warm—the palette of dying coals, of candlelight, of autumn leaves against dark earth. This is a theme that feels alive, that radiates warmth from the screen.</p>
 
-            <p><span class="ember-reference-types">Reference types</span> become rose and coral. <span class="ember-data">Data</span> shifts to sand and copper. Even <span class="ember-value-types">value types</span> carry amber undertones. The <span class="ember-strings">sage green</span> of string literals provides just enough cool contrast to keep the warmth from becoming oppressive. Ember is a theme for late nights and creative work, when the code is flowing and you want the environment to feel alive. The trade-off: the warm bias reduces blue-green distinctness, which may make some category pairs harder to separate at a glance.</p>
+            <p><span class="sem-reference">Reference types</span> become rose and coral. <span class="sem-data">Data</span> shifts to sand and copper. Even <span class="sem-value">value types</span> carry amber undertones. The <span class="sem-string">sage green</span> of string literals provides just enough cool contrast to keep the warmth from becoming oppressive. Ember is a theme for late nights and creative work, when the code is flowing and you want the environment to feel alive. The trade-off: the warm bias reduces blue-green distinctness, which may make some category pairs harder to separate at a glance.</p>
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini ember-reference-types"></span>Rose</span></td><td>#e8a4b8</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini ember-value-types"></span>Copper</span></td><td>#d4a076</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini ember-interfaces"></span>Terra Cotta</span></td><td>#d08070</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini ember-callables"></span>Amber</span></td><td>#e6c87c</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini ember-data"></span>Sand</span></td><td>#d4b896</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini ember-control-flow"></span>Flame</span></td><td>#e88050</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini ember-exceptions"></span>Ember Red</span></td><td>#d05050</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini ember-strings"></span>Sage</span></td><td>#a0b890</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini ember-literals"></span>Honey</span></td><td>#c8a060</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini ember-namespaces"></span>Driftwood</span></td><td>#b09878</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini ember-keywords"></span>Dusty Rose</span></td><td>#c8a0a0</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Rose</span></td><td>#e8a4b8</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Copper</span></td><td>#d4a076</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Terra Cotta</span></td><td>#d08070</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Amber</span></td><td>#e6c87c</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Sand</span></td><td>#d4b896</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Flame</span></td><td>#e88050</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Ember Red</span></td><td>#d05050</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Sage</span></td><td>#a0b890</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Honey</span></td><td>#c8a060</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Driftwood</span></td><td>#b09878</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Dusty Rose</span></td><td>#c8a0a0</td></tr>
             </table>
         </div>
 
         <!-- CANOPY -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-canopy">
             <h4 id="theme-canopy">Lexicon Canopy</h4>
             <p class="theme-tagline">Dappled light through leaves. The forest floor at midday.</p>
 
             <div class="theme-palette">
-                <div class="canopy-reference-types" aria-label="Reference Types color"></div>
-                <div class="canopy-value-types" aria-label="Value Types color"></div>
-                <div class="canopy-interfaces" aria-label="Interfaces color"></div>
-                <div class="canopy-callables" aria-label="Callables color"></div>
-                <div class="canopy-data" aria-label="Data color"></div>
-                <div class="canopy-control-flow" aria-label="Control Flow color"></div>
-                <div class="canopy-exceptions" aria-label="Exceptions color"></div>
-                <div class="canopy-strings" aria-label="String Literals color"></div>
-                <div class="canopy-literals" aria-label="Literal Values color"></div>
-                <div class="canopy-namespaces" aria-label="Namespaces color"></div>
-                <div class="canopy-keywords" aria-label="Keywords color"></div>
+                <div class="reference-types" aria-label="Reference Types color"></div>
+                <div class="value-types" aria-label="Value Types color"></div>
+                <div class="interfaces" aria-label="Interfaces color"></div>
+                <div class="callables" aria-label="Callables color"></div>
+                <div class="data" aria-label="Data color"></div>
+                <div class="control-flow" aria-label="Control Flow color"></div>
+                <div class="exceptions" aria-label="Exceptions color"></div>
+                <div class="strings" aria-label="String Literals color"></div>
+                <div class="literals" aria-label="Literal Values color"></div>
+                <div class="namespaces" aria-label="Namespaces color"></div>
+                <div class="keywords" aria-label="Keywords color"></div>
             </div>
 
-            <p class="theme-narrative">Canopy is built around green—the color we see more shades of than any other, the color of life and growth. Where other themes use green sparingly, Canopy lets it dominate. <span class="canopy-data">Data</span> becomes moss. <span class="canopy-value-types">Value types</span> become fern. <span class="canopy-strings">String literals</span> become spring leaves.</p>
+            <p class="theme-narrative">Canopy is built around green—the color we see more shades of than any other, the color of life and growth. Where other themes use green sparingly, Canopy lets it dominate. <span class="sem-data">Data</span> becomes moss. <span class="sem-value">Value types</span> become fern. <span class="sem-string">String literals</span> become spring leaves.</p>
 
-            <p>This isn't a gimmick. Green is the color human eyes are most sensitive to; we can distinguish more variations of green than any other hue. Canopy exploits this by using green for frequently-viewed categories. The result is a surprisingly readable palette that feels organic rather than synthetic. <span class="canopy-reference-types">Purple reference types</span> and <span class="canopy-control-flow">orange control flow</span> provide the contrast points, standing out against the verdant baseline like flowers in a meadow. The trade-off: users with red-green color vision deficiency may find this theme particularly challenging.</p>
+            <p>This isn't a gimmick. Green is the color human eyes are most sensitive to; we can distinguish more variations of green than any other hue. Canopy exploits this by using green for frequently-viewed categories. The result is a surprisingly readable palette that feels organic rather than synthetic. <span class="sem-reference">Purple reference types</span> and <span class="sem-control">orange control flow</span> provide the contrast points, standing out against the verdant baseline like flowers in a meadow. The trade-off: users with red-green color vision deficiency may find this theme particularly challenging.</p>
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini canopy-reference-types"></span>Orchid</span></td><td>#c9a0dc</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini canopy-value-types"></span>Fern</span></td><td>#70a860</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini canopy-interfaces"></span>Eucalyptus</span></td><td>#60b8a8</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini canopy-callables"></span>Chartreuse</span></td><td>#b8c878</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini canopy-data"></span>Moss</span></td><td>#8cb870</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini canopy-control-flow"></span>Tiger Lily</span></td><td>#d89050</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini canopy-exceptions"></span>Wild Rose</span></td><td>#d06070</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini canopy-strings"></span>Spring Green</span></td><td>#90d890</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini canopy-literals"></span>Fern</span></td><td>#70a860</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini canopy-namespaces"></span>Pine</span></td><td>#50a888</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini canopy-keywords"></span>Wisteria</span></td><td>#a890b8</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Orchid</span></td><td>#c9a0dc</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Fern</span></td><td>#70a860</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Eucalyptus</span></td><td>#60b8a8</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Chartreuse</span></td><td>#b8c878</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Moss</span></td><td>#8cb870</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Tiger Lily</span></td><td>#d89050</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Wild Rose</span></td><td>#d06070</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Spring Green</span></td><td>#90d890</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Fern</span></td><td>#70a860</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Pine</span></td><td>#50a888</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Wisteria</span></td><td>#a890b8</td></tr>
             </table>
         </div>
 
         <!-- NEON -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-neon">
             <h4 id="theme-neon">Lexicon Neon</h4>
             <p class="theme-tagline">Electric signs on wet pavement. The city never sleeps.</p>
 
             <div class="theme-palette">
-                <div class="neon-reference-types" aria-label="Reference Types color"></div>
-                <div class="neon-value-types" aria-label="Value Types color"></div>
-                <div class="neon-interfaces" aria-label="Interfaces color"></div>
-                <div class="neon-callables" aria-label="Callables color"></div>
-                <div class="neon-data" aria-label="Data color"></div>
-                <div class="neon-control-flow" aria-label="Control Flow color"></div>
-                <div class="neon-exceptions" aria-label="Exceptions color"></div>
-                <div class="neon-strings" aria-label="String Literals color"></div>
-                <div class="neon-literals" aria-label="Literal Values color"></div>
-                <div class="neon-namespaces" aria-label="Namespaces color"></div>
-                <div class="neon-keywords" aria-label="Keywords color"></div>
+                <div class="reference-types" aria-label="Reference Types color"></div>
+                <div class="value-types" aria-label="Value Types color"></div>
+                <div class="interfaces" aria-label="Interfaces color"></div>
+                <div class="callables" aria-label="Callables color"></div>
+                <div class="data" aria-label="Data color"></div>
+                <div class="control-flow" aria-label="Control Flow color"></div>
+                <div class="exceptions" aria-label="Exceptions color"></div>
+                <div class="strings" aria-label="String Literals color"></div>
+                <div class="literals" aria-label="Literal Values color"></div>
+                <div class="namespaces" aria-label="Namespaces color"></div>
+                <div class="keywords" aria-label="Keywords color"></div>
             </div>
 
             <p class="theme-narrative">Neon is unapologetically vivid. High saturation, maximum luminance, the palette of a cyberpunk future or a Tokyo side street at midnight. Where Twilight and Glacier exercise restraint, Neon turns everything up to eleven.</p>
 
-            <p>This isn't for everyone, but for developers who find muted themes dull, who want their editor to crackle with energy, Neon delivers. The colors are carefully balanced—the full spectrum is represented, so even at high saturation, <span class="neon-reference-types">purple reference types</span> are clearly distinct from <span class="neon-value-types">cyan value types</span>, and <span class="neon-control-flow">orange control flow</span> pops against <span class="neon-strings">electric green strings</span>. The trade-off: high saturation may cause eye strain during extended sessions. Think of it as the difference between a jazz trio and a full orchestra. Both have their place.</p>
+            <p>This isn't for everyone, but for developers who find muted themes dull, who want their editor to crackle with energy, Neon delivers. The colors are carefully balanced—the full spectrum is represented, so even at high saturation, <span class="sem-reference">purple reference types</span> are clearly distinct from <span class="sem-value">cyan value types</span>, and <span class="sem-control">orange control flow</span> pops against <span class="sem-string">electric green strings</span>. The trade-off: high saturation may cause eye strain during extended sessions. Think of it as the difference between a jazz trio and a full orchestra. Both have their place.</p>
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini neon-reference-types"></span>Electric Purple</span></td><td>#a855f7</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini neon-value-types"></span>Neon Cyan</span></td><td>#22d3ee</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini neon-interfaces"></span>Teal Glow</span></td><td>#2dd4bf</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini neon-callables"></span>Laser Yellow</span></td><td>#facc15</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini neon-data"></span>Plasma Blue</span></td><td>#38bdf8</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini neon-control-flow"></span>Signal Orange</span></td><td>#fb923c</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini neon-exceptions"></span>Alarm Red</span></td><td>#f87171</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini neon-strings"></span>Electric Lime</span></td><td>#a3e635</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini neon-literals"></span>Neon Cyan</span></td><td>#22d3ee</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini neon-namespaces"></span>Radioactive Teal</span></td><td>#14b8a6</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini neon-keywords"></span>Ultraviolet</span></td><td>#c084fc</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Electric Purple</span></td><td>#a855f7</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Neon Cyan</span></td><td>#22d3ee</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Teal Glow</span></td><td>#2dd4bf</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Laser Yellow</span></td><td>#facc15</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Plasma Blue</span></td><td>#38bdf8</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Signal Orange</span></td><td>#fb923c</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Alarm Red</span></td><td>#f87171</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Electric Lime</span></td><td>#a3e635</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Neon Cyan</span></td><td>#22d3ee</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Radioactive Teal</span></td><td>#14b8a6</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Ultraviolet</span></td><td>#c084fc</td></tr>
             </table>
         </div>
 
         <!-- SOLSTICE -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-solstice">
             <h4 id="theme-solstice">Lexicon Solstice</h4>
             <p class="theme-tagline">Precision optics. Calibrated for the human eye.</p>
 
             <div class="theme-palette">
-                <div class="solstice-reference-types" aria-label="Reference Types color"></div>
-                <div class="solstice-value-types" aria-label="Value Types color"></div>
-                <div class="solstice-interfaces" aria-label="Interfaces color"></div>
-                <div class="solstice-callables" aria-label="Callables color"></div>
-                <div class="solstice-data" aria-label="Data color"></div>
-                <div class="solstice-control-flow" aria-label="Control Flow color"></div>
-                <div class="solstice-exceptions" aria-label="Exceptions color"></div>
-                <div class="solstice-strings" aria-label="String Literals color"></div>
-                <div class="solstice-literals" aria-label="Literal Values color"></div>
-                <div class="solstice-namespaces" aria-label="Namespaces color"></div>
-                <div class="solstice-keywords" aria-label="Keywords color"></div>
+                <div class="reference-types" aria-label="Reference Types color"></div>
+                <div class="value-types" aria-label="Value Types color"></div>
+                <div class="interfaces" aria-label="Interfaces color"></div>
+                <div class="callables" aria-label="Callables color"></div>
+                <div class="data" aria-label="Data color"></div>
+                <div class="control-flow" aria-label="Control Flow color"></div>
+                <div class="exceptions" aria-label="Exceptions color"></div>
+                <div class="strings" aria-label="String Literals color"></div>
+                <div class="literals" aria-label="Literal Values color"></div>
+                <div class="namespaces" aria-label="Namespaces color"></div>
+                <div class="keywords" aria-label="Keywords color"></div>
             </div>
 
             <p class="theme-narrative">Solstice adapts Ethan Schoonover's celebrated Solarized palette to Lexicon's semantic system. Solarized was engineered with scientific precision: CIELAB lightness values calculated to maintain consistent contrast across both light and dark modes, hues selected for maximum differentiation while remaining perceptually uniform.</p>
 
-            <p>Where Solarized treats all code uniformly, Solstice adds semantic meaning. <span class="solstice-reference-types">Reference types</span> get violet. <span class="solstice-callables">Callables</span> get yellow. <span class="solstice-data">Data</span> gets the base gray. The careful calibration remains—every color still has the same perceptual lightness—but now the colors carry meaning. The trade-off: Solarized's uniform lightness can make some adjacent categories harder to distinguish without relying on hue. It's Solarized with a vocabulary.</p>
+            <p>Where Solarized treats all code uniformly, Solstice adds semantic meaning. <span class="sem-reference">Reference types</span> get violet. <span class="sem-callable">Callables</span> get yellow. <span class="sem-data">Data</span> gets the base gray. The careful calibration remains—every color still has the same perceptual lightness—but now the colors carry meaning. The trade-off: Solarized's uniform lightness can make some adjacent categories harder to distinguish without relying on hue. It's Solarized with a vocabulary.</p>
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini solstice-reference-types"></span>Violet</span></td><td>#6c71c4</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini solstice-value-types"></span>Blue</span></td><td>#268bd2</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini solstice-interfaces"></span>Cyan</span></td><td>#2aa198</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini solstice-callables"></span>Yellow</span></td><td>#b58900</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini solstice-data"></span>Base 0</span></td><td>#839496</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini solstice-control-flow"></span>Orange</span></td><td>#cb4b16</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini solstice-exceptions"></span>Red</span></td><td>#dc322f</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini solstice-strings"></span>Green</span></td><td>#859900</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini solstice-literals"></span>Blue</span></td><td>#268bd2</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini solstice-namespaces"></span>Cyan</span></td><td>#2aa198</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini solstice-keywords"></span>Magenta</span></td><td>#d33682</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Violet</span></td><td>#6c71c4</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Blue</span></td><td>#268bd2</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Cyan</span></td><td>#2aa198</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Yellow</span></td><td>#b58900</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Base 0</span></td><td>#839496</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Orange</span></td><td>#cb4b16</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Red</span></td><td>#dc322f</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Green</span></td><td>#859900</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Blue</span></td><td>#268bd2</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Cyan</span></td><td>#2aa198</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Magenta</span></td><td>#d33682</td></tr>
             </table>
         </div>
 
         <!-- WHISPER -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-whisper">
             <h4 id="theme-whisper">Lexicon Whisper</h4>
             <p class="theme-tagline">Soft focus. Colors that don't shout.</p>
 
             <div class="theme-palette">
-                <div class="whisper-reference-types" aria-label="Reference Types color"></div>
-                <div class="whisper-value-types" aria-label="Value Types color"></div>
-                <div class="whisper-interfaces" aria-label="Interfaces color"></div>
-                <div class="whisper-callables" aria-label="Callables color"></div>
-                <div class="whisper-data" aria-label="Data color"></div>
-                <div class="whisper-control-flow" aria-label="Control Flow color"></div>
-                <div class="whisper-exceptions" aria-label="Exceptions color"></div>
-                <div class="whisper-strings" aria-label="String Literals color"></div>
-                <div class="whisper-literals" aria-label="Literal Values color"></div>
-                <div class="whisper-namespaces" aria-label="Namespaces color"></div>
-                <div class="whisper-keywords" aria-label="Keywords color"></div>
+                <div class="reference-types" aria-label="Reference Types color"></div>
+                <div class="value-types" aria-label="Value Types color"></div>
+                <div class="interfaces" aria-label="Interfaces color"></div>
+                <div class="callables" aria-label="Callables color"></div>
+                <div class="data" aria-label="Data color"></div>
+                <div class="control-flow" aria-label="Control Flow color"></div>
+                <div class="exceptions" aria-label="Exceptions color"></div>
+                <div class="strings" aria-label="String Literals color"></div>
+                <div class="literals" aria-label="Literal Values color"></div>
+                <div class="namespaces" aria-label="Namespaces color"></div>
+                <div class="keywords" aria-label="Keywords color"></div>
             </div>
 
-            <p class="theme-narrative">Whisper is for developers who want syntax highlighting to guide, not dominate. Every color is desaturated, softened, pulled back toward gray. The result is a palette that still differentiates—<span class="whisper-reference-types">purple</span> is still visually distinct from <span class="whisper-callables">yellow</span>—but doesn't demand attention.</p>
+            <p class="theme-narrative">Whisper is for developers who want syntax highlighting to guide, not dominate. Every color is desaturated, softened, pulled back toward gray. The result is a palette that still differentiates—<span class="sem-reference">purple</span> is still visually distinct from <span class="sem-callable">yellow</span>—but doesn't demand attention.</p>
 
-            <p>This theme works well for mixed work: writing prose interspersed with code, reviewing documentation, or any context where the code isn't the sole focus. It's also effective in very dark environments where even moderate saturation can feel harsh. <span class="whisper-control-flow">Control flow</span> becomes a gentle suggestion rather than a demand. <span class="whisper-exceptions">Exceptions</span> are noted, not alarmed about. The trade-off: the muted palette may reduce distinctness for users who benefit from high-contrast differentiation. Think of it as code in a library voice.</p>
+            <p>This theme works well for mixed work: writing prose interspersed with code, reviewing documentation, or any context where the code isn't the sole focus. It's also effective in very dark environments where even moderate saturation can feel harsh. <span class="sem-control">Control flow</span> becomes a gentle suggestion rather than a demand. <span class="sem-exception">Exceptions</span> are noted, not alarmed about. The trade-off: the muted palette may reduce distinctness for users who benefit from high-contrast differentiation. Think of it as code in a library voice.</p>
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini whisper-reference-types"></span>Muted Lavender</span></td><td>#c9b8dc</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini whisper-value-types"></span>Soft Aqua</span></td><td>#a8d4d8</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini whisper-interfaces"></span>Pale Teal</span></td><td>#a0d8d0</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini whisper-callables"></span>Cream</span></td><td>#dcd8b0</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini whisper-data"></span>Pale Blue</span></td><td>#b0d0dc</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini whisper-control-flow"></span>Soft Peach</span></td><td>#dcbca8</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini whisper-exceptions"></span>Blush</span></td><td>#dcb0b0</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini whisper-strings"></span>Pale Mint</span></td><td>#b0dcb8</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini whisper-literals"></span>Soft Aqua</span></td><td>#a8d4d8</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini whisper-namespaces"></span>Sage</span></td><td>#98c8c0</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini whisper-keywords"></span>Haze</span></td><td>#b8a8c8</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Muted Lavender</span></td><td>#c9b8dc</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Soft Aqua</span></td><td>#a8d4d8</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Pale Teal</span></td><td>#a0d8d0</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Cream</span></td><td>#dcd8b0</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Pale Blue</span></td><td>#b0d0dc</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Soft Peach</span></td><td>#dcbca8</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Blush</span></td><td>#dcb0b0</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Pale Mint</span></td><td>#b0dcb8</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Soft Aqua</span></td><td>#a8d4d8</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Sage</span></td><td>#98c8c0</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Haze</span></td><td>#b8a8c8</td></tr>
             </table>
         </div>
 
         <!-- NOCTURNE -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-nocturne">
             <h4 id="theme-nocturne">Lexicon Nocturne</h4>
             <p class="theme-tagline">Deep night. Jewel tones against void.</p>
 
             <div class="theme-palette">
-                <div class="nocturne-reference-types" aria-label="Reference Types color"></div>
-                <div class="nocturne-value-types" aria-label="Value Types color"></div>
-                <div class="nocturne-interfaces" aria-label="Interfaces color"></div>
-                <div class="nocturne-callables" aria-label="Callables color"></div>
-                <div class="nocturne-data" aria-label="Data color"></div>
-                <div class="nocturne-control-flow" aria-label="Control Flow color"></div>
-                <div class="nocturne-exceptions" aria-label="Exceptions color"></div>
-                <div class="nocturne-strings" aria-label="String Literals color"></div>
-                <div class="nocturne-literals" aria-label="Literal Values color"></div>
-                <div class="nocturne-namespaces" aria-label="Namespaces color"></div>
-                <div class="nocturne-keywords" aria-label="Keywords color"></div>
+                <div class="reference-types" aria-label="Reference Types color"></div>
+                <div class="value-types" aria-label="Value Types color"></div>
+                <div class="interfaces" aria-label="Interfaces color"></div>
+                <div class="callables" aria-label="Callables color"></div>
+                <div class="data" aria-label="Data color"></div>
+                <div class="control-flow" aria-label="Control Flow color"></div>
+                <div class="exceptions" aria-label="Exceptions color"></div>
+                <div class="strings" aria-label="String Literals color"></div>
+                <div class="literals" aria-label="Literal Values color"></div>
+                <div class="namespaces" aria-label="Namespaces color"></div>
+                <div class="keywords" aria-label="Keywords color"></div>
             </div>
 
             <p class="theme-narrative">Nocturne adapts the beloved Dracula palette to Lexicon's semantic system. Pure dark with jewel-tone accents—perfect for OLED displays where true blacks save battery and maximize contrast, and for developers who work best in maximum dark adaptation.</p>
 
-            <p>The colors pop against the void like stars against the night sky. <span class="nocturne-reference-types">Purple reference types</span> glow with amethyst intensity. <span class="nocturne-callables">Yellow callables</span> catch the eye like distant lights. <span class="nocturne-control-flow">Orange control flow</span> marks decision points with warm certainty. The semantic vocabulary is fully preserved; what changes is the drama. The trade-off: the high contrast and vivid colors may cause fatigue during very long sessions. This is code that feels like an occasion.</p>
+            <p>The colors pop against the void like stars against the night sky. <span class="sem-reference">Purple reference types</span> glow with amethyst intensity. <span class="sem-callable">Yellow callables</span> catch the eye like distant lights. <span class="sem-control">Orange control flow</span> marks decision points with warm certainty. The semantic vocabulary is fully preserved; what changes is the drama. The trade-off: the high contrast and vivid colors may cause fatigue during very long sessions. This is code that feels like an occasion.</p>
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini nocturne-reference-types"></span>Amethyst</span></td><td>#bd93f9</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini nocturne-value-types"></span>Ice</span></td><td>#8be9fd</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini nocturne-interfaces"></span>Emerald</span></td><td>#50fa7b</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini nocturne-callables"></span>Canary</span></td><td>#f1fa8c</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini nocturne-data"></span>Aquamarine</span></td><td>#9aedfe</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini nocturne-control-flow"></span>Topaz</span></td><td>#ffb86c</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini nocturne-exceptions"></span>Ruby</span></td><td>#ff5555</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini nocturne-strings"></span>Emerald</span></td><td>#50fa7b</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini nocturne-literals"></span>Ice</span></td><td>#8be9fd</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini nocturne-namespaces"></span>Emerald</span></td><td>#50fa7b</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini nocturne-keywords"></span>Pink Sapphire</span></td><td>#ff79c6</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Amethyst</span></td><td>#bd93f9</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Ice</span></td><td>#8be9fd</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Emerald</span></td><td>#50fa7b</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Canary</span></td><td>#f1fa8c</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Aquamarine</span></td><td>#9aedfe</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Topaz</span></td><td>#ffb86c</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Ruby</span></td><td>#ff5555</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Emerald</span></td><td>#50fa7b</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Ice</span></td><td>#8be9fd</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Emerald</span></td><td>#50fa7b</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Pink Sapphire</span></td><td>#ff79c6</td></tr>
             </table>
         </div>
 
         <!-- PATINA -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-patina">
             <h4 id="theme-patina">Lexicon Patina</h4>
             <p class="theme-tagline">Aged copper and old paper. Time-worn elegance.</p>
 
             <div class="theme-palette">
-                <div class="patina-reference-types" aria-label="Reference Types color"></div>
-                <div class="patina-value-types" aria-label="Value Types color"></div>
-                <div class="patina-interfaces" aria-label="Interfaces color"></div>
-                <div class="patina-callables" aria-label="Callables color"></div>
-                <div class="patina-data" aria-label="Data color"></div>
-                <div class="patina-control-flow" aria-label="Control Flow color"></div>
-                <div class="patina-exceptions" aria-label="Exceptions color"></div>
-                <div class="patina-strings" aria-label="String Literals color"></div>
-                <div class="patina-literals" aria-label="Literal Values color"></div>
-                <div class="patina-namespaces" aria-label="Namespaces color"></div>
-                <div class="patina-keywords" aria-label="Keywords color"></div>
+                <div class="reference-types" aria-label="Reference Types color"></div>
+                <div class="value-types" aria-label="Value Types color"></div>
+                <div class="interfaces" aria-label="Interfaces color"></div>
+                <div class="callables" aria-label="Callables color"></div>
+                <div class="data" aria-label="Data color"></div>
+                <div class="control-flow" aria-label="Control Flow color"></div>
+                <div class="exceptions" aria-label="Exceptions color"></div>
+                <div class="strings" aria-label="String Literals color"></div>
+                <div class="literals" aria-label="Literal Values color"></div>
+                <div class="namespaces" aria-label="Namespaces color"></div>
+                <div class="keywords" aria-label="Keywords color"></div>
             </div>
 
             <p class="theme-narrative">Patina draws from the colors of age: oxidized bronze, yellowed paper, faded ink, weathered wood. It's a warm, desaturated palette with an antique quality—code that looks like it was written in a library from another century.</p>
 
-            <p>The sepia-shifted colors reduce blue light, making Patina easier on the eyes during long evening sessions. The low saturation keeps the warmth from becoming overwhelming. <span class="patina-reference-types">Reference types</span> take on a dusty rose. <span class="patina-control-flow">Control flow</span> becomes warm copper. <span class="patina-strings">String literals</span> fade to sage. The trade-off: the muted, warm-shifted palette may reduce distinctness between some category pairs for users who need high contrast. It's sophisticated, understated, perhaps a bit melancholy. For developers who find modern vibrant themes too aggressive, Patina offers refuge.</p>
+            <p>The sepia-shifted colors reduce blue light, making Patina easier on the eyes during long evening sessions. The low saturation keeps the warmth from becoming overwhelming. <span class="sem-reference">Reference types</span> take on a dusty rose. <span class="sem-control">Control flow</span> becomes warm copper. <span class="sem-string">String literals</span> fade to sage. The trade-off: the muted, warm-shifted palette may reduce distinctness between some category pairs for users who need high contrast. It's sophisticated, understated, perhaps a bit melancholy. For developers who find modern vibrant themes too aggressive, Patina offers refuge.</p>
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini patina-reference-types"></span>Dusty Rose</span></td><td>#b89898</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini patina-value-types"></span>Parchment</span></td><td>#c0b090</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini patina-interfaces"></span>Verdigris</span></td><td>#a0b098</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini patina-callables"></span>Old Gold</span></td><td>#d4c8a0</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini patina-data"></span>Linen</span></td><td>#c8c0a8</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini patina-control-flow"></span>Copper</span></td><td>#c89870</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini patina-exceptions"></span>Rust</span></td><td>#c07060</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini patina-strings"></span>Faded Sage</span></td><td>#98a880</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini patina-literals"></span>Parchment</span></td><td>#c0b090</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini patina-namespaces"></span>Lichen</span></td><td>#90a090</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini patina-keywords"></span>Mauve</span></td><td>#a89898</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Dusty Rose</span></td><td>#b89898</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Parchment</span></td><td>#c0b090</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Verdigris</span></td><td>#a0b098</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Old Gold</span></td><td>#d4c8a0</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Linen</span></td><td>#c8c0a8</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Copper</span></td><td>#c89870</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Rust</span></td><td>#c07060</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Faded Sage</span></td><td>#98a880</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Parchment</span></td><td>#c0b090</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Lichen</span></td><td>#90a090</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Mauve</span></td><td>#a89898</td></tr>
             </table>
         </div>
 
         <!-- BEACON -->
-        <div class="theme-card">
+        <div class="theme-card theme-scope-beacon">
             <h4 id="theme-beacon">Lexicon Beacon</h4>
             <p class="theme-tagline">Maximum signal. Designed for accessibility.</p>
 
             <div class="theme-palette">
-                <div class="beacon-reference-types" aria-label="Reference Types color"></div>
-                <div class="beacon-value-types" aria-label="Value Types color"></div>
-                <div class="beacon-interfaces" aria-label="Interfaces color"></div>
-                <div class="beacon-callables" aria-label="Callables color"></div>
-                <div class="beacon-data" aria-label="Data color"></div>
-                <div class="beacon-control-flow" aria-label="Control Flow color"></div>
-                <div class="beacon-exceptions" aria-label="Exceptions color"></div>
-                <div class="beacon-strings" aria-label="String Literals color"></div>
-                <div class="beacon-literals" aria-label="Literal Values color"></div>
-                <div class="beacon-namespaces" aria-label="Namespaces color"></div>
-                <div class="beacon-keywords" aria-label="Keywords color"></div>
+                <div class="reference-types" aria-label="Reference Types color"></div>
+                <div class="value-types" aria-label="Value Types color"></div>
+                <div class="interfaces" aria-label="Interfaces color"></div>
+                <div class="callables" aria-label="Callables color"></div>
+                <div class="data" aria-label="Data color"></div>
+                <div class="control-flow" aria-label="Control Flow color"></div>
+                <div class="exceptions" aria-label="Exceptions color"></div>
+                <div class="strings" aria-label="String Literals color"></div>
+                <div class="literals" aria-label="Literal Values color"></div>
+                <div class="namespaces" aria-label="Namespaces color"></div>
+                <div class="keywords" aria-label="Keywords color"></div>
             </div>
 
             <p class="theme-narrative">Beacon is designed for maximum visibility. Every color is at high saturation and near-maximum brightness. The palette may look garish in screenshots, but serves a specific purpose: accessibility for users with low vision or in challenging display conditions.</p>
 
-            <p>The colors are chosen to be maximally distinguishable across common forms of color vision deficiency. <span class="beacon-exceptions">Red exceptions</span> and <span class="beacon-strings">green strings</span> are both present but separated by significant lightness differences. <span class="beacon-data">Cyan</span> and <span class="beacon-callables">yellow</span> provide primary differentiation for deuteranopia and protanopia. Strong lightness separation ensures elements stand out even when hue perception is impaired. The trade-off: Beacon will cause visual fatigue for users without vision impairments; it is designed as an accessibility accommodation, not a general-purpose theme.</p>
+            <p>The colors are chosen to be maximally distinguishable across common forms of color vision deficiency. <span class="sem-exception">Red exceptions</span> and <span class="sem-string">green strings</span> are both present but separated by significant lightness differences. <span class="sem-data">Cyan</span> and <span class="sem-callable">yellow</span> provide primary differentiation for deuteranopia and protanopia. Strong lightness separation ensures elements stand out even when hue perception is impaired. The trade-off: Beacon will cause visual fatigue for users without vision impairments; it is designed as an accessibility accommodation, not a general-purpose theme.</p>
 
             <p>See <a href="#accessibility">Accessibility Considerations</a> for more detail on contrast and color vision assumptions behind this theme.</p>
 
             <table>
                 <tr><th>Semantic</th><th>Color</th><th>Hex</th></tr>
-                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini beacon-reference-types"></span>Magenta</span></td><td>#ff00ff</td></tr>
-                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini beacon-value-types"></span>Dodger Blue</span></td><td>#1e90ff</td></tr>
-                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini beacon-interfaces"></span>Spring Green</span></td><td>#00ff7f</td></tr>
-                <tr><td>Callables</td><td><span class="color-cell"><span class="mini beacon-callables"></span>Yellow</span></td><td>#ffff00</td></tr>
-                <tr><td>Data</td><td><span class="color-cell"><span class="mini beacon-data"></span>Cyan</span></td><td>#00ffff</td></tr>
-                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini beacon-control-flow"></span>Orange</span></td><td>#ffa500</td></tr>
-                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini beacon-exceptions"></span>Red</span></td><td>#ff4444</td></tr>
-                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini beacon-strings"></span>Chartreuse</span></td><td>#7fff00</td></tr>
-                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini beacon-literals"></span>Dodger Blue</span></td><td>#1e90ff</td></tr>
-                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini beacon-namespaces"></span>Dark Turquoise</span></td><td>#00ced1</td></tr>
-                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini beacon-keywords"></span>Orchid</span></td><td>#da70d6</td></tr>
+                <tr><td>Reference Types</td><td><span class="color-cell"><span class="mini reference-types"></span>Magenta</span></td><td>#ff00ff</td></tr>
+                <tr><td>Value Types</td><td><span class="color-cell"><span class="mini value-types"></span>Dodger Blue</span></td><td>#1e90ff</td></tr>
+                <tr><td>Interfaces</td><td><span class="color-cell"><span class="mini interfaces"></span>Spring Green</span></td><td>#00ff7f</td></tr>
+                <tr><td>Callables</td><td><span class="color-cell"><span class="mini callables"></span>Yellow</span></td><td>#ffff00</td></tr>
+                <tr><td>Data</td><td><span class="color-cell"><span class="mini data"></span>Cyan</span></td><td>#00ffff</td></tr>
+                <tr><td>Control Flow</td><td><span class="color-cell"><span class="mini control-flow"></span>Orange</span></td><td>#ffa500</td></tr>
+                <tr><td>Exceptions</td><td><span class="color-cell"><span class="mini exceptions"></span>Red</span></td><td>#ff4444</td></tr>
+                <tr><td>String Literals</td><td><span class="color-cell"><span class="mini strings"></span>Chartreuse</span></td><td>#7fff00</td></tr>
+                <tr><td>Literal Values</td><td><span class="color-cell"><span class="mini literals"></span>Dodger Blue</span></td><td>#1e90ff</td></tr>
+                <tr><td>Namespaces</td><td><span class="color-cell"><span class="mini namespaces"></span>Dark Turquoise</span></td><td>#00ced1</td></tr>
+                <tr><td>Keywords</td><td><span class="color-cell"><span class="mini keywords"></span>Orchid</span></td><td>#da70d6</td></tr>
             </table>
         </div>
 
