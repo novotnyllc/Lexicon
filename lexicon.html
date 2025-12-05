@@ -265,7 +265,7 @@
             left: 50%;
             transform: translateX(-50%);
             background: var(--bg-tertiary);
-            border: 1px solid var(--accent-blue);
+            border: 1px solid var(--active-value-types);
             color: var(--text-primary);
             padding: 8px 12px;
             border-radius: 6px;
@@ -288,7 +288,7 @@
             left: 50%;
             transform: translateX(-50%);
             border: 6px solid transparent;
-            border-top-color: var(--accent-blue);
+            border-top-color: var(--active-value-types);
             margin-bottom: -4px;
             z-index: 100;
         }
@@ -316,10 +316,15 @@
         /* ==========================================================================
            TYPOGRAPHY
            ========================================================================== */
+        ::selection {
+            background: var(--active-reference-types);
+            color: var(--bg-primary);
+        }
+
         h1 {
             font-size: 3rem;
             font-weight: 700;
-            color: #fff;
+            color: var(--active-reference-types);
             margin-bottom: 12px;
             letter-spacing: -1.5px;
         }
@@ -327,29 +332,29 @@
         h2 {
             font-size: 1.9rem;
             font-weight: 600;
-            color: #fff;
+            color: var(--active-reference-types);
             margin: 56px 0 20px 0;
             padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--active-comment-heading);
         }
 
         h3 {
             font-size: 1.4rem;
             font-weight: 600;
-            color: var(--accent-cyan);
+            color: var(--active-reference-types);
             margin: 36px 0 14px 0;
         }
 
         h4 {
             font-size: 1.15rem;
             font-weight: 600;
-            color: var(--accent-purple);
+            color: var(--active-interfaces);
             margin: 28px 0 12px 0;
         }
 
         p { margin-bottom: 20px; }
 
-        a { color: var(--accent-blue); text-decoration: none; }
+        a { color: var(--active-value-types); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
         .subtitle {
@@ -387,7 +392,7 @@
             margin-top: 12px;
         }
 
-        sup { font-size: 0.7em; color: var(--accent-cyan); }
+        sup { font-size: 0.7em; color: var(--active-interfaces); }
 
         /* ==========================================================================
            CODE FORMATTING
@@ -435,7 +440,7 @@
 
         th {
             background: var(--bg-secondary);
-            color: var(--accent-cyan);
+            color: var(--active-interfaces);
             font-weight: 600;
         }
 
@@ -453,7 +458,7 @@
         /* Task analysis table */
         .task-table td:first-child {
             font-weight: 600;
-            color: var(--accent-cyan);
+            color: var(--active-interfaces);
         }
 
         /* Contrast table */
@@ -463,7 +468,7 @@
            CONTENT BOXES
            ========================================================================== */
         blockquote {
-            border-left: 3px solid var(--accent-cyan);
+            border-left: 3px solid var(--active-interfaces);
             padding-left: 20px;
             margin: 28px 0;
             font-style: italic;
@@ -472,7 +477,7 @@
 
         .highlight-box {
             background: var(--bg-secondary);
-            border-left: 4px solid var(--accent-blue);
+            border-left: 4px solid var(--active-value-types);
             padding: 16px 20px;
             margin: 24px 0;
             border-radius: 0 8px 8px 0;
@@ -480,7 +485,7 @@
 
         .note-box {
             background: var(--bg-secondary);
-            border-left: 4px solid #9ece6a;
+            border-left: 4px solid var(--active-strings);
             padding: 16px 20px;
             margin: 24px 0;
             border-radius: 0 8px 8px 0;
@@ -488,7 +493,7 @@
 
         .warning-box {
             background: var(--bg-secondary);
-            border-left: 4px solid #ff9e64;
+            border-left: 4px solid var(--active-control-flow);
             padding: 16px 20px;
             margin: 24px 0;
             border-radius: 0 8px 8px 0;
@@ -496,10 +501,37 @@
 
         .goals-box {
             background: rgba(122, 162, 247, 0.1);
-            border-left: 4px solid var(--accent-blue);
+            border-left: 4px solid var(--active-value-types);
             padding: 16px 20px;
             margin: 24px 0;
             border-radius: 0 8px 8px 0;
+        }
+
+        .goals-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0 0;
+        }
+
+        .goals-list li {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .goals-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .goal-icon {
+            color: var(--active-value-types);
+            font-size: 1.25em;
+            line-height: 1;
+            flex-shrink: 0;
+            width: 1.2em;
+            text-align: center;
         }
 
         /* ==========================================================================
@@ -521,7 +553,7 @@
         }
 
         .glance-icon {
-            color: var(--accent-cyan);
+            color: var(--active-interfaces);
             font-size: 1.1em;
             flex-shrink: 0;
             width: 1.2em;
@@ -572,8 +604,19 @@
         }
 
         .ref-num {
-            color: var(--accent-cyan);
+            color: var(--active-interfaces);
             font-weight: bold;
+        }
+
+        .ref-back {
+            margin-left: 0.5em;
+            text-decoration: none;
+            color: var(--accent-blue);
+            font-family: monospace; /* Make the arrow look consistent */
+        }
+
+        .ref-back:hover {
+            text-decoration: underline;
         }
 
         /* ==========================================================================
@@ -1152,9 +1195,10 @@
         body:has(#preview-nocturne:checked) .theme-dock label[for="preview-nocturne"],
         body:has(#preview-patina:checked) .theme-dock label[for="preview-patina"],
         body:has(#preview-beacon:checked) .theme-dock label[for="preview-beacon"] {
-            background: var(--accent-blue);
-            border-color: var(--accent-blue);
-            color: #fff;
+            background: var(--active-value-types);
+            border-color: var(--active-value-types);
+            color: var(--bg-primary);
+            font-weight: 600;
         }
 
         /* === TOUCH DEVICES: Larger targets, no hover effects === */
@@ -1235,7 +1279,7 @@
         }
 
         .theme-link a {
-            color: var(--accent-blue);
+            color: var(--active-value-types);
         }
 
         .theme-preview {
@@ -1611,10 +1655,12 @@
 
         <div class="goals-box">
             <p><strong>Lexicon aims to:</strong></p>
-            <p>1. <strong>Accelerate comprehension</strong> during code review by making type semantics (reference vs. value), control flow structure, and exception boundaries visually apparent without requiring token-by-token reading.</p>
-            <p>2. <strong>Reduce cognitive search</strong> during debugging by highlighting the constructs most relevant to execution tracing: control flow decisions, exception boundaries, and captured variables.</p>
-            <p>3. <strong>Support onboarding</strong> to unfamiliar codebases by providing consistent visual scaffolding that helps developers identify structural patterns before they understand the specific logic.</p>
-            <p>4. <strong>Prevent common errors</strong> by making closure captures and deprecated APIs visually distinct, prompting careful attention where it's warranted.</p>
+            <ul class="goals-list">
+                <li><span class="goal-icon">▶</span> <span><strong>Accelerate comprehension</strong> during code review by making type semantics (reference vs. value), control flow structure, and exception boundaries visually apparent without requiring token-by-token reading.</span></li>
+                <li><span class="goal-icon">◉</span> <span><strong>Reduce cognitive search</strong> during debugging by highlighting the constructs most relevant to execution tracing: control flow decisions, exception boundaries, and captured variables.</span></li>
+                <li><span class="goal-icon">⊞</span> <span><strong>Support onboarding</strong> to unfamiliar codebases by providing consistent visual scaffolding that helps developers identify structural patterns before they understand the specific logic.</span></li>
+                <li><span class="goal-icon">⨂</span> <span><strong>Prevent common errors</strong> by making closure captures and deprecated APIs visually distinct, prompting careful attention where it's warranted.</span></li>
+            </ul>
         </div>
 
         <!-- ============================================ -->
@@ -2178,21 +2224,21 @@
 
         <h3>Program Comprehension and Visual Cues</h3>
 
-        <p>In 1988, Ronald Baecker demonstrated that visual enhancements could improve program comprehension. His study found that improved layout—combining typography, indentation, and color—increased correct answers by 11% and improved readability by 25%.<sup>[1]</sup> These improvements came from combined visual enhancements, providing evidence that thoughtful visual design aids code reading.</p>
+        <p>In 1988, Ronald Baecker demonstrated that visual enhancements could improve program comprehension. His study found that improved layout—combining typography, indentation, and color—increased correct answers by 11% and improved readability by 25%.<sup><a href="#ref-1" id="cite-1">[1]</a></sup> These improvements came from combined visual enhancements, providing evidence that thoughtful visual design aids code reading.</p>
 
-        <p>A 2015 eye-tracking study by Advait Sarkar found that developers reading highlighted code exhibited lower cognitive load indicators than those reading plain text.<sup>[2]</sup> The benefit became weaker with increased programming experience, suggesting that highlighting may provide greatest benefit during onboarding to unfamiliar codebases—one of Lexicon's explicit design goals.</p>
+        <p>A 2015 eye-tracking study by Advait Sarkar found that developers reading highlighted code exhibited lower cognitive load indicators than those reading plain text.<sup><a href="#ref-2" id="cite-2">[2]</a></sup> The benefit became weaker with increased programming experience, suggesting that highlighting may provide greatest benefit during onboarding to unfamiliar codebases—one of Lexicon's explicit design goals.</p>
 
-        <p>The most important finding for semantic highlighting comes from Gilmore and Green's work on "programming plans."<sup>[3]</sup> Their study found that <strong>visual cues only helped when they matched the task at hand</strong>. Participants found surface bugs faster with control-structure highlighting, but deep bugs faster with cognitive-plan coloring. This insight drives Lexicon's category selection: categories are chosen to align with tasks developers actually perform.</p>
+        <p>The most important finding for semantic highlighting comes from Gilmore and Green's work on "programming plans."<sup><a href="#ref-3" id="cite-3">[3]</a></sup> Their study found that <strong>visual cues only helped when they matched the task at hand</strong>. Participants found surface bugs faster with control-structure highlighting, but deep bugs faster with cognitive-plan coloring. This insight drives Lexicon's category selection: categories are chosen to align with tasks developers actually perform.</p>
 
         <h3>Color Psychology</h3>
 
-        <p>Elliot and Maier's Color-in-Context Theory<sup>[4]</sup> establishes that color carries psychological meaning and influences cognitive processing, often without conscious awareness. Lexicon uses this as a design heuristic: warm colors (orange) for attention-demanding constructs like control flow, cool colors (blue, purple) for structural elements, desaturated red (coral) for exceptions to distinguish from IDE error markers.</p>
+        <p>Elliot and Maier's Color-in-Context Theory<sup><a href="#ref-4" id="cite-4">[4]</a></sup> establishes that color carries psychological meaning and influences cognitive processing, often without conscious awareness. Lexicon uses this as a design heuristic: warm colors (orange) for attention-demanding constructs like control flow, cool colors (blue, purple) for structural elements, desaturated red (coral) for exceptions to distinguish from IDE error markers.</p>
 
         <blockquote>Color has meaning, and this has a direct and automatic influence on cognitive processes, including attention.<br>— Elliot & Maier, Color-in-Context Theory</blockquote>
 
         <h3>Category Count</h3>
 
-        <p>George Miller's (1956) "seven plus or minus two" finding<sup>[5]</sup> concerns serial recall of arbitrary items in short-term memory—not visual categorization. Research on visual search suggests that practiced users can distinguish many more than seven categories when the categories are meaningful and consistent. Lexicon's eleven semantic categories cluster into related groups (types, data, flow) that map to distinctions developers already make. With use, the vocabulary becomes intuitive.</p>
+        <p>George Miller's (1956) "seven plus or minus two" finding<sup><a href="#ref-5" id="cite-5">[5]</a></sup> concerns serial recall of arbitrary items in short-term memory—not visual categorization. Research on visual search suggests that practiced users can distinguish many more than seven categories when the categories are meaningful and consistent. Lexicon's eleven semantic categories cluster into related groups (types, data, flow) that map to distinctions developers already make. With use, the vocabulary becomes intuitive.</p>
 
         <!-- ============================================ -->
         <h2 id="semantic-map">6. The Semantic Map</h2>
@@ -2678,7 +2724,7 @@
 
         <h3 id="contrast">11.1 WCAG Contrast Ratios</h3>
 
-        <p>The Web Content Accessibility Guidelines (WCAG) 2.1 specify minimum contrast ratios: Level AA requires 4.5:1 for normal text; Level AAA requires 7:1. The following table presents <strong>calculated</strong> contrast ratios for Lexicon Twilight against background <code>#0d1117</code>. These are computed values using the WCAG relative luminance formula; actual display contrast varies with monitor calibration, ambient lighting, and individual vision.</p>
+        <p>The Web Content Accessibility Guidelines (WCAG) 2.1 specify minimum contrast ratios: Level AA requires 4.5:1 for normal text; Level AAA requires 7:1.<sup><a href="#ref-6" id="cite-6">[6]</a></sup> The following table presents <strong>calculated</strong> contrast ratios for Lexicon Twilight against background <code>#0d1117</code>. These are computed values using the WCAG relative luminance formula; actual display contrast varies with monitor calibration, ambient lighting, and individual vision.</p>
 
         <table>
             <thead>
@@ -2821,28 +2867,28 @@
         <div class="references" id="references">
             <h2>References</h2>
 
-            <div class="reference">
-                <span class="ref-num">[1]</span> Baecker, R. M. (1988). "Enhancing program readability and comprehensibility with tools for program visualization." <em>Proceedings of the 10th International Conference on Software Engineering (ICSE '88)</em>, pp. 356-366. IEEE Computer Society Press.
+            <div class="reference" id="ref-1">
+                <span class="ref-num">[1]</span> Baecker, R. M. (1988). "Enhancing program readability and comprehensibility with tools for program visualization." <em>Proceedings of the 10th International Conference on Software Engineering (ICSE '88)</em>, pp. 356-366. IEEE Computer Society Press. <a href="#cite-1" class="ref-back">^</a>
             </div>
 
-            <div class="reference">
-                <span class="ref-num">[2]</span> Sarkar, A. (2015). "The impact of syntax colouring on program comprehension." <em>Proceedings of the 26th Annual Conference of the Psychology of Programming Interest Group (PPIG 2015)</em>, pp. 49-58.
+            <div class="reference" id="ref-2">
+                <span class="ref-num">[2]</span> Sarkar, A. (2015). "The impact of syntax colouring on program comprehension." <em>Proceedings of the 26th Annual Conference of the Psychology of Programming Interest Group (PPIG 2015)</em>, pp. 49-58. <a href="#cite-2" class="ref-back">^</a>
             </div>
 
-            <div class="reference">
-                <span class="ref-num">[3]</span> Gilmore, D. J., & Green, T. R. G. (1988). "Programming Plans and Programming Expertise." <em>The Quarterly Journal of Experimental Psychology Section A</em>, 40(3), pp. 423-442.
+            <div class="reference" id="ref-3">
+                <span class="ref-num">[3]</span> Gilmore, D. J., & Green, T. R. G. (1988). "Programming Plans and Programming Expertise." <em>The Quarterly Journal of Experimental Psychology Section A</em>, 40(3), pp. 423-442. <a href="#cite-3" class="ref-back">^</a>
             </div>
 
-            <div class="reference">
-                <span class="ref-num">[4]</span> Elliot, A. J., & Maier, M. A. (2012). "Color-in-Context Theory." <em>Advances in Experimental Social Psychology</em>, Vol. 45, pp. 61-125. Academic Press (Elsevier).
+            <div class="reference" id="ref-4">
+                <span class="ref-num">[4]</span> Elliot, A. J., & Maier, M. A. (2012). "Color-in-Context Theory." <em>Advances in Experimental Social Psychology</em>, Vol. 45, pp. 61-125. Academic Press (Elsevier). <a href="#cite-4" class="ref-back">^</a>
             </div>
 
-            <div class="reference">
-                <span class="ref-num">[5]</span> Miller, G. A. (1956). "The magical number seven, plus or minus two: Some limits on our capacity for processing information." <em>Psychological Review</em>, 63(2), pp. 81-97.
+            <div class="reference" id="ref-5">
+                <span class="ref-num">[5]</span> Miller, G. A. (1956). "The magical number seven, plus or minus two: Some limits on our capacity for processing information." <em>Psychological Review</em>, 63(2), pp. 81-97. <a href="#cite-5" class="ref-back">^</a>
             </div>
 
-            <div class="reference">
-                <span class="ref-num">[6]</span> Web Content Accessibility Guidelines (WCAG) 2.1. (2018). W3C Recommendation. https://www.w3.org/TR/WCAG21/
+            <div class="reference" id="ref-6">
+                <span class="ref-num">[6]</span> Web Content Accessibility Guidelines (WCAG) 2.1. (2018). W3C Recommendation. https://www.w3.org/TR/WCAG21/ <a href="#cite-6" class="ref-back">^</a>
             </div>
         </div>
 
