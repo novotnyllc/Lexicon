@@ -548,6 +548,8 @@
             width: 28px;
             height: 28px;
             border-radius: 4px;
+            /* Use the text color as background for swatches */
+            background-color: currentColor;
         }
 
         .theme-card table { font-size: 0.85rem; }
@@ -565,6 +567,8 @@
             height: 16px;
             border-radius: 3px;
             display: inline-block;
+            /* Use the text color as background for mini swatches */
+            background-color: currentColor;
         }
 
         /* ==========================================================================
@@ -718,168 +722,139 @@
         .cheat-keywords { color: var(--active-keywords); }
 
         /* ==========================================================================
-           GLACIER THEME
+           GLACIER THEME - Text colors for inline use
            ========================================================================== */
-        .glacier-reference-types { background: var(--gl-reference-types); }
-        .glacier-value-types { background: var(--gl-value-types); }
-        .glacier-interfaces { background: var(--gl-interfaces); }
-        .glacier-callables { background: var(--gl-callables); }
-        .glacier-data { background: var(--gl-data); }
-        .glacier-control-flow { background: var(--gl-control-flow); }
-        .glacier-exceptions { background: var(--gl-exceptions); }
-        .glacier-strings { background: var(--gl-strings); }
-        .glacier-literals { background: var(--gl-literals); }
-        .glacier-namespaces { background: var(--gl-namespaces); }
-        .glacier-keywords { background: var(--gl-keywords); }
+        .glacier-reference-types { color: var(--gl-reference-types); }
+        .glacier-value-types { color: var(--gl-value-types); }
+        .glacier-interfaces { color: var(--gl-interfaces); }
+        .glacier-callables { color: var(--gl-callables); }
+        .glacier-data { color: var(--gl-data); }
         .glacier-control-flow { color: var(--gl-control-flow); }
         .glacier-exceptions { color: var(--gl-exceptions); }
+        .glacier-strings { color: var(--gl-strings); }
+        .glacier-literals { color: var(--gl-literals); }
+        .glacier-namespaces { color: var(--gl-namespaces); }
+        .glacier-keywords { color: var(--gl-keywords); }
 
         /* ==========================================================================
-           EMBER THEME
+           EMBER THEME - Text colors for inline use
            ========================================================================== */
-        .ember-reference-types { background: var(--em-reference-types); }
-        .ember-value-types { background: var(--em-value-types); }
-        .ember-interfaces { background: var(--em-interfaces); }
-        .ember-callables { background: var(--em-callables); }
-        .ember-data { background: var(--em-data); }
-        .ember-control-flow { background: var(--em-control-flow); }
-        .ember-exceptions { background: var(--em-exceptions); }
-        .ember-strings { background: var(--em-strings); }
-        .ember-literals { background: var(--em-literals); }
-        .ember-namespaces { background: var(--em-namespaces); }
-        .ember-keywords { background: var(--em-keywords); }
         .ember-reference-types { color: var(--em-reference-types); }
         .ember-value-types { color: var(--em-value-types); }
+        .ember-interfaces { color: var(--em-interfaces); }
+        .ember-callables { color: var(--em-callables); }
         .ember-data { color: var(--em-data); }
+        .ember-control-flow { color: var(--em-control-flow); }
+        .ember-exceptions { color: var(--em-exceptions); }
         .ember-strings { color: var(--em-strings); }
+        .ember-literals { color: var(--em-literals); }
+        .ember-namespaces { color: var(--em-namespaces); }
+        .ember-keywords { color: var(--em-keywords); }
 
         /* ==========================================================================
-           CANOPY THEME
+           CANOPY THEME - Text colors for inline use
            ========================================================================== */
-        .canopy-reference-types { background: var(--ca-reference-types); }
-        .canopy-value-types { background: var(--ca-value-types); }
-        .canopy-interfaces { background: var(--ca-interfaces); }
-        .canopy-callables { background: var(--ca-callables); }
-        .canopy-data { background: var(--ca-data); }
-        .canopy-control-flow { background: var(--ca-control-flow); }
-        .canopy-exceptions { background: var(--ca-exceptions); }
-        .canopy-strings { background: var(--ca-strings); }
-        .canopy-literals { background: var(--ca-literals); }
-        .canopy-namespaces { background: var(--ca-namespaces); }
-        .canopy-keywords { background: var(--ca-keywords); }
         .canopy-reference-types { color: var(--ca-reference-types); }
         .canopy-value-types { color: var(--ca-value-types); }
+        .canopy-interfaces { color: var(--ca-interfaces); }
+        .canopy-callables { color: var(--ca-callables); }
         .canopy-data { color: var(--ca-data); }
-        .canopy-strings { color: var(--ca-strings); }
         .canopy-control-flow { color: var(--ca-control-flow); }
+        .canopy-exceptions { color: var(--ca-exceptions); }
+        .canopy-strings { color: var(--ca-strings); }
+        .canopy-literals { color: var(--ca-literals); }
+        .canopy-namespaces { color: var(--ca-namespaces); }
+        .canopy-keywords { color: var(--ca-keywords); }
 
         /* ==========================================================================
-           NEON THEME
+           NEON THEME - Text colors for inline use
            ========================================================================== */
-        .neon-reference-types { background: var(--ne-reference-types); }
-        .neon-value-types { background: var(--ne-value-types); }
-        .neon-interfaces { background: var(--ne-interfaces); }
-        .neon-callables { background: var(--ne-callables); }
-        .neon-data { background: var(--ne-data); }
-        .neon-control-flow { background: var(--ne-control-flow); }
-        .neon-exceptions { background: var(--ne-exceptions); }
-        .neon-strings { background: var(--ne-strings); }
-        .neon-literals { background: var(--ne-literals); }
-        .neon-namespaces { background: var(--ne-namespaces); }
-        .neon-keywords { background: var(--ne-keywords); }
         .neon-reference-types { color: var(--ne-reference-types); }
         .neon-value-types { color: var(--ne-value-types); }
+        .neon-interfaces { color: var(--ne-interfaces); }
+        .neon-callables { color: var(--ne-callables); }
+        .neon-data { color: var(--ne-data); }
         .neon-control-flow { color: var(--ne-control-flow); }
+        .neon-exceptions { color: var(--ne-exceptions); }
         .neon-strings { color: var(--ne-strings); }
+        .neon-literals { color: var(--ne-literals); }
+        .neon-namespaces { color: var(--ne-namespaces); }
+        .neon-keywords { color: var(--ne-keywords); }
 
         /* ==========================================================================
-           SOLSTICE THEME
+           SOLSTICE THEME - Text colors for inline use
            ========================================================================== */
-        .solstice-reference-types { background: var(--so-reference-types); }
-        .solstice-value-types { background: var(--so-value-types); }
-        .solstice-interfaces { background: var(--so-interfaces); }
-        .solstice-callables { background: var(--so-callables); }
-        .solstice-data { background: var(--so-data); }
-        .solstice-control-flow { background: var(--so-control-flow); }
-        .solstice-exceptions { background: var(--so-exceptions); }
-        .solstice-strings { background: var(--so-strings); }
-        .solstice-literals { background: var(--so-literals); }
-        .solstice-namespaces { background: var(--so-namespaces); }
-        .solstice-keywords { background: var(--so-keywords); }
         .solstice-reference-types { color: var(--so-reference-types); }
+        .solstice-value-types { color: var(--so-value-types); }
+        .solstice-interfaces { color: var(--so-interfaces); }
         .solstice-callables { color: var(--so-callables); }
         .solstice-data { color: var(--so-data); }
+        .solstice-control-flow { color: var(--so-control-flow); }
+        .solstice-exceptions { color: var(--so-exceptions); }
+        .solstice-strings { color: var(--so-strings); }
+        .solstice-literals { color: var(--so-literals); }
+        .solstice-namespaces { color: var(--so-namespaces); }
+        .solstice-keywords { color: var(--so-keywords); }
 
         /* ==========================================================================
-           WHISPER THEME
+           WHISPER THEME - Text colors for inline use
            ========================================================================== */
-        .whisper-reference-types { background: var(--wh-reference-types); }
-        .whisper-value-types { background: var(--wh-value-types); }
-        .whisper-interfaces { background: var(--wh-interfaces); }
-        .whisper-callables { background: var(--wh-callables); }
-        .whisper-data { background: var(--wh-data); }
-        .whisper-control-flow { background: var(--wh-control-flow); }
-        .whisper-exceptions { background: var(--wh-exceptions); }
-        .whisper-strings { background: var(--wh-strings); }
-        .whisper-literals { background: var(--wh-literals); }
-        .whisper-namespaces { background: var(--wh-namespaces); }
-        .whisper-keywords { background: var(--wh-keywords); }
         .whisper-reference-types { color: var(--wh-reference-types); }
+        .whisper-value-types { color: var(--wh-value-types); }
+        .whisper-interfaces { color: var(--wh-interfaces); }
         .whisper-callables { color: var(--wh-callables); }
+        .whisper-data { color: var(--wh-data); }
         .whisper-control-flow { color: var(--wh-control-flow); }
         .whisper-exceptions { color: var(--wh-exceptions); }
+        .whisper-strings { color: var(--wh-strings); }
+        .whisper-literals { color: var(--wh-literals); }
+        .whisper-namespaces { color: var(--wh-namespaces); }
+        .whisper-keywords { color: var(--wh-keywords); }
 
         /* ==========================================================================
-           NOCTURNE THEME
+           NOCTURNE THEME - Text colors for inline use
            ========================================================================== */
-        .nocturne-reference-types { background: var(--no-reference-types); }
-        .nocturne-value-types { background: var(--no-value-types); }
-        .nocturne-interfaces { background: var(--no-interfaces); }
-        .nocturne-callables { background: var(--no-callables); }
-        .nocturne-data { background: var(--no-data); }
-        .nocturne-control-flow { background: var(--no-control-flow); }
-        .nocturne-exceptions { background: var(--no-exceptions); }
-        .nocturne-strings { background: var(--no-strings); }
-        .nocturne-literals { background: var(--no-literals); }
-        .nocturne-namespaces { background: var(--no-namespaces); }
-        .nocturne-keywords { background: var(--no-keywords); }
         .nocturne-reference-types { color: var(--no-reference-types); }
+        .nocturne-value-types { color: var(--no-value-types); }
+        .nocturne-interfaces { color: var(--no-interfaces); }
         .nocturne-callables { color: var(--no-callables); }
+        .nocturne-data { color: var(--no-data); }
         .nocturne-control-flow { color: var(--no-control-flow); }
+        .nocturne-exceptions { color: var(--no-exceptions); }
+        .nocturne-strings { color: var(--no-strings); }
+        .nocturne-literals { color: var(--no-literals); }
+        .nocturne-namespaces { color: var(--no-namespaces); }
+        .nocturne-keywords { color: var(--no-keywords); }
 
         /* ==========================================================================
-           PATINA THEME
+           PATINA THEME - Text colors for inline use
            ========================================================================== */
-        .patina-reference-types { background: var(--pa-reference-types); }
-        .patina-value-types { background: var(--pa-value-types); }
-        .patina-interfaces { background: var(--pa-interfaces); }
-        .patina-callables { background: var(--pa-callables); }
-        .patina-data { background: var(--pa-data); }
-        .patina-control-flow { background: var(--pa-control-flow); }
-        .patina-exceptions { background: var(--pa-exceptions); }
-        .patina-strings { background: var(--pa-strings); }
-        .patina-literals { background: var(--pa-literals); }
-        .patina-namespaces { background: var(--pa-namespaces); }
-        .patina-keywords { background: var(--pa-keywords); }
         .patina-reference-types { color: var(--pa-reference-types); }
+        .patina-value-types { color: var(--pa-value-types); }
+        .patina-interfaces { color: var(--pa-interfaces); }
+        .patina-callables { color: var(--pa-callables); }
+        .patina-data { color: var(--pa-data); }
         .patina-control-flow { color: var(--pa-control-flow); }
+        .patina-exceptions { color: var(--pa-exceptions); }
         .patina-strings { color: var(--pa-strings); }
+        .patina-literals { color: var(--pa-literals); }
+        .patina-namespaces { color: var(--pa-namespaces); }
+        .patina-keywords { color: var(--pa-keywords); }
 
         /* ==========================================================================
-           BEACON THEME (High Contrast)
+           BEACON THEME (High Contrast) - Text colors for inline use
            ========================================================================== */
-        .beacon-reference-types { background: var(--be-reference-types); }
-        .beacon-value-types { background: var(--be-value-types); }
-        .beacon-interfaces { background: var(--be-interfaces); }
-        .beacon-callables { background: var(--be-callables); }
-        .beacon-data { background: var(--be-data); }
-        .beacon-control-flow { background: var(--be-control-flow); }
-        .beacon-exceptions { background: var(--be-exceptions); }
-        .beacon-strings { background: var(--be-strings); }
-        .beacon-literals { background: var(--be-literals); }
-        .beacon-namespaces { background: var(--be-namespaces); }
-        .beacon-keywords { background: var(--be-keywords); }
+        .beacon-reference-types { color: var(--be-reference-types); }
+        .beacon-value-types { color: var(--be-value-types); }
+        .beacon-interfaces { color: var(--be-interfaces); }
+        .beacon-callables { color: var(--be-callables); }
+        .beacon-data { color: var(--be-data); }
+        .beacon-control-flow { color: var(--be-control-flow); }
         .beacon-exceptions { color: var(--be-exceptions); }
+        .beacon-strings { color: var(--be-strings); }
+        .beacon-literals { color: var(--be-literals); }
+        .beacon-namespaces { color: var(--be-namespaces); }
+        .beacon-keywords { color: var(--be-keywords); }
         .beacon-strings { color: var(--be-strings); }
         .beacon-data { color: var(--be-data); }
         .beacon-callables { color: var(--be-callables); }
@@ -897,6 +872,140 @@
             border: 1px solid var(--border-color);
             border-radius: 8px 8px 0 0;
             border-bottom: none;
+        }
+
+        /* Sticky theme switcher - ultra-compact bar fixed at bottom */
+        .theme-switcher.theme-switcher-sticky {
+            /* Dock sizing variables - base unit system */
+            --dock-unit: 2px;
+            --dock-card-count: 10;
+            --dock-card-hover-scale: 1.75;
+            
+            /* Derived from base unit */
+            --dock-gap: var(--dock-unit);
+            --dock-padding: calc(var(--dock-unit) * 2);
+            --dock-bottom: calc(var(--dock-unit) * 3);
+            --dock-radius: calc(var(--dock-unit) * 1.5);
+            --dock-card-padding-top: var(--dock-unit);
+            --dock-card-padding-bottom: calc(var(--dock-unit) * 2);
+            --dock-color-bar-height: var(--dock-unit);
+            --dock-font-size: calc(var(--dock-unit) * 4);
+            
+            /* Card dimensions */
+            --dock-card-width: calc(var(--dock-unit) * 19);
+            --dock-card-height: calc(var(--dock-unit) * 11);
+            --dock-card-width-hover: calc(var(--dock-card-width) * var(--dock-card-hover-scale));
+            --dock-card-height-hover: calc(var(--dock-card-height) * var(--dock-card-hover-scale));
+            --dock-card-grow: calc(var(--dock-card-width-hover) - var(--dock-card-width));
+            --dock-lift: calc(var(--dock-card-height-hover) - var(--dock-card-height));
+            
+            /* Hover derived values */
+            --dock-font-size-hover: calc(var(--dock-font-size) * var(--dock-card-hover-scale));
+            --dock-card-padding-top-hover: calc(var(--dock-card-padding-top) * var(--dock-card-hover-scale));
+            --dock-card-padding-bottom-hover: calc(var(--dock-card-padding-bottom) * var(--dock-card-hover-scale));
+            --dock-radius-hover: calc(var(--dock-radius) * var(--dock-card-hover-scale));
+            --dock-color-bar-height-hover: calc(var(--dock-color-bar-height) * var(--dock-card-hover-scale));
+            
+            /* Visual effects - derived from base unit */
+            --dock-border-width: calc(var(--dock-unit) * 0.5);
+            --dock-blur: calc(var(--dock-unit) * 8);
+            --dock-shadow-y: calc(var(--dock-unit) * 2);
+            --dock-shadow-blur: calc(var(--dock-unit) * 10);
+            --dock-card-shadow-y: calc(var(--dock-unit) * 0.5);
+            --dock-card-shadow-blur: calc(var(--dock-unit) * 1.5);
+            --dock-card-shadow-y-hover: var(--dock-unit);
+            --dock-card-shadow-blur-hover: calc(var(--dock-unit) * 4);
+            
+            /* Dock dimensions */
+            --dock-width: calc(
+                (var(--dock-card-count) * var(--dock-card-width)) + 
+                ((var(--dock-card-count) - 1) * var(--dock-gap)) + 
+                (var(--dock-padding) * 2) + 
+                var(--dock-card-grow)
+            );
+            --dock-height: calc(var(--dock-card-height) + (var(--dock-padding) * 2));
+            
+            position: fixed;
+            bottom: var(--dock-bottom);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            margin-bottom: 0;
+            gap: var(--dock-gap);
+            border-radius: var(--dock-radius);
+            border: var(--dock-border-width) solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 var(--dock-shadow-y) var(--dock-shadow-blur) rgba(0, 0, 0, 0.3);
+            -webkit-backdrop-filter: blur(var(--dock-blur)) saturate(180%);
+            backdrop-filter: blur(var(--dock-blur)) saturate(180%);            
+            background: rgba(30, 35, 45, 0.25);
+            flex-wrap: nowrap;
+            align-items: flex-end;
+            justify-content: center;
+            padding: var(--dock-padding);
+            overflow: visible;
+            width: var(--dock-width);
+            height: var(--dock-height);
+        }
+
+        /* Default: small labels - box centered in dock, color bar inside at bottom */
+        .theme-switcher.theme-switcher-sticky label {
+            padding: var(--dock-card-padding-top) 0 var(--dock-card-padding-bottom) 0;
+            font-size: var(--dock-font-size);
+            border-radius: var(--dock-radius);
+            overflow: hidden;
+            box-shadow: 0 var(--dock-card-shadow-y) var(--dock-card-shadow-blur) rgba(0, 0, 0, 0.3);
+            transition: transform 0.25s ease-out,
+                        width 0.25s ease-out,
+                        height 0.25s ease-out,
+                        padding 0.25s ease-out,
+                        font-size 0.25s ease-out,
+                        margin-bottom 0.25s ease-out,
+                        box-shadow 0.25s ease-out;
+            position: relative;
+            transform-origin: center bottom;
+            width: var(--dock-card-width);
+            height: var(--dock-card-height);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* Color bar at bottom inside the label */
+        .theme-switcher.theme-switcher-sticky label::after {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: var(--dock-color-bar-height);
+        }
+
+        /* Hovered item grows upward - transform keeps bottom aligned */
+        .theme-switcher.theme-switcher-sticky label:hover {
+            padding: var(--dock-card-padding-top-hover) 0 var(--dock-card-padding-bottom-hover) 0;
+            font-size: var(--dock-font-size-hover);
+            border-radius: var(--dock-radius-hover);
+            box-shadow: 0 var(--dock-card-shadow-y-hover) var(--dock-card-shadow-blur-hover) rgba(0, 0, 0, 0.4);
+            width: var(--dock-card-width-hover);
+            height: var(--dock-card-height-hover);
+            transform: translateY(calc(-1 * var(--dock-lift)));
+            margin-bottom: calc(-1 * var(--dock-lift));
+        }
+
+        .theme-switcher.theme-switcher-sticky label:hover::after {
+            height: var(--dock-color-bar-height-hover);
+        }
+
+        /* Selected theme - stays same size as others, just highlighted */
+        body:has(#preview-twilight:checked) .theme-switcher.theme-switcher-sticky label[for="preview-twilight"],
+        body:has(#preview-glacier:checked) .theme-switcher.theme-switcher-sticky label[for="preview-glacier"],
+        body:has(#preview-ember:checked) .theme-switcher.theme-switcher-sticky label[for="preview-ember"],
+        body:has(#preview-canopy:checked) .theme-switcher.theme-switcher-sticky label[for="preview-canopy"],
+        body:has(#preview-neon:checked) .theme-switcher.theme-switcher-sticky label[for="preview-neon"],
+        body:has(#preview-solstice:checked) .theme-switcher.theme-switcher-sticky label[for="preview-solstice"],
+        body:has(#preview-whisper:checked) .theme-switcher.theme-switcher-sticky label[for="preview-whisper"],
+        body:has(#preview-nocturne:checked) .theme-switcher.theme-switcher-sticky label[for="preview-nocturne"],
+        body:has(#preview-patina:checked) .theme-switcher.theme-switcher-sticky label[for="preview-patina"],
+        body:has(#preview-beacon:checked) .theme-switcher.theme-switcher-sticky label[for="preview-beacon"] {
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
         }
 
         /* Hide global theme radio buttons (off-screen to prevent scroll jump) */
@@ -917,6 +1026,50 @@
             border: 1px solid var(--border-color);
             color: var(--text-muted);
             transition: all 0.15s ease;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 10px;
+        }
+
+        /* Color swatch bands at bottom of each theme button - discrete blocks, not gradient */
+        .theme-switcher label::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .theme-switcher label[for="preview-twilight"]::after {
+            background: linear-gradient(90deg, var(--tw-reference-types) 0% 20%, var(--tw-value-types) 20% 40%, var(--tw-callables) 40% 60%, var(--tw-control-flow) 60% 80%, var(--tw-strings) 80% 100%);
+        }
+        .theme-switcher label[for="preview-glacier"]::after {
+            background: linear-gradient(90deg, var(--gl-reference-types) 0% 20%, var(--gl-value-types) 20% 40%, var(--gl-callables) 40% 60%, var(--gl-control-flow) 60% 80%, var(--gl-strings) 80% 100%);
+        }
+        .theme-switcher label[for="preview-ember"]::after {
+            background: linear-gradient(90deg, var(--em-reference-types) 0% 20%, var(--em-value-types) 20% 40%, var(--em-callables) 40% 60%, var(--em-control-flow) 60% 80%, var(--em-strings) 80% 100%);
+        }
+        .theme-switcher label[for="preview-canopy"]::after {
+            background: linear-gradient(90deg, var(--ca-reference-types) 0% 20%, var(--ca-value-types) 20% 40%, var(--ca-callables) 40% 60%, var(--ca-control-flow) 60% 80%, var(--ca-strings) 80% 100%);
+        }
+        .theme-switcher label[for="preview-neon"]::after {
+            background: linear-gradient(90deg, var(--ne-reference-types) 0% 20%, var(--ne-value-types) 20% 40%, var(--ne-callables) 40% 60%, var(--ne-control-flow) 60% 80%, var(--ne-strings) 80% 100%);
+        }
+        .theme-switcher label[for="preview-solstice"]::after {
+            background: linear-gradient(90deg, var(--so-reference-types) 0% 20%, var(--so-value-types) 20% 40%, var(--so-callables) 40% 60%, var(--so-control-flow) 60% 80%, var(--so-strings) 80% 100%);
+        }
+        .theme-switcher label[for="preview-whisper"]::after {
+            background: linear-gradient(90deg, var(--wh-reference-types) 0% 20%, var(--wh-value-types) 20% 40%, var(--wh-callables) 40% 60%, var(--wh-control-flow) 60% 80%, var(--wh-strings) 80% 100%);
+        }
+        .theme-switcher label[for="preview-nocturne"]::after {
+            background: linear-gradient(90deg, var(--no-reference-types) 0% 20%, var(--no-value-types) 20% 40%, var(--no-callables) 40% 60%, var(--no-control-flow) 60% 80%, var(--no-strings) 80% 100%);
+        }
+        .theme-switcher label[for="preview-patina"]::after {
+            background: linear-gradient(90deg, var(--pa-reference-types) 0% 20%, var(--pa-value-types) 20% 40%, var(--pa-callables) 40% 60%, var(--pa-control-flow) 60% 80%, var(--pa-strings) 80% 100%);
+        }
+        .theme-switcher label[for="preview-beacon"]::after {
+            background: linear-gradient(90deg, var(--be-reference-types) 0% 20%, var(--be-value-types) 20% 40%, var(--be-callables) 40% 60%, var(--be-control-flow) 60% 80%, var(--be-strings) 80% 100%);
         }
 
         .theme-switcher label:hover {
@@ -2283,19 +2436,6 @@
 
         <p>This code sample demonstrates the Lexicon semantic syntax system with all major semantic categories and decorations:</p>
 
-        <div class="theme-switcher">
-            <label for="preview-twilight">Twilight</label>
-            <label for="preview-glacier">Glacier</label>
-            <label for="preview-ember">Ember</label>
-            <label for="preview-canopy">Canopy</label>
-            <label for="preview-neon">Neon</label>
-            <label for="preview-solstice">Solstice</label>
-            <label for="preview-whisper">Whisper</label>
-            <label for="preview-nocturne">Nocturne</label>
-            <label for="preview-patina">Patina</label>
-            <label for="preview-beacon">Beacon</label>
-        </div>
-
 <pre><code><span class="syn-keyword">using</span> <span class="syn-namespace">System</span>;
 <span class="syn-keyword">using</span> <span class="syn-namespace">System.Collections.Generic</span>;
 <span class="syn-keyword">using</span> <span class="syn-namespace">System.Linq</span>;
@@ -2577,6 +2717,20 @@
             <p>A color vocabulary for code.</p>
             <p>Design document v1.0</p>
         </footer>
+    </div>
+
+    <!-- Sticky theme switcher at bottom -->
+    <div class="theme-switcher theme-switcher-sticky">
+        <label for="preview-twilight" data-name="Twilight">Twilight</label>
+        <label for="preview-glacier" data-name="Glacier">Glacier</label>
+        <label for="preview-ember" data-name="Ember">Ember</label>
+        <label for="preview-canopy" data-name="Canopy">Canopy</label>
+        <label for="preview-neon" data-name="Neon">Neon</label>
+        <label for="preview-solstice" data-name="Solstice">Solstice</label>
+        <label for="preview-whisper" data-name="Whisper">Whisper</label>
+        <label for="preview-nocturne" data-name="Nocturne">Nocturne</label>
+        <label for="preview-patina" data-name="Patina">Patina</label>
+        <label for="preview-beacon" data-name="Beacon">Beacon</label>
     </div>
 </body>
 </html>
