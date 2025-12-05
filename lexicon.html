@@ -442,6 +442,32 @@
         }
 
         /* ==========================================================================
+           AT A GLANCE (Compact List)
+           ========================================================================== */
+        .glance-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 8px 32px;
+            margin-top: 12px;
+        }
+
+        .glance-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .glance-icon {
+            color: var(--accent-cyan);
+            font-size: 1.1em;
+            flex-shrink: 0;
+            width: 1.2em;
+            text-align: center;
+        }
+
+        /* ==========================================================================
            TABLE OF CONTENTS
            ========================================================================== */
         .toc {
@@ -1430,13 +1456,28 @@
 
         <div class="highlight-box">
             <strong>Lexicon at a glance</strong>
-            <ul>
-                <li>Semantic syntax theme system for C# in Visual Studio 2026 with the Codist extension.</li>
-                <li>11 semantic categories: types, data, control flow, exceptions, literals, and more.</li>
-                <li>Designed to support code review, debugging, and onboarding to unfamiliar C# codebases.</li>
-                <li>10 coordinated dark themes sharing the same semantic vocabulary.</li>
-                <li>Recommended starting point: the Lexicon Twilight theme, with Beacon available as a high-contrast option.</li>
-            </ul>
+            <div class="glance-list">
+                <div class="glance-item">
+                    <span class="glance-icon">❖</span>
+                    <span>Semantic syntax theme system for C# in Visual Studio 2026.</span>
+                </div>
+                <div class="glance-item">
+                    <span class="glance-icon">☰</span>
+                    <span>11 semantic categories: types, data, control flow, exceptions, and more.</span>
+                </div>
+                <div class="glance-item">
+                    <span class="glance-icon">◎</span>
+                    <span>Designed to support code review, debugging, and onboarding.</span>
+                </div>
+                <div class="glance-item">
+                    <span class="glance-icon">◑</span>
+                    <span>10 coordinated dark themes sharing the same semantic vocabulary.</span>
+                </div>
+                <div class="glance-item">
+                    <span class="glance-icon">★</span>
+                    <span>Start with <strong>Twilight</strong>; use <strong>Beacon</strong> for high contrast.</span>
+                </div>
+            </div>
         </div>
 
         <h3 id="theme-preview">Theme Preview</h3>
