@@ -233,6 +233,67 @@
         }
 
         /* ==========================================================================
+           INTERACTIVE ELEMENTS (No-JS)
+           ========================================================================== */
+        
+        /* Sticky Headers for Context */
+        h2 {
+            position: sticky;
+            top: 0;
+            background: var(--bg-primary);
+            z-index: 50;
+            padding-top: 20px;
+            margin-top: 0; /* Reset margin for sticky behavior */
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); /* Shadow for depth */
+        }
+        
+        /* CSS-Only Tooltips */
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+            text-decoration-line: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: rgba(255,255,255,0.3);
+        }
+
+        [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--accent-blue);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            pointer-events: none;
+        }
+
+        /* Arrow for tooltip */
+        [data-tooltip]:hover::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--accent-blue);
+            margin-bottom: -4px;
+            z-index: 100;
+        }
+
+        /* ==========================================================================
            BASE & LAYOUT STYLES
            ========================================================================== */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1493,13 +1554,13 @@
 <span class="syn-keyword">namespace</span> <span class="syn-namespace">Lexicon.Demo</span>;
 
 <span class="syn-comment">// Interface: cyan + italic (behavioral contract)</span>
-<span class="syn-keyword">public</span> <span class="syn-keyword">interface</span> <span class="syn-interface">IDocumentProcessor</span>
+<span class="syn-keyword">public</span> <span class="syn-keyword">interface</span> <span class="syn-interface" data-tooltip="Interface: Abstract contract (Cyan Italic)">IDocumentProcessor</span>
 <span class="syn-brace">{</span>
     <span class="syn-comment">// Property: light blue (encapsulated access)</span>
-    <span class="syn-struct">int</span> <span class="syn-property">ProcessedCount</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-brace">}</span>
+    <span class="syn-struct" data-tooltip="Value Type: Stack-allocated integer (Blue)">int</span> <span class="syn-property" data-tooltip="Property: Encapsulated data access (Light Blue)">ProcessedCount</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-brace">}</span>
     
     <span class="syn-comment">// Callable: yellow (executable behavior)</span>
-    <span class="syn-type">Task</span><span class="syn-operator">&lt;</span><span class="syn-type">ProcessingResult</span><span class="syn-operator">&gt;</span> <span class="syn-callable">ProcessAsync</span>(<span class="syn-interface">IEnumerable</span><span class="syn-operator">&lt;</span><span class="syn-type">Document</span><span class="syn-operator">&gt;</span> <span class="syn-parameter">documents</span>);
+    <span class="syn-type" data-tooltip="Reference Type: Heap-allocated object (Purple)">Task</span><span class="syn-operator">&lt;</span><span class="syn-type" data-tooltip="Reference Type: Result object (Purple)">ProcessingResult</span><span class="syn-operator">&gt;</span> <span class="syn-callable" data-tooltip="Method: Executable behavior (Yellow)">ProcessAsync</span>(<span class="syn-interface" data-tooltip="Interface: Collection contract (Cyan Italic)">IEnumerable</span><span class="syn-operator">&lt;</span><span class="syn-type">Document</span><span class="syn-operator">&gt;</span> <span class="syn-parameter" data-tooltip="Parameter: Input data (Light Blue)">documents</span>);
 <span class="syn-brace">}</span></code></pre>
         </div>
 
@@ -2517,25 +2578,25 @@
 <span class="syn-keyword">namespace</span> <span class="syn-namespace">Lexicon.Demo</span>;
 
 <span class="syn-comment">// Interface: cyan + italic (behavioral contract)</span>
-<span class="syn-keyword">public</span> <span class="syn-keyword">interface</span> <span class="syn-interface">IDocumentProcessor</span>
+<span class="syn-keyword">public</span> <span class="syn-keyword">interface</span> <span class="syn-interface" data-tooltip="Interface: Cyan Italic (Behavioral Contract)">IDocumentProcessor</span>
 <span class="syn-brace">{</span>
     <span class="syn-comment">// Property: light blue (encapsulated access)</span>
     <span class="syn-struct">int</span> <span class="syn-property">ProcessedCount</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-brace">}</span>
     
     <span class="syn-comment">// Callable: yellow (executable behavior)</span>
-    <span class="syn-type">Task</span><span class="syn-operator">&lt;</span><span class="syn-type">ProcessingResult</span><span class="syn-operator">&gt;</span> <span class="syn-callable">ProcessAsync</span>(<span class="syn-interface">IEnumerable</span><span class="syn-operator">&lt;</span><span class="syn-type">Document</span><span class="syn-operator">&gt;</span> <span class="syn-parameter">documents</span>);
+    <span class="syn-type">Task</span><span class="syn-operator">&lt;</span><span class="syn-type">ProcessingResult</span><span class="syn-operator">&gt;</span> <span class="syn-callable" data-tooltip="Callable: Yellow (Executable Behavior)">ProcessAsync</span>(<span class="syn-interface">IEnumerable</span><span class="syn-operator">&lt;</span><span class="syn-type">Document</span><span class="syn-operator">&gt;</span> <span class="syn-parameter">documents</span>);
 <span class="syn-brace">}</span>
 
 <span class="syn-comment">// Reference type: purple (heap-allocated, polymorphic)</span>
 <span class="syn-attribute">[ServiceLifetime(ServiceLifetime.Scoped)]</span>
-<span class="syn-keyword">public</span> <span class="syn-keyword">class</span> <span class="syn-type">DocumentProcessor</span> : <span class="syn-interface">IDocumentProcessor</span>, <span class="syn-interface">IDisposable</span>
+<span class="syn-keyword">public</span> <span class="syn-keyword">class</span> <span class="syn-type" data-tooltip="Reference Type: Purple (Heap Allocated)">DocumentProcessor</span> : <span class="syn-interface">IDocumentProcessor</span>, <span class="syn-interface">IDisposable</span>
 <span class="syn-brace">{</span>
     <span class="syn-comment-heading">// # Constants (data + bold)</span>
-    <span class="syn-keyword">private</span> <span class="syn-keyword">const</span> <span class="syn-struct">int</span> <span class="syn-constant">MaxRetries</span> <span class="syn-operator">=</span> <span class="syn-number">3</span>;
-    <span class="syn-keyword">private</span> <span class="syn-keyword">const</span> <span class="syn-type">string</span> <span class="syn-constant">DefaultName</span> <span class="syn-operator">=</span> <span class="syn-string">"Untitled"</span>;
+    <span class="syn-keyword">private</span> <span class="syn-keyword">const</span> <span class="syn-struct">int</span> <span class="syn-constant" data-tooltip="Constant: Bold (Immutable Data)">MaxRetries</span> <span class="syn-operator">=</span> <span class="syn-number">3</span>;
+    <span class="syn-keyword">private</span> <span class="syn-keyword">const</span> <span class="syn-type">string</span> <span class="syn-constant">DefaultName</span> <span class="syn-operator">=</span> <span class="syn-string" data-tooltip="String: Green (Literal Text)">"Untitled"</span>;
     
     <span class="syn-comment-heading">// # Fields</span>
-    <span class="syn-keyword">private</span> <span class="syn-keyword">readonly</span> <span class="syn-interface">ILogger</span> <span class="syn-readonly">_logger</span>;
+    <span class="syn-keyword">private</span> <span class="syn-keyword">readonly</span> <span class="syn-interface">ILogger</span> <span class="syn-readonly" data-tooltip="Data: Light Blue (Readonly Field)">_logger</span>;
     <span class="syn-keyword">private</span> <span class="syn-struct">bool</span> <span class="syn-field">_isDisposed</span>;
     
     <span class="syn-comment">// Property: light blue</span>
@@ -2546,27 +2607,27 @@
         <span class="syn-field">_logger</span> <span class="syn-operator">=</span> <span class="syn-parameter">logger</span> <span class="syn-operator">??</span> <span class="syn-exception">throw</span> <span class="syn-keyword">new</span> <span class="syn-type">ArgumentNullException</span>(<span class="syn-keyword">nameof</span>(<span class="syn-parameter">logger</span>));
     <span class="syn-brace">}</span>
     
-    <span class="syn-keyword">public</span> <span class="syn-keyword">async</span> <span class="syn-type">Task</span><span class="syn-operator">&lt;</span><span class="syn-type">ProcessingResult</span><span class="syn-operator">&gt;</span> <span class="syn-callable">ProcessAsync</span>(<span class="syn-interface">IEnumerable</span><span class="syn-operator">&lt;</span><span class="syn-type">Document</span><span class="syn-operator">&gt;</span> <span class="syn-parameter">documents</span>)
+    <span class="syn-keyword">public</span> <span class="syn-keyword">async</span> <span class="syn-type">Task</span><span class="syn-operator">&lt;</span><span class="syn-type">ProcessingResult</span><span class="syn-operator">&gt;</span> <span class="syn-callable">ProcessAsync</span>(<span class="syn-interface">IEnumerable</span><span class="syn-operator">&lt;</span><span class="syn-type">Document</span><span class="syn-operator">&gt;</span> <span class="syn-parameter" data-tooltip="Data: Light Blue (Parameter)">documents</span>)
     <span class="syn-brace">{</span>
         <span class="syn-keyword">var</span> <span class="syn-variable">results</span> <span class="syn-operator">=</span> <span class="syn-keyword">new</span> <span class="syn-type">List</span><span class="syn-operator">&lt;</span><span class="syn-type">DocumentResult</span><span class="syn-operator">&gt;</span>();
         <span class="syn-keyword">var</span> <span class="syn-variable">retryCount</span> <span class="syn-operator">=</span> <span class="syn-number">0</span>;
         
         <span class="syn-comment">// Control flow: orange + bold (execution path decisions)</span>
-        <span class="syn-control">foreach</span> (<span class="syn-keyword">var</span> <span class="syn-variable">document</span> <span class="syn-control">in</span> <span class="syn-parameter">documents</span>)
+        <span class="syn-control" data-tooltip="Control Flow: Orange Bold (Decision Point)">foreach</span> (<span class="syn-keyword">var</span> <span class="syn-variable">document</span> <span class="syn-control">in</span> <span class="syn-parameter">documents</span>)
         <span class="syn-brace">{</span>
-            <span class="syn-exception">try</span>
+            <span class="syn-exception" data-tooltip="Exception: Coral (Error Handling)">try</span>
             <span class="syn-brace">{</span>
                 <span class="syn-comment">// Captured variable: background tint (closure warning)</span>
                 <span class="syn-keyword">var</span> <span class="syn-variable">result</span> <span class="syn-operator">=</span> <span class="syn-keyword">await</span> <span class="syn-callable">RetryAsync</span>(<span class="syn-keyword">async</span> () <span class="syn-operator">=&gt;</span>
                 <span class="syn-brace">{</span>
-                    <span class="syn-captured">retryCount</span>++;  <span class="syn-comment">// CAPTURED by lambda</span>
+                    <span class="syn-captured" data-tooltip="Captured Variable: Background Tint (Closure Warning)">retryCount</span>++;  <span class="syn-comment">// CAPTURED by lambda</span>
                     <span class="syn-keyword">return</span> <span class="syn-keyword">await</span> <span class="syn-callable">ProcessSingleAsync</span>(<span class="syn-variable">document</span>);
                 <span class="syn-brace">}</span>, <span class="syn-constant">MaxRetries</span>);
                 
                 <span class="syn-variable">results</span>.<span class="syn-callable">Add</span>(<span class="syn-variable">result</span>);
                 <span class="syn-property">ProcessedCount</span>++;
             <span class="syn-brace">}</span>
-            <span class="syn-exception">catch</span> (<span class="syn-type">ProcessingException</span> <span class="syn-variable">ex</span>) <span class="syn-exception">when</span> (<span class="syn-variable">ex</span>.<span class="syn-property">IsRetryable</span>)
+            <span class="syn-exception">catch</span> (<span class="syn-type">ProcessingException</span> <span class="syn-variable">ex</span>) <span class="syn-exception" data-tooltip="Exception Filter: Coral">when</span> (<span class="syn-variable">ex</span>.<span class="syn-property">IsRetryable</span>)
             <span class="syn-brace">{</span>
                 <span class="syn-field">_logger</span>.<span class="syn-callable">LogWarning</span>(<span class="syn-string">$"Retryable: </span>{<span class="syn-variable">ex</span>.<span class="syn-property">Message</span>}<span class="syn-string">"</span>);
             <span class="syn-brace">}</span>
@@ -2589,12 +2650,12 @@
     <span class="syn-brace">}</span>
     
     <span class="syn-comment">// Obsolete method: strikethrough decoration</span>
-    <span class="syn-attribute">[Obsolete("Use ProcessAsync instead")]</span>
+    <span class="syn-attribute" data-tooltip="Attribute: Smaller (Metadata)">[Obsolete("Use ProcessAsync instead")]</span>
     <span class="syn-keyword">public</span> <span class="syn-keyword">void</span> <span class="syn-callable syn-obsolete">Process</span>(<span class="syn-type">Document</span> <span class="syn-parameter">doc</span>) <span class="syn-operator">=&gt;</span> <span class="syn-exception">throw</span> <span class="syn-keyword">new</span> <span class="syn-type">NotSupportedException</span>();
 <span class="syn-brace">}</span>
 
 <span class="syn-comment">// Value type (struct): blue</span>
-<span class="syn-keyword">public</span> <span class="syn-keyword">readonly</span> <span class="syn-keyword">struct</span> <span class="syn-struct">ProcessingResult</span>
+<span class="syn-keyword">public</span> <span class="syn-keyword">readonly</span> <span class="syn-keyword">struct</span> <span class="syn-struct" data-tooltip="Value Type: Blue (Stack Allocated)">ProcessingResult</span>
 <span class="syn-brace">{</span>
     <span class="syn-keyword">public</span> <span class="syn-interface">IReadOnlyList</span><span class="syn-operator">&lt;</span><span class="syn-type">DocumentResult</span><span class="syn-operator">&gt;</span> <span class="syn-property">Results</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-brace">}</span>
     <span class="syn-keyword">public</span> <span class="syn-struct">ProcessingStatus</span> <span class="syn-property">Status</span> <span class="syn-brace">{</span> <span class="syn-keyword">get</span>; <span class="syn-brace">}</span>
@@ -2603,7 +2664,7 @@
 <span class="syn-comment">// Enum: blue (value type), members are literal values (amber + bold)</span>
 <span class="syn-keyword">public</span> <span class="syn-keyword">enum</span> <span class="syn-struct">ProcessingStatus</span>
 <span class="syn-brace">{</span>
-    <span class="syn-enum-member">NoDocuments</span>,
+    <span class="syn-enum-member" data-tooltip="Enum Member: Amber Bold (Literal Value)">NoDocuments</span>,
     <span class="syn-enum-member">AllSucceeded</span>,
     <span class="syn-enum-member">PartialSuccess</span>,
     <span class="syn-enum-member">AllFailed</span>
