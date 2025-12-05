@@ -417,6 +417,29 @@
             margin: 24px 0;
         }
 
+        /* Standard scrollbars (Firefox, Modern Chrome/Edge) */
+        @supports (scrollbar-width: thin) {
+            pre {
+                scrollbar-width: thin;
+                scrollbar-color: var(--border-color) transparent;
+            }
+        }
+
+        /* Legacy/Safari scrollbars */
+        pre::-webkit-scrollbar {
+            height: 6px;
+            background-color: transparent;
+        }
+
+        pre::-webkit-scrollbar-thumb {
+            background-color: var(--border-color);
+            border-radius: 3px;
+        }
+
+        pre::-webkit-scrollbar-thumb:hover {
+            background-color: var(--text-muted);
+        }
+
         pre code {
             background: transparent;
             padding: 0;
@@ -636,6 +659,15 @@
             display: block;
             font-size: 1.1rem;
             margin-bottom: 6px;
+        }
+
+        .footer-links {
+            margin-top: 16px;
+        }
+
+        .footer-separator {
+            margin: 0 10px;
+            color: var(--border-color);
         }
 
         /* ==========================================================================
@@ -1668,7 +1700,7 @@
 
         <h3>Current Implementation</h3>
 
-        <p>Lexicon is currently implemented for <strong>C# development in Visual Studio 2026</strong> using the <strong>Codist extension</strong>. The system depends on Codist's extended semantic classification capabilities, which go beyond Visual Studio's built-in Roslyn classifications. Without Codist, Lexicon's full semantic vocabulary cannot be rendered.</p>
+        <p>Lexicon is currently implemented for <strong>C# development in Visual Studio 2026</strong> using the <a href="https://marketplace.visualstudio.com/items?itemName=codist.codist">Codist extension</a>. The system depends on Codist's extended semantic classification capabilities, which go beyond Visual Studio's built-in Roslyn classifications. Without Codist, Lexicon's full semantic vocabulary cannot be rendered.</p>
 
         <p>The scope is deliberately focused: one language, one IDE, one extension. The design aspiration is that the semantic vocabulary could eventually extend to other languages and editors, but this would require adaptation work. For now, Lexicon is where C# lives.</p>
 
@@ -2896,6 +2928,13 @@
             <strong>Lexicon</strong>
             <p>A color vocabulary for code.</p>
             <p>Design document v1.0</p>
+            <p class="footer-links">
+                <a href="https://github.com/clairernovotny/Lexicon">Lexicon GitHub</a>
+                <span class="footer-separator">|</span>
+                <a href="https://github.com/codist/codist">Codist GitHub</a>
+                <span class="footer-separator">|</span>
+                <a href="https://marketplace.visualstudio.com/items?itemName=codist.codist">Codist Marketplace</a>
+            </p>
         </footer>
     </div>
 
