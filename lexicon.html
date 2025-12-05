@@ -993,37 +993,10 @@
             color: #fff;
         }
 
-        /* === MOBILE: Scrollable dock with larger touch targets === */
-        @media (max-width: 768px) {
+        /* === TOUCH DEVICES: Larger targets, no hover effects === */
+        @media (hover: none), (pointer: coarse) {
             .theme-dock {
                 --dock-unit: 3px;           /* Larger for touch targets */
-                left: 0;
-                right: 0;
-                transform: none;
-                border-radius: 0;
-                bottom: 0;
-                overflow-x: auto;
-                flex-wrap: nowrap;
-                justify-content: safe center; /* Center until overflow, then scroll */
-            }
-
-            /* Hide scrollbar */
-            .theme-dock::-webkit-scrollbar {
-                display: none;
-            }
-
-            .theme-dock {
-                -ms-overflow-style: none;   /* IE/Edge */
-            }
-
-            @supports (scrollbar-width: none) {
-                .theme-dock {
-                    scrollbar-width: none;  /* Firefox */
-                }
-            }
-
-            .theme-dock label {
-                flex-shrink: 0;
             }
 
             /* Disable hover effects on touch */
@@ -1041,18 +1014,45 @@
             .theme-dock label:hover::after {
                 height: var(--dock-bar-height);
             }
+        }
 
-            /* Wrapper not needed on mobile without JS arrows */
-            .theme-dock-wrapper {
-                display: contents;
+        /* === NARROW VIEWPORT: Full-width scrollable dock ===
+           Breakpoint based on touch dock: 10×57px + 9×3px gaps + 12px padding ≈ 620px */
+        @media (max-width: 620px) {
+            .theme-dock {
+                left: 0;
+                right: 0;
+                transform: none;
+                border-radius: 0;
+                bottom: 0;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                justify-content: safe center;
+            }
+
+            /* Hide scrollbar */
+            .theme-dock::-webkit-scrollbar {
+                display: none;
+            }
+
+            .theme-dock {
+                -ms-overflow-style: none;
+            }
+
+            @supports (scrollbar-width: none) {
+                .theme-dock {
+                    scrollbar-width: none;
+                }
+            }
+
+            .theme-dock label {
+                flex-shrink: 0;
             }
         }
 
-        /* Desktop: wrapper does nothing */
-        @media (min-width: 769px) {
-            .theme-dock-wrapper {
-                display: contents;
-            }
+        /* Wrapper always uses display:contents (no-op) */
+        .theme-dock-wrapper {
+            display: contents;
         }
 
         /* === HIDDEN RADIO INPUTS === */
